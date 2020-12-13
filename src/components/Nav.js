@@ -13,6 +13,10 @@ const useStyles = makeStyles((theme) => ({
         marginRight: theme.spacing(2),
     },
     title: {
+        fontFamily: [
+            '"Lobster"',
+            'cursive'
+        ].join(','),
         flexGrow: 1
     },
     headerOptions: {
@@ -25,6 +29,9 @@ const useStyles = makeStyles((theme) => ({
         fontSize: '1.25rem',
         width: '8rem',
         textTransform: 'capitalize'
+    },
+    toolbar: {
+        backgroundColor: 'darkred'
     }
 }));
 
@@ -34,7 +41,7 @@ const Navbar = (props) => {
     const [sidebarOpened, setSidebarOpened] = React.useState(false);
 
     const theme = useTheme();
-    const isMobile = useMediaQuery(theme.breakpoints.down('sm')); //Down: Small or smaller | Up: Bigger
+    const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
     const handleButtonClick = pageUrl => {
         history.push(pageUrl);
@@ -61,9 +68,9 @@ const Navbar = (props) => {
 
     return (
         <div className={classes.root}>
-            <AppBar position="static" color="primary">
-                <Toolbar>
-                    <Typography variant="h6" className={classes.title}>
+            <AppBar position="static" color="primary" elevation={0}>
+                <Toolbar className={classes.toolbar}>
+                    <Typography variant="h4" className={classes.title}>
                         GoRecipe
                     </Typography>
 
@@ -86,7 +93,7 @@ const Navbar = (props) => {
                             <div className={classes.headerOptions}>
                                 {menuItems.map((menuItem) => {
                                     return (
-                                        <Box key={uuid()} mr={4}><Button variant="outlined" color="primary" className={classes.buttonStyle} disableElevation onClick={() => handleButtonClick(menuItem.itemUrl)}>{menuItem.itemTitle}</Button></Box>
+                                        <Box key={uuid()} mr={4}><Button color="primary" className={classes.buttonStyle} disableElevation onClick={() => handleButtonClick(menuItem.itemUrl)}>{menuItem.itemTitle}</Button></Box>
                                     );
                                 })}
                             </div>
