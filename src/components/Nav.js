@@ -19,6 +19,10 @@ const useStyles = makeStyles((theme) => ({
         ].join(','),
         flexGrow: 1
     },
+    link: {
+        textDecoration: 'none',
+        color: 'ivory'
+    },
     headerOptions: {
         display: 'flex',
         flex: 1,
@@ -28,10 +32,14 @@ const useStyles = makeStyles((theme) => ({
         color: 'ivory',
         fontSize: '1.25rem',
         width: '8rem',
-        textTransform: 'capitalize'
+        textTransform: 'capitalize',
+        '&:hover': {
+            backgroundColor: '#ffa000'
+        },
+        borderRadius: 0
     },
     toolbar: {
-        backgroundColor: 'darkred'
+        backgroundColor: '#DD1C1A'
     }
 }));
 
@@ -61,17 +69,19 @@ const Navbar = (props) => {
             itemUrl: '/cuisine'
         },
         {
-            itemTitle: 'About',
-            itemUrl: '/about'
+            itemTitle: 'Login',
+            itemUrl: '/login'
         }
     ];
 
     return (
         <div className={classes.root}>
-            <AppBar position="static" color="primary" elevation={0}>
+            <AppBar position="fixed" elevation={0}>
                 <Toolbar className={classes.toolbar}>
                     <Typography variant="h4" className={classes.title}>
-                        GoRecipe
+                        <a href='/' className={classes.link}>
+                            GoRecipe
+                        </a>
                     </Typography>
 
                     {isMobile ? (
@@ -93,7 +103,14 @@ const Navbar = (props) => {
                             <div className={classes.headerOptions}>
                                 {menuItems.map((menuItem) => {
                                     return (
-                                        <Box key={uuid()} mr={4}><Button color="primary" className={classes.buttonStyle} disableElevation onClick={() => handleButtonClick(menuItem.itemUrl)}>{menuItem.itemTitle}</Button></Box>
+                                        <Box key={uuid()} mr={4}>
+                                            <Button
+                                                color="primary"
+                                                className={classes.buttonStyle}
+                                                disableElevation
+                                                onClick={() => handleButtonClick(menuItem.itemUrl)}>{menuItem.itemTitle}
+                                            </Button>
+                                        </Box>
                                     );
                                 })}
                             </div>

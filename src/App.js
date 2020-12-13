@@ -5,7 +5,7 @@ import './App.css';
 import Layout from './hoc/Layout';
 import Home from './layout/Home';
 import Cuisine from './layout/Cuisine';
-import About from './layout/About';
+import Login from './layout/Login';
 
 const theme = createMuiTheme({
   typography: {
@@ -32,7 +32,7 @@ class App extends Component {
         <Layout>
           <Switch>
             <Route exact path='/cuisine' component={Cuisine} />
-            <Route exact path='/about' component={About} />
+            <Route exact path='/login' component={Login} />
             <Route path='/' component={Home} />
           </Switch>
         </Layout>

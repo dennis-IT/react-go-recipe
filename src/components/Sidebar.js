@@ -8,12 +8,12 @@ const useStyles = makeStyles({
         width: 250
     },
     paper: {
-        background: '#F44336',
+        background: '#DD1C1A',
         color: 'white'
     },
     icon: {
-        fontSize: '3.5rem',
-        padding: '0.5rem',
+        fontSize: '4.5rem',
+        padding: '1rem',
         color: 'white'
     },
     listItemText: {
@@ -61,7 +61,7 @@ const SideDrawer = (props) => {
             onClick={handleClose}
             onKeyDown={handleClose}
         >
-            <List>
+            <List style={{ padding: 0 }}>
                 {data.map(item => (
                     <ListItem button key={item.itemTitle} onClick={() => handleButtonClick(item.itemUrl)} >
                         <ListItemText primary={item.itemTitle} classes={{ primary: classes.listItemText }} />
@@ -81,8 +81,8 @@ const SideDrawer = (props) => {
                     onOpen={toggleDrawer(true)}
                     classes={{ paper: classes.paper }}
                 >
-                    <Box display='flex' justifyContent='flex-end'>
-                        <IconButton onClick={handleClose} >
+                    <Box display='flex' justifyContent='flex-end' >
+                        <IconButton onClick={handleClose} style={{ padding: '0' }}>
                             <ClearIcon className={classes.icon} />
                         </IconButton>
                     </Box>
