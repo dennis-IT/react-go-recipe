@@ -40,16 +40,6 @@ const useStyles = makeStyles((theme) => ({
         },
         fontSize: '1.5rem'
     },
-    slider: {
-        background: 'lightgrey',
-        position: 'fixed',
-        top: 0,
-        left: 0,
-        zIndex: 9999,
-        width: '100%',
-        height: '100%',
-        transform: 'translateY(100%)'
-    },
     hide: {
         background: 'darkred',
         overflow: 'hidden',
@@ -60,20 +50,25 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
+
+const slideIntro = (intro) => {
+    gsap.to(intro, { y: "-100%", duration: 1 });
+};
+
 const Home = (props) => {
     const classes = useStyles();
     let textR1 = useRef(null);
     let textR2 = useRef(null);
     let textR3 = useRef(null);
     let textR4 = useRef(null);
+    let intro = useRef(null);
 
     useEffect(() => {
         const tl = gsap.timeline({ defaults: { ease: 'power1.out' } });
         tl.to(textR1, { y: '0%', duration: 1 });
-        tl.to(textR2, { y: 0, duration: 1 }, '-=0.5');
-        tl.to(textR3, { y: 0, duration: 1 }, '-=0.5');
-        tl.to(textR4, { y: 0, duration: 1 }, '-=0.5');
-
+        tl.to(textR2, { y: '0%', duration: 1 }, '-=0.5');
+        tl.to(textR3, { y: '0%', duration: 1 }, '-=0.5');
+        tl.to(textR4, { y: '0%', duration: 1 }, '-=0.5');
     }, []);
 
     return (
@@ -82,7 +77,13 @@ const Home = (props) => {
             <Box className={classes.hero}>
 
             </Box>
-            <Box className={classes.intro} display='flex' justifyContent='center' alignItems='center'>
+            <Box
+                className={classes.intro}
+                display='flex'
+                justifyContent='center'
+                alignItems='center'
+                ref={element => intro = element}
+            >
                 <div className={classes.introText}>
                     <div className={classes.hide} >
                         <span ref={element => textR1 = element}>Discovering unique</span>
@@ -95,14 +96,18 @@ const Home = (props) => {
                     </div>
                     <div className={classes.hide}>
                         <span ref={element => textR4 = element}>
-                            <Button variant='contained' disableElevation className={classes.buttonStyle} >
+                            <Button
+                                variant='contained'
+                                disableElevation
+                                className={classes.buttonStyle}
+                                onClick={() => slideIntro(intro)}
+                            >
                                 Explore Now
-                        </Button>
+                            </Button>
                         </span>
                     </div>
                 </div>
             </Box>
-            <Box className={classes.slider}></Box>
         </React.Fragment>
     );
 };

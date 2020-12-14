@@ -10,7 +10,7 @@ const useStyles = makeStyles((theme) => ({
         flexGrow: 1
     },
     menuButton: {
-        marginRight: theme.spacing(2),
+        //marginRight: theme.spacing(2),
     },
     title: {
         fontFamily: [
@@ -39,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
         borderRadius: 0
     },
     toolbar: {
-        backgroundColor: '#DD1C1A'
+        backgroundColor: 'darkred'
     }
 }));
 
