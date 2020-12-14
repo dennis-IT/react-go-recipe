@@ -34,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
         width: '8rem',
         textTransform: 'capitalize',
         '&:hover': {
-            backgroundColor: '#ffa000'
+            backgroundColor: '#ee9b2f'
         },
         borderRadius: 0
     },
