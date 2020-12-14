@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { Box, Button, makeStyles } from '@material-ui/core';
 import { gsap } from "gsap";
+import Nav from '../components/Nav';
 
 const useStyles = makeStyles((theme) => ({
     hero: {
@@ -77,6 +78,7 @@ const Home = (props) => {
 
     return (
         <React.Fragment>
+            <Nav />
             <Box className={classes.hero}>
 
             </Box>
