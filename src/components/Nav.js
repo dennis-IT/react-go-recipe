@@ -1,6 +1,6 @@
 import React from 'react';
 import uuid from 'react-uuid';
-import { withRouter } from 'react-router-dom';
+import { withRouter, useHistory, Link } from 'react-router-dom';
 import { AppBar, Toolbar, Typography, IconButton, Button, makeStyles, useMediaQuery, useTheme, Box } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import Sidebar from './Sidebar';
@@ -44,7 +44,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Navbar = (props) => {
-    const { history } = props;
+    //const { history } = props;
+    const history = useHistory();
     const classes = useStyles();
     const [sidebarOpened, setSidebarOpened] = React.useState(false);
 
@@ -79,9 +80,9 @@ const Navbar = (props) => {
             <AppBar position="fixed" elevation={0}>
                 <Toolbar className={classes.toolbar}>
                     <Typography variant="h4" className={classes.title}>
-                        <a href='/' className={classes.link}>
+                        <Link to={{ pathname: '/' }} className={classes.link}>
                             GoRecipe
-                        </a>
+                        </Link>
                     </Typography>
 
                     {isMobile ? (

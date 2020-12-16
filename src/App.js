@@ -31,9 +31,9 @@ class App extends Component {
       <ThemeProvider theme={theme}>
         <Layout>
           <Switch>
-            <Route exact path='/cuisine' component={Cuisine} />
-            <Route exact path='/login' component={Login} />
-            <Route path='/' component={Home} />
+            <Route path='/cuisine' component={Cuisine} />
+            <Route path='/login' component={Login} />
+            <Route path='/' exact component={Home} />
           </Switch>
         </Layout>
       </ThemeProvider>
