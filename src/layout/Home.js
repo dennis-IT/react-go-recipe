@@ -11,7 +11,9 @@ const useStyles = makeStyles((theme) => ({
         backgroundPosition: 'center'
     },
     intro: {
-        background: 'darkred',
+        background: `url(${process.env.PUBLIC_URL}/media/slider.jpg)`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
         position: 'fixed',
         top: 0,
         left: 0,
@@ -41,19 +43,30 @@ const useStyles = makeStyles((theme) => ({
         fontSize: '1.5rem'
     },
     hide: {
-        background: 'darkred',
+        background: 'opaque',
         overflow: 'hidden',
         '& > span': {
             transform: 'translateY(100%)',
             display: 'inline-block'
+        },
+        textAlign: 'center'
+    },
+    content: {
+        opacity: 0
+    },
+    fontem: {
+        fontFamily: [
+            '"Kaushan Script"',
+            'cursive'
+        ].join(','),
+        [theme.breakpoints.down('sm')]: {
+            fontSize: '4rem'
+        },
+        [theme.breakpoints.up('sm')]: {
+            fontSize: '6rem',
         }
     }
 }));
-
-
-const slideIntro = (intro) => {
-    gsap.to(intro, { y: "-100%", duration: 1 });
-};
 
 const Home = (props) => {
     const classes = useStyles();
@@ -62,6 +75,12 @@ const Home = (props) => {
     let textR3 = useRef(null);
     let textR4 = useRef(null);
     let intro = useRef(null);
+    let content = useRef(null);
+
+    const slideIntro = (intro, content) => {
+        gsap.to(intro, { y: "-100%", duration: 1 });
+        gsap.fromTo(content, { opacity: 0 }, { opacity: 1, duration: 1 });
+    };
 
     useEffect(() => {
         const tl = gsap.timeline({ defaults: { ease: 'power1.out' } });
@@ -73,10 +92,12 @@ const Home = (props) => {
 
     return (
         <React.Fragment>
-            <Nav />
-            <Box className={classes.hero}>
+            <div ref={element => content = element} className={classes.content}>
+                <Nav />
+                <Box className={classes.hero}>
 
-            </Box>
+                </Box>
+            </div>
             <Box
                 className={classes.intro}
                 display='flex'
@@ -89,10 +110,10 @@ const Home = (props) => {
                         <span ref={element => textR1 = element}>Discovering unique</span>
                     </div>
                     <div className={classes.hide}>
-                        <span ref={element => textR2 = element}>Recipes</span>
+                        <span className={classes.fontem} ref={element => textR2 = element}>Recipes</span>
                     </div>
                     <div className={classes.hide}>
-                        <span ref={element => textR3 = element}>For Everyone</span>
+                        <span ref={element => textR3 = element}>for food lovers ❤</span>
                     </div>
                     <div className={classes.hide}>
                         <span ref={element => textR4 = element}>
@@ -100,7 +121,7 @@ const Home = (props) => {
                                 variant='contained'
                                 disableElevation
                                 className={classes.buttonStyle}
-                                onClick={() => slideIntro(intro)}
+                                onClick={() => slideIntro(intro, content)}
                             >
                                 Explore Now
                             </Button>
