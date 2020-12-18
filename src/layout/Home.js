@@ -1,7 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { Box, Button, makeStyles, FormControl, Input, FormHelperText } from '@material-ui/core';
 import { gsap } from "gsap";
-import clsx from 'clsx';
 import Nav from '../components/Nav';
 
 const useStyles = makeStyles((theme) => ({
