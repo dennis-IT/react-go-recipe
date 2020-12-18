@@ -5,7 +5,7 @@ import Nav from '../components/Nav';
 
 const useStyles = makeStyles((theme) => ({
     heroContainer: {
-        background: `url(${process.env.PUBLIC_URL}/media/herof.jpg)`,
+        background: `url(${process.env.PUBLIC_URL}/media/hero.jpg)`,
         height: '100vh',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
@@ -48,7 +48,7 @@ const useStyles = makeStyles((theme) => ({
         marginBottom: '1rem',
     },
     intro: {
-        background: `url(${process.env.PUBLIC_URL}/media/slider1.jpg)`,
+        background: `url(${process.env.PUBLIC_URL}/media/slider.jpg)`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
