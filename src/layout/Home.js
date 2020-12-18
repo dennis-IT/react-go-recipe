@@ -8,7 +8,8 @@ const useStyles = makeStyles((theme) => ({
         background: `url(${process.env.PUBLIC_URL}/media/herof.jpg)`,
         height: '100vh',
         backgroundSize: 'cover',
-        backgroundPosition: 'center'
+        backgroundPosition: 'center',
+        opacity: 0
     },
     heroContent: {
         height: '100vh',
@@ -139,7 +140,6 @@ const Home = (props) => {
                         </div>
                     </Box>
                 </Box>
-
             </Box>
             <Box
                 className={classes.intro}
