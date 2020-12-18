@@ -11,17 +11,19 @@ const useStyles = makeStyles((theme) => ({
     },
     menuButton: {
         //marginRight: theme.spacing(2),
+        color: 'black'
     },
     title: {
         fontFamily: [
-            '"Lobster"',
+            '"Kaushan Script"',
             'cursive'
         ].join(','),
+        fontWeight: 'bold',
         flexGrow: 1
     },
     link: {
         textDecoration: 'none',
-        color: 'ivory'
+        color: 'black'
     },
     headerOptions: {
         display: 'flex',
@@ -29,17 +31,18 @@ const useStyles = makeStyles((theme) => ({
         justifyContent: 'flex-end'
     },
     buttonStyle: {
-        color: 'ivory',
-        fontSize: '1.25rem',
+        fontFamily: [
+            '"Bangers"',
+            'cursive'
+        ].join(','),
+        color: 'black',
+        fontSize: '2rem',
         width: '8rem',
         textTransform: 'capitalize',
         '&:hover': {
-            backgroundColor: '#ee9b2f'
+            backgroundColor: '#F5DF4D'
         },
         borderRadius: 0
-    },
-    toolbar: {
-        backgroundColor: 'darkred'
     }
 }));
 
@@ -50,7 +53,7 @@ const Navbar = (props) => {
     const [sidebarOpened, setSidebarOpened] = React.useState(false);
 
     const theme = useTheme();
-    const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+    const isMobile = useMediaQuery(theme.breakpoints.down('xs'));
 
     const handleButtonClick = pageUrl => {
         history.push(pageUrl);
@@ -77,8 +80,8 @@ const Navbar = (props) => {
 
     return (
         <div className={classes.root}>
-            <AppBar position="fixed" elevation={0}>
-                <Toolbar className={classes.toolbar}>
+            <AppBar elevation={0} color="transparent" position="absolute">
+                <Toolbar>
                     <Typography variant="h4" className={classes.title}>
                         <Link to={{ pathname: '/' }} className={classes.link}>
                             GoRecipe
@@ -104,7 +107,7 @@ const Navbar = (props) => {
                             <div className={classes.headerOptions}>
                                 {menuItems.map((menuItem) => {
                                     return (
-                                        <Box key={uuid()} mr={4}>
+                                        <Box key={uuid()} mr={1}>
                                             <Button
                                                 color="primary"
                                                 className={classes.buttonStyle}

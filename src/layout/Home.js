@@ -4,32 +4,69 @@ import { gsap } from "gsap";
 import Nav from '../components/Nav';
 
 const useStyles = makeStyles((theme) => ({
-    hero: {
-        minHeight: '100vh',
-        background: `url(${process.env.PUBLIC_URL}/media/heronew.jpg)`,
+    heroContainer: {
+        background: `url(${process.env.PUBLIC_URL}/media/herof.jpg)`,
+        height: '100vh',
         backgroundSize: 'cover',
         backgroundPosition: 'center'
     },
+    heroContent: {
+        height: '100vh',
+        maxHeight: '100%',
+        width: '100vw',
+        padding: '0 calc((100vw - 1300px)/2)',
+    },
+    heroItems: {
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'flex-start',
+        height: '100vh',
+        maxHeight: '100%',
+        padding: '0 1rem',
+        width: '600px',
+        lineHeight: '1.5',
+        fontWeight: 'bold',
+        [theme.breakpoints.down('xs')]: {
+            width: '100%',
+            background: 'rgba(255,255,255,0.2)',
+            backdropFilter: 'blur(5px)'
+        },
+    },
+    heroH1: {
+        fontSize: 'clamp(1.5rem, 5vw, 2.5rem)',
+        marginBottom: '1rem',
+        boxShadow: '5px 5px #F5DF4D',
+        letterSpacing: '1.5px',
+        textTransform: 'uppercase',
+        paddingRight: '4rem'
+
+    },
+    heroP: {
+        fontSize: 'clamp(1.5rem, 2.5vw, 2rem)',
+        marginBottom: '1rem',
+    },
     intro: {
-        background: `url(${process.env.PUBLIC_URL}/media/slider.jpg)`,
+        background: `url(${process.env.PUBLIC_URL}/media/slider1.jpg)`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
         position: 'fixed',
         top: 0,
         left: 0,
         zIndex: 9999,
         width: '100%',
         height: '100%',
-        flexDirection: 'column'
+        flexDirection: 'column',
     },
     introText: {
-        color: 'ivory',
+        color: 'darkred',
         fontWeight: 'bold',
         [theme.breakpoints.down('sm')]: {
-            fontSize: '2.75rem'
+            fontSize: '1.5rem'
         },
         [theme.breakpoints.up('sm')]: {
-            fontSize: '4.5rem',
+            fontSize: '2.5rem',
         }
     },
     buttonStyle: {
@@ -38,9 +75,8 @@ const useStyles = makeStyles((theme) => ({
         color: 'ivory',
         '&:hover': {
             backgroundColor: '#e0e0e0',
-            color: 'darkred'
-        },
-        fontSize: '1.5rem'
+            color: 'black'
+        }
     },
     hide: {
         background: 'opaque',
@@ -49,10 +85,8 @@ const useStyles = makeStyles((theme) => ({
             transform: 'translateY(100%)',
             display: 'inline-block'
         },
-        textAlign: 'center'
-    },
-    content: {
-        opacity: 0
+        textAlign: 'center',
+        marginBottom: '0.5rem'
     },
     fontem: {
         fontFamily: [
@@ -60,10 +94,10 @@ const useStyles = makeStyles((theme) => ({
             'cursive'
         ].join(','),
         [theme.breakpoints.down('sm')]: {
-            fontSize: '4rem'
+            fontSize: '2rem'
         },
         [theme.breakpoints.up('sm')]: {
-            fontSize: '6rem',
+            fontSize: '3.5rem',
         }
     }
 }));
@@ -75,11 +109,11 @@ const Home = (props) => {
     let textR3 = useRef(null);
     let textR4 = useRef(null);
     let intro = useRef(null);
-    let content = useRef(null);
+    let container = useRef(null);
 
-    const slideIntro = (intro, content) => {
+    const slideIntro = (intro, container) => {
         gsap.to(intro, { y: "-100%", duration: 1 });
-        gsap.fromTo(content, { opacity: 0 }, { opacity: 1, duration: 1 });
+        gsap.fromTo(container, { opacity: 0 }, { opacity: 1 });
     };
 
     useEffect(() => {
@@ -92,12 +126,21 @@ const Home = (props) => {
 
     return (
         <React.Fragment>
-            <div ref={element => content = element} className={classes.content}>
+            <Box ref={element => container = element} className={classes.heroContainer}>
                 <Nav />
-                <Box className={classes.hero}>
-
+                <Box className={classes.heroContent}>
+                    <Box className={classes.heroItems}>
+                        <div className={classes.heroH1}>
+                            Eat right.<br />Live right.<br />
+                            Cook together.<br />Stay together.<br />
+                        </div>
+                        <div className={classes.heroP}>
+                            Everyone can be a master chief
+                        </div>
+                    </Box>
                 </Box>
-            </div>
+
+            </Box>
             <Box
                 className={classes.intro}
                 display='flex'
@@ -107,13 +150,13 @@ const Home = (props) => {
             >
                 <div className={classes.introText}>
                     <div className={classes.hide} >
-                        <span ref={element => textR1 = element}>Discovering unique</span>
+                        <span ref={element => textR1 = element}>Discovering Unique</span>
                     </div>
                     <div className={classes.hide}>
                         <span className={classes.fontem} ref={element => textR2 = element}>Recipes</span>
                     </div>
                     <div className={classes.hide}>
-                        <span ref={element => textR3 = element}>for food lovers ❤</span>
+                        <span ref={element => textR3 = element}>For Foodies</span>
                     </div>
                     <div className={classes.hide}>
                         <span ref={element => textR4 = element}>
@@ -121,7 +164,7 @@ const Home = (props) => {
                                 variant='contained'
                                 disableElevation
                                 className={classes.buttonStyle}
-                                onClick={() => slideIntro(intro, content)}
+                                onClick={() => slideIntro(intro, container)}
                             >
                                 Explore Now
                             </Button>

@@ -8,15 +8,19 @@ const useStyles = makeStyles({
         width: 250
     },
     paper: {
-        background: '#DD1C1A',
-        color: 'white'
+        background: '#97999B',
+        color: 'black'
     },
     icon: {
         fontSize: '4.5rem',
         padding: '1rem',
-        color: 'white'
+        color: 'black'
     },
     listItemText: {
+        fontFamily: [
+            '"Bangers"',
+            'cursive'
+        ].join(','),
         textAlign: 'center',
         fontSize: '1.5rem'
     }
