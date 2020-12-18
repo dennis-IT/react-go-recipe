@@ -1,12 +1,13 @@
 import React, { useEffect, useRef } from 'react';
-import { Box, Button, makeStyles } from '@material-ui/core';
+import { Box, Button, makeStyles, FormControl, Input, FormHelperText } from '@material-ui/core';
 import { gsap } from "gsap";
+import clsx from 'clsx';
 import Nav from '../components/Nav';
 
 const useStyles = makeStyles((theme) => ({
     heroContainer: {
-        background: `url(${process.env.PUBLIC_URL}/media/hero.jpg)`,
-        height: '100vh',
+        background: `url(${process.env.PUBLIC_URL}/media/heroa.jpg)`,
+        height: '95vh',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         opacity: 0
@@ -24,10 +25,10 @@ const useStyles = makeStyles((theme) => ({
         alignItems: 'flex-start',
         height: '100vh',
         maxHeight: '100%',
-        padding: '0 1rem',
         width: '600px',
-        lineHeight: '1.5',
+        lineHeight: '1.3',
         fontWeight: 'bold',
+        padding: '0 2rem',
         [theme.breakpoints.down('xs')]: {
             width: '100%',
             background: 'rgba(255,255,255,0.2)',
@@ -64,7 +65,7 @@ const useStyles = makeStyles((theme) => ({
         color: 'darkred',
         fontWeight: 'bold',
         [theme.breakpoints.down('sm')]: {
-            fontSize: '1.5rem'
+            fontSize: '2rem'
         },
         [theme.breakpoints.up('sm')]: {
             fontSize: '2.5rem',
@@ -100,7 +101,10 @@ const useStyles = makeStyles((theme) => ({
         [theme.breakpoints.up('sm')]: {
             fontSize: '3.5rem',
         }
-    }
+    },
+    textField: {
+        width: '10rem',
+    },
 }));
 
 const Home = (props) => {
@@ -132,12 +136,26 @@ const Home = (props) => {
                 <Box className={classes.heroContent}>
                     <Box className={classes.heroItems}>
                         <div className={classes.heroH1}>
-                            Eat right.<br />Live right.<br />
-                            Cook together.<br />Stay together.<br />
+                            Eat right<br />Live right<br />
+                            Cook together<br />Stay together<br />
                         </div>
                         <div className={classes.heroP}>
-                            Everyone can be a master chief
+                            Everyone can be a master chief<br />
+                            Pick up your recipe today
                         </div>
+                        <FormControl className={classes.textField}>
+                            <Input
+                                placeholder="steak, pasta,..."
+                                id="recipe-searchbox"
+                                //value={values.weight}
+                                //onChange={handleChange('weight')}
+                                aria-describedby="recipe-helper-text"
+                                inputProps={{
+                                    'aria-label': 'recipe'
+                                }}
+                            />
+                            <FormHelperText id="recipe-helper-text">Recipe</FormHelperText>
+                        </FormControl>
                     </Box>
                 </Box>
             </Box>
