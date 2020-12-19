@@ -6,7 +6,7 @@ import Nav from '../components/Nav';
 const useStyles = makeStyles((theme) => ({
     heroContainer: {
         background: `url(${process.env.PUBLIC_URL}/media/heroa.jpg)`,
-        height: '95vh',
+        height: '100vh',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         opacity: 0
@@ -35,16 +35,16 @@ const useStyles = makeStyles((theme) => ({
         },
     },
     heroH1: {
-        fontSize: 'clamp(1.5rem, 5vw, 2.5rem)',
+        fontSize: 'clamp(1rem, 3.5vw, 2.5rem)',
+        marginTop: '4rem',
         marginBottom: '1rem',
         boxShadow: '5px 5px #F5DF4D',
         letterSpacing: '1.5px',
         textTransform: 'uppercase',
-        paddingRight: '4rem'
-
+        paddingRight: '3rem'
     },
     heroP: {
-        fontSize: 'clamp(1.5rem, 2.5vw, 2rem)',
+        fontSize: 'clamp(1rem, 2vw, 2rem)',
         marginBottom: '1rem',
     },
     intro: {
@@ -135,11 +135,11 @@ const Home = (props) => {
                 <Box className={classes.heroContent}>
                     <Box className={classes.heroItems}>
                         <div className={classes.heroH1}>
-                            Eat right<br />Live right<br />
+                            Eat right<br /> Live right<br />
                             Cook together<br />Stay together<br />
                         </div>
                         <div className={classes.heroP}>
-                            Everyone can be a master chief<br />
+                            Everyone can become a master chief<br />
                             Pick up your recipe today
                         </div>
                         <FormControl className={classes.textField}>

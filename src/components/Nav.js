@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
     },
     link: {
         textDecoration: 'none',
-        color: 'darkred'
+        color: 'black'
     },
     headerOptions: {
         display: 'flex',
