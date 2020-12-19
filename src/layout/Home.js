@@ -35,16 +35,16 @@ const useStyles = makeStyles((theme) => ({
         },
     },
     heroH1: {
-        fontSize: 'clamp(1rem, 3.5vw, 2.5rem)',
-        marginTop: '4rem',
+        fontSize: 'clamp(1.5rem, 3.5vw, 2.5rem)',
+        marginTop: '1rem',
         marginBottom: '1rem',
         boxShadow: '5px 5px #F5DF4D',
         letterSpacing: '1.5px',
         textTransform: 'uppercase',
-        paddingRight: '3rem'
+        paddingRight: '1.5rem'
     },
     heroP: {
-        fontSize: 'clamp(1rem, 2vw, 2rem)',
+        fontSize: 'clamp(1.2rem, 2vw, 2rem)',
         marginBottom: '1rem',
     },
     intro: {
@@ -135,8 +135,8 @@ const Home = (props) => {
                 <Box className={classes.heroContent}>
                     <Box className={classes.heroItems}>
                         <div className={classes.heroH1}>
-                            Eat right<br /> Live right<br />
-                            Cook together<br />Stay together<br />
+                            Eat right. Live right.<br />
+                            Cook together.
                         </div>
                         <div className={classes.heroP}>
                             Everyone can become a master chief<br />
