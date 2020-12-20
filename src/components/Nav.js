@@ -11,7 +11,7 @@ const useStyles = makeStyles((theme) => ({
     },
     menuButton: {
         //marginRight: theme.spacing(2),
-        color: 'black'
+        color: '#676563'
     },
     title: {
         fontFamily: [
@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
     },
     link: {
         textDecoration: 'none',
-        color: 'black'
+        color: '#676563'
     },
     headerOptions: {
         display: 'flex',
@@ -35,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
             '"Bangers"',
             'cursive'
         ].join(','),
-        color: 'black',
+        color: '#676563',
         fontSize: '2rem',
         width: '8rem',
         textTransform: 'capitalize',

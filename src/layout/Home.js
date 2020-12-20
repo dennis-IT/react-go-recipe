@@ -1,20 +1,21 @@
 import React, { useEffect, useRef } from 'react';
-import { Box, Button, makeStyles, FormControl, Input, FormHelperText } from '@material-ui/core';
+import { Box, Button, makeStyles, FormControl, Input, FormHelperText, Grid } from '@material-ui/core';
 import { gsap } from "gsap";
 import Nav from '../components/Nav';
 
 const useStyles = makeStyles((theme) => ({
     heroContainer: {
-        background: `url(${process.env.PUBLIC_URL}/media/heroa.jpg)`,
+        background: `url(${process.env.PUBLIC_URL}/media/hero.jpg)`,
         height: '100vh',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
-        opacity: 0
+        opacity: 0,
+        color: '#4D4B4A'
     },
     heroContent: {
         height: '100vh',
         maxHeight: '100%',
-        width: '100vw',
+        //width: '100vw',
         padding: '0 calc((100vw - 1300px)/2)',
     },
     heroItems: {
@@ -36,7 +37,7 @@ const useStyles = makeStyles((theme) => ({
     },
     heroH1: {
         fontSize: 'clamp(1.5rem, 3.5vw, 2.5rem)',
-        marginTop: '1rem',
+        marginTop: '4rem',
         marginBottom: '1rem',
         boxShadow: '5px 5px #F5DF4D',
         letterSpacing: '1.5px',
@@ -104,6 +105,17 @@ const useStyles = makeStyles((theme) => ({
     textField: {
         width: '10rem',
     },
+    postHeroContent: {
+        backgroundColor: '#fce5be'
+    },
+    postHeroItem: {
+        fontSize: 'clamp(1.2rem, 1vw, 1.5rem)',
+        color: '#4D4B4A',
+        backgroundClip: 'content-box',
+        backgroundColor: '#f1f2f3',
+        height: '4rem',
+        padding: '0.2rem'
+    }
 }));
 
 const Home = (props) => {
@@ -153,11 +165,12 @@ const Home = (props) => {
                                     'aria-label': 'recipe'
                                 }}
                             />
-                            <FormHelperText id="recipe-helper-text">Recipe</FormHelperText>
+                            <FormHelperText id="recipe-helper-text">Tell us what you are looking for</FormHelperText>
                         </FormControl>
                     </Box>
                 </Box>
             </Box>
+
             <Box
                 className={classes.intro}
                 display='flex'
@@ -189,6 +202,23 @@ const Home = (props) => {
                     </div>
                 </div>
             </Box>
+
+            <Grid container justifyContent='center' alignItems='center' className={classes.postHeroContent}>
+                <Grid item xs={12} md={4} >
+                    <Box textAlign='center' display='flex' justifyContent='center' alignItems='center' className={classes.postHeroItem}><i class="far fa-clock"></i>&nbsp;&nbsp;Save your time searching recipes</Box>
+                </Grid>
+                <Grid item xs={12} md={4}>
+                    <Box textAlign='center' display='flex' justifyContent='center' alignItems='center' className={classes.postHeroItem}><i class="far fa-tired"></i>&nbsp;&nbsp;Stop wondering how to cook</Box>
+                </Grid>
+                <Grid item xs={12} md={4}>
+                    <Box textAlign='center' display='flex' justifyContent='center' alignItems='center' className={classes.postHeroItem}><i class="far fa-question-circle"></i>&nbsp;&nbsp;Understand how many calories per serving</Box>
+                </Grid>
+            </Grid>
+
+            <Box>
+
+            </Box>
+
         </React.Fragment>
     );
 };

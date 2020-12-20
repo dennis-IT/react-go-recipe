@@ -5,7 +5,7 @@ import ClearIcon from '@material-ui/icons/Clear';
 
 const useStyles = makeStyles({
     list: {
-        width: 250
+        width: 225
     },
     paper: {
         background: '#97999B',
