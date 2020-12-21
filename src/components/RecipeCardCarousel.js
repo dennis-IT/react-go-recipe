@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import Axios from 'axios';
-import { makeStyles, CircularProgress } from '@material-ui/core';
+import { makeStyles, CircularProgress, useTheme, useMediaQuery } from '@material-ui/core';
 import Carousel from 'react-material-ui-carousel';
 import data from '../data/random.json';
 import RecipeCard from './RecipeCard';
+import uuid from 'react-uuid';
 
 
-const API_KEY = 'd2fa2131633f487797a21c036eba8df2';
+const API_KEY = process.env.REACT_APP_API_KEY;
 
 const useStyles = makeStyles(theme => ({
     loading: {
@@ -25,6 +26,8 @@ const useStyles = makeStyles(theme => ({
 const RecipeCardCarousel = (props) => {
     //const { history } = props;
     const classes = useStyles();
+    const theme = useTheme();
+    const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
     const [recipeData, setRecipeData] = useState(undefined);
 
     useEffect(() => {
@@ -39,10 +42,10 @@ const RecipeCardCarousel = (props) => {
 
     return (
         recipeData ? (
-            <Carousel interval='5000' autoPlay={true} animation='slide' indicators={true} navButtonsAlwaysVisible={true}>
+            <Carousel interval='5000' autoPlay={true} animation='slide' indicators={true} navButtonsAlwaysVisible={!isMobile}>
                 {
                     recipeData.map(recipe => (
-                        <RecipeCard recipe={recipe} />
+                        <RecipeCard key={uuid()} recipe={recipe} />
                     ))
                 }
             </Carousel>
