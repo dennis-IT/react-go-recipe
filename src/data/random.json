@@ -1,0 +1,1306 @@
+[
+  {
+    "vegetarian": true,
+    "vegan": false,
+    "glutenFree": false,
+    "dairyFree": false,
+    "veryHealthy": false,
+    "cheap": false,
+    "veryPopular": false,
+    "sustainable": false,
+    "weightWatcherSmartPoints": 16,
+    "gaps": "no",
+    "lowFodmap": false,
+    "aggregateLikes": 12,
+    "spoonacularScore": 16.0,
+    "healthScore": 1.0,
+    "creditsText": "Foodista.com – The Cooking Encyclopedia Everyone Can Edit",
+    "license": "CC BY 3.0",
+    "sourceName": "Foodista",
+    "pricePerServing": 80.62,
+    "extendedIngredients": [
+      {
+        "id": 1001,
+        "aisle": "Milk, Eggs, Other Dairy",
+        "image": "butter-sliced.jpg",
+        "consistency": "solid",
+        "name": "butter",
+        "original": "2 tablespoons butter",
+        "originalString": "2 tablespoons butter",
+        "originalName": "butter",
+        "amount": 2.0,
+        "unit": "tablespoons",
+        "meta": [],
+        "metaInformation": [],
+        "measures": {
+          "us": { "amount": 2.0, "unitShort": "Tbsps", "unitLong": "Tbsps" },
+          "metric": { "amount": 2.0, "unitShort": "Tbsps", "unitLong": "Tbsps" }
+        }
+      },
+      {
+        "id": 9354,
+        "aisle": "Canned and Jarred",
+        "image": "pineapple-with-can.png",
+        "consistency": "solid",
+        "name": "canned pineapple",
+        "original": "8 oz can crushed pineapple",
+        "originalString": "8 oz can crushed pineapple",
+        "originalName": "crushed pineapple",
+        "amount": 8.0,
+        "unit": "oz",
+        "meta": ["crushed", "canned"],
+        "metaInformation": ["crushed", "canned"],
+        "measures": {
+          "us": { "amount": 8.0, "unitShort": "oz", "unitLong": "ounces" },
+          "metric": { "amount": 226.796, "unitShort": "g", "unitLong": "grams" }
+        }
+      },
+      {
+        "id": 20027,
+        "aisle": "Baking",
+        "image": "white-powder.jpg",
+        "consistency": "solid",
+        "name": "cornstarch",
+        "original": "1/3 cup cornstarch",
+        "originalString": "1/3 cup cornstarch",
+        "originalName": "cornstarch",
+        "amount": 0.3333333333333333,
+        "unit": "cup",
+        "meta": [],
+        "metaInformation": [],
+        "measures": {
+          "us": { "amount": 0.333, "unitShort": "cups", "unitLong": "cups" },
+          "metric": {
+            "amount": 78.863,
+            "unitShort": "ml",
+            "unitLong": "milliliters"
+          }
+        }
+      },
+      {
+        "id": 18373,
+        "aisle": "Spices and Seasonings;Baking",
+        "image": "white-powder.jpg",
+        "consistency": "solid",
+        "name": "cream of tartar",
+        "original": "1/4 teaspoon cream of tartar",
+        "originalString": "1/4 teaspoon cream of tartar",
+        "originalName": "cream of tartar",
+        "amount": 0.25,
+        "unit": "teaspoon",
+        "meta": [],
+        "metaInformation": [],
+        "measures": {
+          "us": {
+            "amount": 0.25,
+            "unitShort": "tsps",
+            "unitLong": "teaspoons"
+          },
+          "metric": {
+            "amount": 0.25,
+            "unitShort": "tsps",
+            "unitLong": "teaspoons"
+          }
+        }
+      },
+      {
+        "id": 1124,
+        "aisle": "Milk, Eggs, Other Dairy",
+        "image": "egg-white.jpg",
+        "consistency": "solid",
+        "name": "egg whites",
+        "original": "2 egg whites",
+        "originalString": "2 egg whites",
+        "originalName": "egg whites",
+        "amount": 2.0,
+        "unit": "",
+        "meta": [],
+        "metaInformation": [],
+        "measures": {
+          "us": { "amount": 2.0, "unitShort": "", "unitLong": "" },
+          "metric": { "amount": 2.0, "unitShort": "", "unitLong": "" }
+        }
+      },
+      {
+        "id": 1125,
+        "aisle": "Milk, Eggs, Other Dairy",
+        "image": "egg-yolk.jpg",
+        "consistency": "solid",
+        "name": "egg yolks",
+        "original": "2 egg yolks (save whites for meringue)",
+        "originalString": "2 egg yolks (save whites for meringue)",
+        "originalName": "egg yolks (save whites for meringue)",
+        "amount": 2.0,
+        "unit": "",
+        "meta": ["for meringue)"],
+        "metaInformation": ["for meringue)"],
+        "measures": {
+          "us": { "amount": 2.0, "unitShort": "", "unitLong": "" },
+          "metric": { "amount": 2.0, "unitShort": "", "unitLong": "" }
+        }
+      },
+      {
+        "id": 18334,
+        "aisle": "Refrigerated",
+        "image": "pie-crust.jpg",
+        "consistency": "solid",
+        "name": "pie crust",
+        "original": "1 9 inch pre-baked pie crust",
+        "originalString": "1 9 inch pre-baked pie crust",
+        "originalName": "9 inch pre-baked pie crust",
+        "amount": 1.0,
+        "unit": "9-inch",
+        "meta": [],
+        "metaInformation": [],
+        "measures": {
+          "us": { "amount": 1.0, "unitShort": "9-inch", "unitLong": "9-inch" },
+          "metric": {
+            "amount": 1.0,
+            "unitShort": "9-inch",
+            "unitLong": "9-inch"
+          }
+        }
+      },
+      {
+        "id": 2047,
+        "aisle": "Spices and Seasonings",
+        "image": "salt.jpg",
+        "consistency": "solid",
+        "name": "salt",
+        "original": "1/8 teaspoon salt",
+        "originalString": "1/8 teaspoon salt",
+        "originalName": "salt",
+        "amount": 0.125,
+        "unit": "teaspoon",
+        "meta": [],
+        "metaInformation": [],
+        "measures": {
+          "us": {
+            "amount": 0.125,
+            "unitShort": "tsps",
+            "unitLong": "teaspoons"
+          },
+          "metric": {
+            "amount": 0.125,
+            "unitShort": "tsps",
+            "unitLong": "teaspoons"
+          }
+        }
+      },
+      {
+        "id": 19335,
+        "aisle": "Baking",
+        "image": "sugar-in-bowl.png",
+        "consistency": "solid",
+        "name": "sugar",
+        "original": "1/4 cup sugar",
+        "originalString": "1/4 cup sugar",
+        "originalName": "sugar",
+        "amount": 0.25,
+        "unit": "cup",
+        "meta": [],
+        "metaInformation": [],
+        "measures": {
+          "us": { "amount": 0.25, "unitShort": "cups", "unitLong": "cups" },
+          "metric": {
+            "amount": 59.147,
+            "unitShort": "ml",
+            "unitLong": "milliliters"
+          }
+        }
+      },
+      {
+        "id": 19335,
+        "aisle": "Baking",
+        "image": "sugar-in-bowl.png",
+        "consistency": "solid",
+        "name": "sugar",
+        "original": "3/4 cup sugar",
+        "originalString": "3/4 cup sugar",
+        "originalName": "sugar",
+        "amount": 0.75,
+        "unit": "cup",
+        "meta": [],
+        "metaInformation": [],
+        "measures": {
+          "us": { "amount": 0.75, "unitShort": "cups", "unitLong": "cups" },
+          "metric": {
+            "amount": 177.441,
+            "unitShort": "ml",
+            "unitLong": "milliliters"
+          }
+        }
+      },
+      {
+        "id": 2050,
+        "aisle": "Baking",
+        "image": "vanilla-extract.jpg",
+        "consistency": "liquid",
+        "name": "vanilla",
+        "original": "1/2 teaspoon vanilla",
+        "originalString": "1/2 teaspoon vanilla",
+        "originalName": "vanilla",
+        "amount": 0.5,
+        "unit": "teaspoon",
+        "meta": [],
+        "metaInformation": [],
+        "measures": {
+          "us": { "amount": 0.5, "unitShort": "tsps", "unitLong": "teaspoons" },
+          "metric": {
+            "amount": 0.5,
+            "unitShort": "tsps",
+            "unitLong": "teaspoons"
+          }
+        }
+      },
+      {
+        "id": 2050,
+        "aisle": "Baking",
+        "image": "vanilla-extract.jpg",
+        "consistency": "liquid",
+        "name": "vanilla",
+        "original": "1 teaspoon vanilla",
+        "originalString": "1 teaspoon vanilla",
+        "originalName": "vanilla",
+        "amount": 1.0,
+        "unit": "teaspoon",
+        "meta": [],
+        "metaInformation": [],
+        "measures": {
+          "us": { "amount": 1.0, "unitShort": "tsp", "unitLong": "teaspoon" },
+          "metric": {
+            "amount": 1.0,
+            "unitShort": "tsp",
+            "unitLong": "teaspoon"
+          }
+        }
+      },
+      {
+        "id": 14412,
+        "aisle": "Beverages",
+        "image": "water.png",
+        "consistency": "liquid",
+        "name": "water",
+        "original": "1/2 cup +2 T water",
+        "originalString": "1/2 cup +2 T water",
+        "originalName": "2 T water",
+        "amount": 0.5,
+        "unit": "cup",
+        "meta": [],
+        "metaInformation": [],
+        "measures": {
+          "us": { "amount": 0.5, "unitShort": "cups", "unitLong": "cups" },
+          "metric": {
+            "amount": 118.294,
+            "unitShort": "ml",
+            "unitLong": "milliliters"
+          }
+        }
+      }
+    ],
+    "id": 645147,
+    "title": " Grandma Inez's Pineapple Pie",
+    "readyInMinutes": 45,
+    "servings": 6,
+    "sourceUrl": "http://www.foodista.com/recipe/PDS7JZ6J/grandma-inezs-pineapple-pie",
+    "image": "https://spoonacular.com/recipeImages/645147-556x370.jpg",
+    "imageType": "jpg",
+    "summary": "Grandman Inez's Pineapple Pie is a <b>vegetarian</b> dessert. For <b>81 cents per serving</b>, this recipe <b>covers 5%</b> of your daily requirements of vitamins and minerals. This recipe makes 6 servings with <b>392 calories</b>, <b>4g of protein</b>, and <b>14g of fat</b> each. 12 people have made this recipe and would make it again. If you have vanilla, pineapple, t water, and a few other ingredients on hand, you can make it. From preparation to the plate, this recipe takes about <b>45 minutes</b>. All things considered, we decided this recipe <b>deserves a spoonacular score of 18%</b>. This score is not so outstanding. Similar recipes include <a href=\"https://spoonacular.com/recipes/grandmas-pineapple-upside-down-cake-813857\">Grandma’s Pineapple Upside Down Cake</a>, <a href=\"https://spoonacular.com/recipes/pineapple-kesari-pineapple-sheera-pineapple-semolina-halwa-step-by-step-579857\">Pineapple Kesari - Pineapple Sheera - Pineapple Semolina Halwa - Step by Step</a>, and <a href=\"https://spoonacular.com/recipes/butterfinger-pie-917550\">Butterfinger Pie</a>.",
+    "cuisines": [],
+    "dishTypes": ["side dish"],
+    "diets": ["lacto ovo vegetarian"],
+    "occasions": [],
+    "instructions": "<ol><li>To make the pie, cream sugar, butter, and egg yolks in a medium saucepan with a hand-held electric mixer. Blend in cornstarch and vanilla. Add water and crushed pineapple with its juice; blend once more.</li><li>Transfer saucepan to the stove and cook over med heat, stirring constantly until thick. Pour into 9 baked pastry.</li><li>To make the meringue, Whip egg whites until they begin to get foamy. Add remaining ingredients and continue to whip until the meringue has reached soft peak stage and is smooth and glossy.</li><li>Place meringue over cooled pie. Brown at 400 for just a few min. Store in fridge.</li></ol>",
+    "analyzedInstructions": [
+      {
+        "name": "",
+        "steps": [
+          {
+            "number": 1,
+            "step": "To make the pie, cream sugar, butter, and egg yolks in a medium saucepan with a hand-held electric mixer. Blend in cornstarch and vanilla.",
+            "ingredients": [
+              {
+                "id": 20027,
+                "name": "corn starch",
+                "localizedName": "corn starch",
+                "image": "white-powder.jpg"
+              },
+              {
+                "id": 1125,
+                "name": "egg yolk",
+                "localizedName": "egg yolk",
+                "image": "egg-yolk.jpg"
+              },
+              {
+                "id": 1052050,
+                "name": "vanilla",
+                "localizedName": "vanilla",
+                "image": "vanilla.jpg"
+              },
+              {
+                "id": 1001,
+                "name": "butter",
+                "localizedName": "butter",
+                "image": "butter-sliced.jpg"
+              },
+              {
+                "id": 1053,
+                "name": "cream",
+                "localizedName": "cream",
+                "image": "fluid-cream.jpg"
+              },
+              {
+                "id": 19335,
+                "name": "sugar",
+                "localizedName": "sugar",
+                "image": "sugar-in-bowl.png"
+              }
+            ],
+            "equipment": [
+              {
+                "id": 404628,
+                "name": "hand mixer",
+                "localizedName": "hand mixer",
+                "image": "hand-mixer.png"
+              },
+              {
+                "id": 404669,
+                "name": "sauce pan",
+                "localizedName": "sauce pan",
+                "image": "sauce-pan.jpg"
+              }
+            ]
+          },
+          {
+            "number": 2,
+            "step": "Add water and crushed pineapple with its juice; blend once more.",
+            "ingredients": [
+              {
+                "id": 1019354,
+                "name": "crushed pineapple",
+                "localizedName": "crushed pineapple",
+                "image": "pineapple-with-can.png"
+              },
+              {
+                "id": 1019016,
+                "name": "juice",
+                "localizedName": "juice",
+                "image": "apple-juice.jpg"
+              },
+              {
+                "id": 14412,
+                "name": "water",
+                "localizedName": "water",
+                "image": "water.png"
+              }
+            ],
+            "equipment": []
+          },
+          {
+            "number": 3,
+            "step": "Transfer saucepan to the stove and cook over med heat, stirring constantly until thick.",
+            "ingredients": [],
+            "equipment": [
+              {
+                "id": 404669,
+                "name": "sauce pan",
+                "localizedName": "sauce pan",
+                "image": "sauce-pan.jpg"
+              },
+              {
+                "id": 404794,
+                "name": "stove",
+                "localizedName": "stove",
+                "image": "oven.jpg"
+              }
+            ]
+          },
+          {
+            "number": 4,
+            "step": "Pour into 9 baked pastry.To make the meringue, Whip egg whites until they begin to get foamy.",
+            "ingredients": [
+              {
+                "id": 1124,
+                "name": "egg whites",
+                "localizedName": "egg whites",
+                "image": "egg-white.jpg"
+              }
+            ],
+            "equipment": []
+          },
+          {
+            "number": 5,
+            "step": "Add remaining ingredients and continue to whip until the meringue has reached soft peak stage and is smooth and glossy.",
+            "ingredients": [],
+            "equipment": []
+          },
+          {
+            "number": 6,
+            "step": "Place meringue over cooled pie. Brown at 400 for just a few min. Store in fridge.",
+            "ingredients": [],
+            "equipment": []
+          }
+        ]
+      }
+    ],
+    "originalId": null,
+    "spoonacularSourceUrl": "https://spoonacular.com/grandma-inezs-pineapple-pie-645147"
+  },
+  {
+    "vegetarian": false,
+    "vegan": false,
+    "glutenFree": true,
+    "dairyFree": false,
+    "veryHealthy": false,
+    "cheap": false,
+    "veryPopular": false,
+    "sustainable": false,
+    "weightWatcherSmartPoints": 6,
+    "gaps": "no",
+    "lowFodmap": false,
+    "aggregateLikes": 7,
+    "spoonacularScore": 44.0,
+    "healthScore": 6.0,
+    "creditsText": "Foodista.com – The Cooking Encyclopedia Everyone Can Edit",
+    "license": "CC BY 3.0",
+    "sourceName": "Foodista",
+    "pricePerServing": 61.58,
+    "extendedIngredients": [
+      {
+        "id": 11124,
+        "aisle": "Produce",
+        "image": "sliced-carrot.png",
+        "consistency": "solid",
+        "name": "carrot",
+        "original": "1/4 cup carrot",
+        "originalString": "1/4 cup carrot",
+        "originalName": "carrot",
+        "amount": 0.25,
+        "unit": "cup",
+        "meta": [],
+        "metaInformation": [],
+        "measures": {
+          "us": { "amount": 0.25, "unitShort": "cups", "unitLong": "cups" },
+          "metric": {
+            "amount": 59.147,
+            "unitShort": "ml",
+            "unitLong": "milliliters"
+          }
+        }
+      },
+      {
+        "id": 10023572,
+        "aisle": "Meat",
+        "image": "fresh-ground-beef.jpg",
+        "consistency": "solid",
+        "name": "ground beef",
+        "original": "1/2 pound ground beef",
+        "originalString": "1/2 pound ground beef",
+        "originalName": "ground beef",
+        "amount": 0.5,
+        "unit": "pound",
+        "meta": [],
+        "metaInformation": [],
+        "measures": {
+          "us": { "amount": 0.5, "unitShort": "lb", "unitLong": "pounds" },
+          "metric": { "amount": 226.796, "unitShort": "g", "unitLong": "grams" }
+        }
+      },
+      {
+        "id": 1002030,
+        "aisle": "Spices and Seasonings",
+        "image": "pepper.jpg",
+        "consistency": "solid",
+        "name": "ground pepper",
+        "original": "1/8 teaspoon ground red pepper",
+        "originalString": "1/8 teaspoon ground red pepper",
+        "originalName": "ground red pepper",
+        "amount": 0.125,
+        "unit": "teaspoon",
+        "meta": ["red"],
+        "metaInformation": ["red"],
+        "measures": {
+          "us": {
+            "amount": 0.125,
+            "unitShort": "tsps",
+            "unitLong": "teaspoons"
+          },
+          "metric": {
+            "amount": 0.125,
+            "unitShort": "tsps",
+            "unitLong": "teaspoons"
+          }
+        }
+      },
+      {
+        "id": 1002030,
+        "aisle": "Spices and Seasonings",
+        "image": "pepper.jpg",
+        "consistency": "solid",
+        "name": "ground pepper",
+        "original": "1/4 teaspoon ground white pepper",
+        "originalString": "1/4 teaspoon ground white pepper",
+        "originalName": "ground white pepper",
+        "amount": 0.25,
+        "unit": "teaspoon",
+        "meta": ["white"],
+        "metaInformation": ["white"],
+        "measures": {
+          "us": {
+            "amount": 0.25,
+            "unitShort": "tsps",
+            "unitLong": "teaspoons"
+          },
+          "metric": {
+            "amount": 0.25,
+            "unitShort": "tsps",
+            "unitLong": "teaspoons"
+          }
+        }
+      },
+      {
+        "id": 1022027,
+        "aisle": "Spices and Seasonings",
+        "image": "dried-herbs.png",
+        "consistency": "solid",
+        "name": "italian seasoning",
+        "original": "1 tablespoon Italian seasoning",
+        "originalString": "1 tablespoon Italian seasoning",
+        "originalName": "Italian seasoning",
+        "amount": 1.0,
+        "unit": "tablespoon",
+        "meta": ["italian"],
+        "metaInformation": ["italian"],
+        "measures": {
+          "us": { "amount": 1.0, "unitShort": "Tbsp", "unitLong": "Tbsp" },
+          "metric": { "amount": 1.0, "unitShort": "Tbsp", "unitLong": "Tbsp" }
+        }
+      },
+      {
+        "id": 2028,
+        "aisle": "Spices and Seasonings",
+        "image": "paprika.jpg",
+        "consistency": "solid",
+        "name": "paprika",
+        "original": "2 teaspoons paprika",
+        "originalString": "2 teaspoons paprika",
+        "originalName": "paprika",
+        "amount": 2.0,
+        "unit": "teaspoons",
+        "meta": [],
+        "metaInformation": [],
+        "measures": {
+          "us": { "amount": 2.0, "unitShort": "tsps", "unitLong": "teaspoons" },
+          "metric": {
+            "amount": 2.0,
+            "unitShort": "tsps",
+            "unitLong": "teaspoons"
+          }
+        }
+      },
+      {
+        "id": 1036,
+        "aisle": "Cheese",
+        "image": "ricotta.png",
+        "consistency": "solid",
+        "name": "ricotta cheese",
+        "original": "1/2 cup ricotta cheese",
+        "originalString": "1/2 cup ricotta cheese",
+        "originalName": "ricotta cheese",
+        "amount": 0.5,
+        "unit": "cup",
+        "meta": [],
+        "metaInformation": [],
+        "measures": {
+          "us": { "amount": 0.5, "unitShort": "cups", "unitLong": "cups" },
+          "metric": {
+            "amount": 118.294,
+            "unitShort": "ml",
+            "unitLong": "milliliters"
+          }
+        }
+      },
+      {
+        "id": 2047,
+        "aisle": "Spices and Seasonings",
+        "image": "salt.jpg",
+        "consistency": "solid",
+        "name": "salt",
+        "original": "1/4 teaspoon salt",
+        "originalString": "1/4 teaspoon salt",
+        "originalName": "salt",
+        "amount": 0.25,
+        "unit": "teaspoon",
+        "meta": [],
+        "metaInformation": [],
+        "measures": {
+          "us": {
+            "amount": 0.25,
+            "unitShort": "tsps",
+            "unitLong": "teaspoons"
+          },
+          "metric": {
+            "amount": 0.25,
+            "unitShort": "tsps",
+            "unitLong": "teaspoons"
+          }
+        }
+      },
+      {
+        "id": 12036,
+        "aisle": "Savory Snacks",
+        "image": "sunflower-seeds.jpg",
+        "consistency": "solid",
+        "name": "sunflower seeds",
+        "original": "3 tablespoons toasted sunflower seeds",
+        "originalString": "3 tablespoons toasted sunflower seeds",
+        "originalName": "toasted sunflower seeds",
+        "amount": 3.0,
+        "unit": "tablespoons",
+        "meta": ["toasted"],
+        "metaInformation": ["toasted"],
+        "measures": {
+          "us": { "amount": 3.0, "unitShort": "Tbsps", "unitLong": "Tbsps" },
+          "metric": { "amount": 3.0, "unitShort": "Tbsps", "unitLong": "Tbsps" }
+        }
+      },
+      {
+        "id": 11887,
+        "aisle": "Pasta and Rice",
+        "image": "tomato-paste.jpg",
+        "consistency": "solid",
+        "name": "tomato paste",
+        "original": "2 tablespoons tomato paste",
+        "originalString": "2 tablespoons tomato paste",
+        "originalName": "tomato paste",
+        "amount": 2.0,
+        "unit": "tablespoons",
+        "meta": [],
+        "metaInformation": [],
+        "measures": {
+          "us": { "amount": 2.0, "unitShort": "Tbsps", "unitLong": "Tbsps" },
+          "metric": { "amount": 2.0, "unitShort": "Tbsps", "unitLong": "Tbsps" }
+        }
+      },
+      {
+        "id": 14412,
+        "aisle": "Beverages",
+        "image": "water.png",
+        "consistency": "liquid",
+        "name": "water",
+        "original": "1 gallon water, divided",
+        "originalString": "1 gallon water, divided",
+        "originalName": "water, divided",
+        "amount": 1.0,
+        "unit": "gallon",
+        "meta": ["divided"],
+        "metaInformation": ["divided"],
+        "measures": {
+          "us": { "amount": 1.0, "unitShort": "gallon", "unitLong": "gallon" },
+          "metric": {
+            "amount": 1.0,
+            "unitShort": "gallon",
+            "unitLong": "gallon"
+          }
+        }
+      },
+      {
+        "id": 11109,
+        "aisle": "Produce",
+        "image": "cabbage.jpg",
+        "consistency": "solid",
+        "name": "white cabbage",
+        "original": "6-10 leaves white cabbage",
+        "originalString": "6-10 leaves white cabbage",
+        "originalName": "white cabbage",
+        "amount": 6.0,
+        "unit": "leaves",
+        "meta": ["white"],
+        "metaInformation": ["white"],
+        "measures": {
+          "us": { "amount": 6.0, "unitShort": "leaf", "unitLong": "leaves" },
+          "metric": { "amount": 6.0, "unitShort": "leaf", "unitLong": "leaves" }
+        }
+      },
+      {
+        "id": 20088,
+        "aisle": "Pasta and Rice",
+        "image": "rice-wild-uncooked.png",
+        "consistency": "solid",
+        "name": "wild rice",
+        "original": "1 cup wild rice",
+        "originalString": "1 cup wild rice",
+        "originalName": "wild rice",
+        "amount": 1.0,
+        "unit": "cup",
+        "meta": ["wild"],
+        "metaInformation": ["wild"],
+        "measures": {
+          "us": { "amount": 1.0, "unitShort": "cup", "unitLong": "cup" },
+          "metric": {
+            "amount": 236.588,
+            "unitShort": "ml",
+            "unitLong": "milliliters"
+          }
+        }
+      }
+    ],
+    "id": 636812,
+    "title": "California Wild Rice & Beef Cabbage Wrap With Crunchy Ricotta Cheese",
+    "readyInMinutes": 45,
+    "servings": 8,
+    "sourceUrl": "http://www.foodista.com/recipe/FY5R5PYS/california-wild-rice-beef-cabbage-wrap-with-crunchy-ricotta-cheese",
+    "image": "https://spoonacular.com/recipeImages/636812-556x370.jpg",
+    "imageType": "jpg",
+    "summary": "California Wild Rice & Beef Cabbage Wrap With Crunchy Ricotta Cheese might be just the side dish you are searching for. This gluten free recipe serves 8 and costs <b>61 cents per serving</b>. One serving contains <b>200 calories</b>, <b>11g of protein</b>, and <b>10g of fat</b>. Head to the store and pick up rice, ground beef, ground pepper, and a few other things to make it today. 7 people have tried and liked this recipe. From preparation to the plate, this recipe takes approximately <b>45 minutes</b>. All things considered, we decided this recipe <b>deserves a spoonacular score of 47%</b>. This score is solid. Try <a href=\"https://spoonacular.com/recipes/pinto-bean-quinoa-and-wild-rice-wrap-recipe-102441\">Pinto Bean, Quinoa, and Wild Rice Wrap Recipe</a>, <a href=\"https://spoonacular.com/recipes/wild-riceand-sage-stuffing-with-crunchy-croutons-757318\">Wild Rice–and-Sage Stuffing with Crunchy Croutons</a>, and <a href=\"https://spoonacular.com/recipes/wild-rice-stuffed-cabbage-304908\">Wild Rice Stuffed Cabbage</a> for similar recipes.",
+    "cuisines": [],
+    "dishTypes": ["side dish"],
+    "diets": ["gluten free"],
+    "occasions": [],
+    "instructions": "<ol><li>Cook 1 cup California wild rice according to package directions, adding tomato paste, Italian seasoning, and 2 teaspoons salt.</li><li>In a large bowl, combine 1/2 gallon water and 2 cups ice, to make an ice bath.</li><li>Bring 1/2 gallon water and 2 teaspoons salt to a boil, adjust heat to make water simmer. Add cabbage leaves, and cook for 1 to 2 minutes, or until cabbage leaves are soft.</li><li>Remove cabbage from boiling water and place in ice bath until cabbage is cool. Drain cabbage leaves on paper towels.</li><li>Heat up a frying pan and saute ground beef and flavor with paprika, white pepper, ground red pepper, and 1/2 teaspoon salt. Cook over medium-high heat until beef is browned and crumbles.</li><li>Add wild rice mixture, stirring to combine, and set aside.</li><li>In a small bowl, combine ricotta cheese, grated carrot, sunflower seeds, and remaining 1/4 teaspoon salt.</li><li>Serve wild rice mixture in or wrapped with cabbage leaves with ricotta mixture on the side.</li></ol>",
+    "analyzedInstructions": [
+      {
+        "name": "",
+        "steps": [
+          {
+            "number": 1,
+            "step": "Cook 1 cup California wild rice according to package directions, adding tomato paste, Italian seasoning, and 2 teaspoons salt.In a large bowl, combine 1/2 gallon water and 2 cups ice, to make an ice bath.Bring 1/2 gallon water and 2 teaspoons salt to a boil, adjust heat to make water simmer.",
+            "ingredients": [
+              {
+                "id": 1022027,
+                "name": "italian seasoning",
+                "localizedName": "italian seasoning",
+                "image": "dried-herbs.png"
+              },
+              {
+                "id": 11887,
+                "name": "tomato paste",
+                "localizedName": "tomato paste",
+                "image": "tomato-paste.jpg"
+              },
+              {
+                "id": 20088,
+                "name": "wild rice",
+                "localizedName": "wild rice",
+                "image": "rice-wild-uncooked.png"
+              },
+              {
+                "id": 14412,
+                "name": "water",
+                "localizedName": "water",
+                "image": "water.png"
+              },
+              {
+                "id": 2047,
+                "name": "salt",
+                "localizedName": "salt",
+                "image": "salt.jpg"
+              },
+              {
+                "id": 10014412,
+                "name": "ice",
+                "localizedName": "ice",
+                "image": "ice-cubes.png"
+              }
+            ],
+            "equipment": [
+              {
+                "id": 404783,
+                "name": "bowl",
+                "localizedName": "bowl",
+                "image": "bowl.jpg"
+              }
+            ]
+          },
+          {
+            "number": 2,
+            "step": "Add cabbage leaves, and cook for 1 to 2 minutes, or until cabbage leaves are soft.",
+            "ingredients": [
+              {
+                "id": 11109,
+                "name": "cabbage",
+                "localizedName": "cabbage",
+                "image": "cabbage.jpg"
+              }
+            ],
+            "equipment": [],
+            "length": { "number": 1, "unit": "minutes" }
+          },
+          {
+            "number": 3,
+            "step": "Remove cabbage from boiling water and place in ice bath until cabbage is cool.",
+            "ingredients": [
+              {
+                "id": 11109,
+                "name": "cabbage",
+                "localizedName": "cabbage",
+                "image": "cabbage.jpg"
+              },
+              {
+                "id": 14412,
+                "name": "water",
+                "localizedName": "water",
+                "image": "water.png"
+              },
+              {
+                "id": 10014412,
+                "name": "ice",
+                "localizedName": "ice",
+                "image": "ice-cubes.png"
+              }
+            ],
+            "equipment": []
+          },
+          {
+            "number": 4,
+            "step": "Drain cabbage leaves on paper towels.",
+            "ingredients": [
+              {
+                "id": 11109,
+                "name": "cabbage",
+                "localizedName": "cabbage",
+                "image": "cabbage.jpg"
+              }
+            ],
+            "equipment": [
+              {
+                "id": 405895,
+                "name": "paper towels",
+                "localizedName": "paper towels",
+                "image": "paper-towels.jpg"
+              }
+            ]
+          },
+          {
+            "number": 5,
+            "step": "Heat up a frying pan and saute ground beef and flavor with paprika, white pepper, ground red pepper, and 1/2 teaspoon salt. Cook over medium-high heat until beef is browned and crumbles.",
+            "ingredients": [
+              {
+                "id": 2031,
+                "name": "ground cayenne pepper",
+                "localizedName": "ground cayenne pepper",
+                "image": "chili-powder.jpg"
+              },
+              {
+                "id": 2032,
+                "name": "white pepper",
+                "localizedName": "white pepper",
+                "image": "white-pepper.png"
+              },
+              {
+                "id": 10023572,
+                "name": "ground beef",
+                "localizedName": "ground beef",
+                "image": "fresh-ground-beef.jpg"
+              },
+              {
+                "id": 2028,
+                "name": "paprika",
+                "localizedName": "paprika",
+                "image": "paprika.jpg"
+              },
+              {
+                "id": 23572,
+                "name": "beef",
+                "localizedName": "beef",
+                "image": "beef-cubes-raw.png"
+              },
+              {
+                "id": 2047,
+                "name": "salt",
+                "localizedName": "salt",
+                "image": "salt.jpg"
+              }
+            ],
+            "equipment": [
+              {
+                "id": 404645,
+                "name": "frying pan",
+                "localizedName": "frying pan",
+                "image": "pan.png"
+              }
+            ]
+          },
+          {
+            "number": 6,
+            "step": "Add wild rice mixture, stirring to combine, and set aside.In a small bowl, combine ricotta cheese, grated carrot, sunflower seeds, and remaining 1/4 teaspoon salt.",
+            "ingredients": [
+              {
+                "id": 12036,
+                "name": "sunflower seeds",
+                "localizedName": "sunflower seeds",
+                "image": "sunflower-seeds.jpg"
+              },
+              {
+                "id": 1036,
+                "name": "ricotta cheese",
+                "localizedName": "ricotta cheese",
+                "image": "ricotta.png"
+              },
+              {
+                "id": 20088,
+                "name": "wild rice",
+                "localizedName": "wild rice",
+                "image": "rice-wild-uncooked.png"
+              },
+              {
+                "id": 11124,
+                "name": "carrot",
+                "localizedName": "carrot",
+                "image": "sliced-carrot.png"
+              },
+              {
+                "id": 2047,
+                "name": "salt",
+                "localizedName": "salt",
+                "image": "salt.jpg"
+              }
+            ],
+            "equipment": [
+              {
+                "id": 404783,
+                "name": "bowl",
+                "localizedName": "bowl",
+                "image": "bowl.jpg"
+              }
+            ]
+          },
+          {
+            "number": 7,
+            "step": "Serve wild rice mixture in or wrapped with cabbage leaves with ricotta mixture on the side.",
+            "ingredients": [
+              {
+                "id": 20088,
+                "name": "wild rice",
+                "localizedName": "wild rice",
+                "image": "rice-wild-uncooked.png"
+              },
+              {
+                "id": 11109,
+                "name": "cabbage",
+                "localizedName": "cabbage",
+                "image": "cabbage.jpg"
+              },
+              {
+                "id": 1036,
+                "name": "ricotta cheese",
+                "localizedName": "ricotta cheese",
+                "image": "ricotta.png"
+              }
+            ],
+            "equipment": []
+          }
+        ]
+      }
+    ],
+    "originalId": null,
+    "spoonacularSourceUrl": "https://spoonacular.com/california-wild-rice-beef-cabbage-wrap-with-crunchy-ricotta-cheese-636812"
+  },
+  {
+    "vegetarian": true,
+    "vegan": false,
+    "glutenFree": true,
+    "dairyFree": false,
+    "veryHealthy": false,
+    "cheap": false,
+    "veryPopular": false,
+    "sustainable": false,
+    "weightWatcherSmartPoints": 9,
+    "gaps": "no",
+    "lowFodmap": false,
+    "aggregateLikes": 21,
+    "spoonacularScore": 37.0,
+    "healthScore": 4.0,
+    "creditsText": "Foodista.com – The Cooking Encyclopedia Everyone Can Edit",
+    "license": "CC BY 3.0",
+    "sourceName": "Foodista",
+    "pricePerServing": 50.49,
+    "extendedIngredients": [
+      {
+        "id": 19165,
+        "aisle": "Baking",
+        "image": "cocoa-powder.png",
+        "consistency": "solid",
+        "name": "cocoa powder",
+        "original": "cup cocoa powder",
+        "originalString": "cup cocoa powder",
+        "originalName": "cocoa powder",
+        "amount": 1.0,
+        "unit": "cup",
+        "meta": [],
+        "metaInformation": [],
+        "measures": {
+          "us": { "amount": 1.0, "unitShort": "cup", "unitLong": "cup" },
+          "metric": {
+            "amount": 236.588,
+            "unitShort": "ml",
+            "unitLong": "milliliters"
+          }
+        }
+      },
+      {
+        "id": 20027,
+        "aisle": "Baking",
+        "image": "white-powder.jpg",
+        "consistency": "solid",
+        "name": "cornstarch",
+        "original": "2 tablespoons cornstarch",
+        "originalString": "2 tablespoons cornstarch",
+        "originalName": "cornstarch",
+        "amount": 2.0,
+        "unit": "tablespoons",
+        "meta": [],
+        "metaInformation": [],
+        "measures": {
+          "us": { "amount": 2.0, "unitShort": "Tbsps", "unitLong": "Tbsps" },
+          "metric": { "amount": 2.0, "unitShort": "Tbsps", "unitLong": "Tbsps" }
+        }
+      },
+      {
+        "id": 1123,
+        "aisle": "Milk, Eggs, Other Dairy",
+        "image": "egg.png",
+        "consistency": "solid",
+        "name": "egg",
+        "original": "1 egg",
+        "originalString": "1 egg",
+        "originalName": "egg",
+        "amount": 1.0,
+        "unit": "",
+        "meta": [],
+        "metaInformation": [],
+        "measures": {
+          "us": { "amount": 1.0, "unitShort": "", "unitLong": "" },
+          "metric": { "amount": 1.0, "unitShort": "", "unitLong": "" }
+        }
+      },
+      {
+        "id": 1077,
+        "aisle": "Milk, Eggs, Other Dairy",
+        "image": "milk.png",
+        "consistency": "liquid",
+        "name": "milk",
+        "original": "2 cups milk",
+        "originalString": "2 cups milk",
+        "originalName": "milk",
+        "amount": 2.0,
+        "unit": "cups",
+        "meta": [],
+        "metaInformation": [],
+        "measures": {
+          "us": { "amount": 2.0, "unitShort": "cups", "unitLong": "cups" },
+          "metric": {
+            "amount": 473.176,
+            "unitShort": "ml",
+            "unitLong": "milliliters"
+          }
+        }
+      },
+      {
+        "id": 2047,
+        "aisle": "Spices and Seasonings",
+        "image": "salt.jpg",
+        "consistency": "solid",
+        "name": "salt",
+        "original": "1/8 teaspoon salt",
+        "originalString": "1/8 teaspoon salt",
+        "originalName": "salt",
+        "amount": 0.125,
+        "unit": "teaspoon",
+        "meta": [],
+        "metaInformation": [],
+        "measures": {
+          "us": {
+            "amount": 0.125,
+            "unitShort": "tsps",
+            "unitLong": "teaspoons"
+          },
+          "metric": {
+            "amount": 0.125,
+            "unitShort": "tsps",
+            "unitLong": "teaspoons"
+          }
+        }
+      },
+      {
+        "id": 19335,
+        "aisle": "Baking",
+        "image": "sugar-in-bowl.png",
+        "consistency": "solid",
+        "name": "sugar",
+        "original": "1/2 cup sugar",
+        "originalString": "1/2 cup sugar",
+        "originalName": "sugar",
+        "amount": 0.5,
+        "unit": "cup",
+        "meta": [],
+        "metaInformation": [],
+        "measures": {
+          "us": { "amount": 0.5, "unitShort": "cups", "unitLong": "cups" },
+          "metric": {
+            "amount": 118.294,
+            "unitShort": "ml",
+            "unitLong": "milliliters"
+          }
+        }
+      },
+      {
+        "id": 1145,
+        "aisle": "Milk, Eggs, Other Dairy",
+        "image": "butter-sliced.jpg",
+        "consistency": "solid",
+        "name": "unsalted butter",
+        "original": "2 tablespoons unsalted butter, melted",
+        "originalString": "2 tablespoons unsalted butter, melted",
+        "originalName": "unsalted butter, melted",
+        "amount": 2.0,
+        "unit": "tablespoons",
+        "meta": ["unsalted", "melted"],
+        "metaInformation": ["unsalted", "melted"],
+        "measures": {
+          "us": { "amount": 2.0, "unitShort": "Tbsps", "unitLong": "Tbsps" },
+          "metric": { "amount": 2.0, "unitShort": "Tbsps", "unitLong": "Tbsps" }
+        }
+      },
+      {
+        "id": 2050,
+        "aisle": "Baking",
+        "image": "vanilla-extract.jpg",
+        "consistency": "liquid",
+        "name": "vanilla extract",
+        "original": "1 teaspoon vanilla extract",
+        "originalString": "1 teaspoon vanilla extract",
+        "originalName": "vanilla extract",
+        "amount": 1.0,
+        "unit": "teaspoon",
+        "meta": [],
+        "metaInformation": [],
+        "measures": {
+          "us": { "amount": 1.0, "unitShort": "tsp", "unitLong": "teaspoon" },
+          "metric": {
+            "amount": 1.0,
+            "unitShort": "tsp",
+            "unitLong": "teaspoon"
+          }
+        }
+      }
+    ],
+    "id": 635041,
+    "title": "Bittersweet chocolate pudding",
+    "readyInMinutes": 45,
+    "servings": 6,
+    "sourceUrl": "http://www.foodista.com/recipe/2BNXJNXN/bittersweet-chocolate-pudding",
+    "image": "https://spoonacular.com/recipeImages/635041-556x370.jpg",
+    "imageType": "jpg",
+    "summary": "Bittersweet chocolate pudding might be just the dessert you are searching for. For <b>50 cents per serving</b>, this recipe <b>covers 9%</b> of your daily requirements of vitamins and minerals. One serving contains <b>203 calories</b>, <b>6g of protein</b>, and <b>9g of fat</b>. 21 person have tried and liked this recipe. Head to the store and pick up salt, sugar, egg, and a few other things to make it today. It is a good option if you're following a <b>gluten free and vegetarian</b> diet. From preparation to the plate, this recipe takes roughly <b>45 minutes</b>. All things considered, we decided this recipe <b>deserves a spoonacular score of 40%</b>. This score is solid. Try <a href=\"https://spoonacular.com/recipes/bittersweet-chocolate-pudding-760601\">Bittersweet Chocolate Pudding</a>, <a href=\"https://spoonacular.com/recipes/bittersweet-chocolate-pudding-204366\">Bittersweet Chocolate Pudding</a>, and <a href=\"https://spoonacular.com/recipes/bittersweet-chocolate-pudding-with-raspberries-126569\">Bittersweet Chocolate Pudding with Raspberries</a> for similar recipes.",
+    "cuisines": [],
+    "dishTypes": ["side dish"],
+    "diets": ["gluten free", "lacto ovo vegetarian"],
+    "occasions": [],
+    "instructions": "<ol><li>In a medium saucepan, whisk together the cornstarch, cocoa powder, sugar salt, and salt.</li><li>In a separate bowl, combine the milk and egg.</li><li>Gradually pour the milk mixture into the saucepan, whisking until thoroughly mixed.</li><li>Heat the mixture, stirring constantly, over medium heat until it boils. Cook for 1 minute, then remove from heat.</li><li>Stir in butter and vanilla extract.</li><li>Pour the pudding into the suitable molds rinsed with cold water (the pudding can be taken out more easily).</li><li>Chill.</li></ol>",
+    "analyzedInstructions": [
+      {
+        "name": "",
+        "steps": [
+          {
+            "number": 1,
+            "step": "In a medium saucepan, whisk together the cornstarch, cocoa powder, sugar salt, and salt.In a separate bowl, combine the milk and egg.Gradually pour the milk mixture into the saucepan, whisking until thoroughly mixed.",
+            "ingredients": [
+              {
+                "id": 19165,
+                "name": "cocoa powder",
+                "localizedName": "cocoa powder",
+                "image": "cocoa-powder.png"
+              },
+              {
+                "id": 20027,
+                "name": "corn starch",
+                "localizedName": "corn starch",
+                "image": "white-powder.jpg"
+              },
+              {
+                "id": 19335,
+                "name": "sugar",
+                "localizedName": "sugar",
+                "image": "sugar-in-bowl.png"
+              },
+              {
+                "id": 1077,
+                "name": "milk",
+                "localizedName": "milk",
+                "image": "milk.png"
+              },
+              {
+                "id": 2047,
+                "name": "salt",
+                "localizedName": "salt",
+                "image": "salt.jpg"
+              },
+              {
+                "id": 1123,
+                "name": "egg",
+                "localizedName": "egg",
+                "image": "egg.png"
+              }
+            ],
+            "equipment": [
+              {
+                "id": 404661,
+                "name": "whisk",
+                "localizedName": "whisk",
+                "image": "whisk.png"
+              },
+              {
+                "id": 404669,
+                "name": "sauce pan",
+                "localizedName": "sauce pan",
+                "image": "sauce-pan.jpg"
+              },
+              {
+                "id": 404783,
+                "name": "bowl",
+                "localizedName": "bowl",
+                "image": "bowl.jpg"
+              }
+            ]
+          },
+          {
+            "number": 2,
+            "step": "Heat the mixture, stirring constantly, over medium heat until it boils. Cook for 1 minute, then remove from heat.Stir in butter and vanilla extract.",
+            "ingredients": [
+              {
+                "id": 2050,
+                "name": "vanilla extract",
+                "localizedName": "vanilla extract",
+                "image": "vanilla-extract.jpg"
+              },
+              {
+                "id": 1001,
+                "name": "butter",
+                "localizedName": "butter",
+                "image": "butter-sliced.jpg"
+              }
+            ],
+            "equipment": [],
+            "length": { "number": 1, "unit": "minutes" }
+          },
+          {
+            "number": 3,
+            "step": "Pour the pudding into the suitable molds rinsed with cold water (the pudding can be taken out more easily).Chill.",
+            "ingredients": [
+              {
+                "id": 14412,
+                "name": "water",
+                "localizedName": "water",
+                "image": "water.png"
+              }
+            ],
+            "equipment": []
+          }
+        ]
+      }
+    ],
+    "originalId": null,
+    "spoonacularSourceUrl": "https://spoonacular.com/bittersweet-chocolate-pudding-635041"
+  }
+]

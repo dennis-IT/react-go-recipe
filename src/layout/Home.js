@@ -1,7 +1,8 @@
 import React, { useEffect, useRef } from 'react';
-import { Box, Button, makeStyles, FormControl, Input, FormHelperText, Grid } from '@material-ui/core';
+import { Box, Button, makeStyles, FormControl, Input, FormHelperText, Grid, Container } from '@material-ui/core';
 import { gsap } from "gsap";
 import Nav from '../components/Nav';
+import RecipeCardCarousel from '../components/RecipeCardCarousel';
 
 const useStyles = makeStyles((theme) => ({
     heroContainer: {
@@ -115,6 +116,27 @@ const useStyles = makeStyles((theme) => ({
         backgroundColor: '#f1f2f3',
         height: '4rem',
         padding: '0.2rem'
+    },
+    recipeCardCarousel: {
+        marginTop: '3rem',
+        marginBottom: '3rem'
+    },
+    carouselLeft: {
+        background: `url(${process.env.PUBLIC_URL}/media/chef.jpg)`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        width: '100%'
+    },
+    carouselRight: {
+        height: '500px',
+    },
+    carouselText: {
+        fontSize: 'clamp(1.5rem, 3.5vw, 2.5rem)',
+        letterSpacing: '1.5px',
+        textTransform: 'uppercase',
+        color: '#4D4B4A',
+        textAlign: 'center',
+        marginBottom: '2rem'
     }
 }));
 
@@ -203,21 +225,34 @@ const Home = (props) => {
                 </div>
             </Box>
 
-            <Grid container justifyContent='center' alignItems='center' className={classes.postHeroContent}>
+            <Grid container className={classes.postHeroContent}>
                 <Grid item xs={12} md={4} >
-                    <Box textAlign='center' display='flex' justifyContent='center' alignItems='center' className={classes.postHeroItem}><i class="far fa-clock"></i>&nbsp;&nbsp;Save your time searching recipes</Box>
+                    <Box textAlign='center' display='flex' justifyContent='center' alignItems='center' className={classes.postHeroItem}><i className="far fa-clock"></i>&nbsp;&nbsp;Save your time searching recipes</Box>
                 </Grid>
                 <Grid item xs={12} md={4}>
-                    <Box textAlign='center' display='flex' justifyContent='center' alignItems='center' className={classes.postHeroItem}><i class="far fa-tired"></i>&nbsp;&nbsp;Stop wondering how to cook</Box>
+                    <Box textAlign='center' display='flex' justifyContent='center' alignItems='center' className={classes.postHeroItem}><i className="far fa-heart"></i>&nbsp;&nbsp;Stop wondering how to cook</Box>
                 </Grid>
                 <Grid item xs={12} md={4}>
-                    <Box textAlign='center' display='flex' justifyContent='center' alignItems='center' className={classes.postHeroItem}><i class="far fa-question-circle"></i>&nbsp;&nbsp;Understand how many calories per serving</Box>
+                    <Box textAlign='center' display='flex' justifyContent='center' alignItems='center' className={classes.postHeroItem}><i className="far fa-question-circle"></i>&nbsp;&nbsp;Understand how many calories per serving</Box>
                 </Grid>
             </Grid>
 
-            <Box>
 
-            </Box>
+
+            <Container maxWidth="lg">
+                <Box className={classes.recipeCardCarousel}>
+                    <div className={classes.carouselText}>
+                        Popular Recipes Today
+                    </div>
+                    <Grid container>
+                        <Grid item xs={12} md={5} className={classes.carouselLeft}>
+                        </Grid>
+                        <Grid item xs={12} md={7} className={classes.carouselRight}>
+                            <RecipeCardCarousel />
+                        </Grid>
+                    </Grid>
+                </Box>
+            </Container>
 
         </React.Fragment>
     );
