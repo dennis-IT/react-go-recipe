@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, CardHeader, Card, CardActionArea, CardActions, CardContent, CardMedia, Typography, IconButton, makeStyles } from '@material-ui/core';
+import { Box, CardHeader, Card, CardActionArea, CardActions, CardContent, CardMedia, Typography, makeStyles } from '@material-ui/core';
 import ScheduleIcon from '@material-ui/icons/Schedule';
 import PeopleOutlineIcon from '@material-ui/icons/PeopleOutline';
 
