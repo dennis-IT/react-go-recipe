@@ -31,13 +31,13 @@ const RecipeCardCarousel = (props) => {
     const [recipeData, setRecipeData] = useState(undefined);
 
     useEffect(() => {
-        Axios.get(`https://api.spoonacular.com/recipes/random?apiKey=${API_KEY}&number=10`)
-            .then(response => {
-                const { data } = response;
-                const { recipes } = data;
-                setRecipeData(recipes);
-            });
-        //setRecipeData(data);
+        // Axios.get(`https://api.spoonacular.com/recipes/random?apiKey=${API_KEY}&number=10`)
+        //     .then(response => {
+        //         const { data } = response;
+        //         const { recipes } = data;
+        //         setRecipeData(recipes);
+        //     });
+        setRecipeData(data);
     }, []);
 
     return (

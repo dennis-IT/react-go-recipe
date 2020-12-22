@@ -1,7 +1,8 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, Fragment } from 'react';
 import { Box, Button, makeStyles, FormControl, Input, FormHelperText, Grid, Container } from '@material-ui/core';
 import { gsap } from "gsap";
 import Nav from '../components/Nav';
+import BottomNav from '../components/BottomNav';
 import RecipeCardCarousel from '../components/RecipeCardCarousel';
 
 const useStyles = makeStyles((theme) => ({
@@ -163,7 +164,7 @@ const Home = (props) => {
     }, []);
 
     return (
-        <React.Fragment>
+        <Fragment>
             <Box ref={element => container = element} className={classes.heroContainer}>
                 <Nav />
                 <Box className={classes.heroContent}>
@@ -237,8 +238,6 @@ const Home = (props) => {
                 </Grid>
             </Grid>
 
-
-
             <Container maxWidth="lg">
                 <Box className={classes.recipeCardCarousel}>
                     <div className={classes.carouselText}>
@@ -254,7 +253,9 @@ const Home = (props) => {
                 </Box>
             </Container>
 
-        </React.Fragment>
+            <BottomNav />
+
+        </Fragment>
     );
 };
 
