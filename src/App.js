@@ -4,7 +4,7 @@ import { createMuiTheme, ThemeProvider } from '@material-ui/core';
 import './App.css';
 import Layout from './hoc/Layout';
 import Home from './layout/Home';
-import Cuisine from './layout/Cuisine';
+import Recipes from './layout/Recipes';
 import Login from './layout/Login';
 
 const theme = createMuiTheme({
@@ -31,7 +31,7 @@ class App extends Component {
       <ThemeProvider theme={theme}>
         <Layout>
           <Switch>
-            <Route path='/cuisine' component={Cuisine} />
+            <Route path='/recipe' component={Recipes} />
             <Route path='/login' component={Login} />
             <Route path='/' exact component={Home} />
           </Switch>

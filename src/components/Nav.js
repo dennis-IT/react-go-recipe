@@ -70,7 +70,7 @@ const Navbar = (props) => {
         },
         {
             itemTitle: 'Recipe',
-            itemUrl: '/cuisine'
+            itemUrl: '/recipe'
         },
         {
             itemTitle: 'Login',
@@ -80,7 +80,7 @@ const Navbar = (props) => {
 
     return (
         <div className={classes.root}>
-            <AppBar elevation={0} color="transparent" position="absolute">
+            <AppBar elevation={0} color="transparent" position="static">
                 <Toolbar>
                     <Typography variant="h4" className={classes.title}>
                         <Link to={{ pathname: '/' }} className={classes.link}>

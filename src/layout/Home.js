@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, Fragment } from 'react';
 import { Box, Button, makeStyles, FormControl, Input, FormHelperText, Grid, Container } from '@material-ui/core';
 import { gsap } from "gsap";
+import clsx from 'clsx';
 import Nav from '../components/Nav';
 import BottomNav from '../components/BottomNav';
 import RecipeCardCarousel from '../components/RecipeCardCarousel';
@@ -30,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
         width: '600px',
         lineHeight: '1.3',
         fontWeight: 'bold',
-        padding: '0 2rem',
+        padding: '0 1.5rem',
         [theme.breakpoints.down('xs')]: {
             width: '100%',
             background: 'rgba(255,255,255,0.2)',
@@ -39,7 +40,7 @@ const useStyles = makeStyles((theme) => ({
     },
     heroH1: {
         fontSize: 'clamp(1.5rem, 3.5vw, 2.5rem)',
-        marginTop: '4rem',
+        marginTop: '-4rem',
         marginBottom: '1rem',
         boxShadow: '5px 5px #F5DF4D',
         letterSpacing: '1.5px',
@@ -116,7 +117,25 @@ const useStyles = makeStyles((theme) => ({
         backgroundClip: 'content-box',
         backgroundColor: '#f1f2f3',
         height: '4rem',
-        padding: '0.2rem'
+        padding: '0.3rem'
+    },
+    postHeroItemLeft: {
+        [theme.breakpoints.down('sm')]: {
+            paddingBottom: 0,
+            paddingRight: '0.3rem'
+        },
+        [theme.breakpoints.up('sm')]: {
+            paddingRight: 0
+        }
+    },
+    postHeroItemRight: {
+        [theme.breakpoints.down('sm')]: {
+            paddingTop: 0,
+            paddingLeft: '0.3rem'
+        },
+        [theme.breakpoints.up('sm')]: {
+            paddingLeft: 0
+        }
     },
     recipeCardCarousel: {
         marginTop: '3rem',
@@ -228,13 +247,13 @@ const Home = (props) => {
 
             <Grid container className={classes.postHeroContent}>
                 <Grid item xs={12} md={4} >
-                    <Box textAlign='center' display='flex' justifyContent='center' alignItems='center' className={classes.postHeroItem}><i className="far fa-clock"></i>&nbsp;&nbsp;Save your time searching recipes</Box>
+                    <Box textAlign='center' display='flex' justifyContent='center' alignItems='center' className={clsx(classes.postHeroItem, classes.postHeroItemLeft)}><i className="far fa-clock"></i>&nbsp;&nbsp;Save your time searching recipes</Box>
                 </Grid>
                 <Grid item xs={12} md={4}>
                     <Box textAlign='center' display='flex' justifyContent='center' alignItems='center' className={classes.postHeroItem}><i className="far fa-heart"></i>&nbsp;&nbsp;Stop wondering how to cook</Box>
                 </Grid>
                 <Grid item xs={12} md={4}>
-                    <Box textAlign='center' display='flex' justifyContent='center' alignItems='center' className={classes.postHeroItem}><i className="far fa-question-circle"></i>&nbsp;&nbsp;Understand how many calories per serving</Box>
+                    <Box textAlign='center' display='flex' justifyContent='center' alignItems='center' className={clsx(classes.postHeroItem, classes.postHeroItemRight)}><i className="far fa-question-circle"></i>&nbsp;&nbsp;Understand how many calories per serving</Box>
                 </Grid>
             </Grid>
 

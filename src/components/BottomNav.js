@@ -45,12 +45,12 @@ const BottomNav = (props) => {
             </Box>
             <Box my={0.25}>
                 <Typography className={classes.footerCredit}>
-                    Food related background created by <span><Link href='https://www.freepik.com/vectors/food'>Freepik</Link></span>
+                    Food background created by <span><Link href='https://www.freepik.com/vectors/food'>Freepik</Link></span>
                 </Typography>
             </Box>
             <Box my={0.25}>
                 <Typography className={classes.footerCredit}>
-                    Data source from <span><Link href='https://spoonacular.com/food-api'>Spoonacular API</Link></span>
+                    Data source created by <span><Link href='https://spoonacular.com/food-api'>Spoonacular API</Link></span>
                 </Typography>
             </Box>
             <Box my={0.25}>

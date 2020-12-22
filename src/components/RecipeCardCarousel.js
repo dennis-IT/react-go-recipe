@@ -42,7 +42,7 @@ const RecipeCardCarousel = (props) => {
 
     return (
         recipeData ? (
-            <Carousel interval='5000' autoPlay={true} animation='slide' indicators={true} navButtonsAlwaysVisible={!isMobile}>
+            <Carousel interval='4000' autoPlay={true} animation='fade' indicators={true} navButtonsAlwaysVisible={!isMobile}>
                 {
                     recipeData.map(recipe => (
                         <RecipeCard key={uuid()} recipe={recipe} />
