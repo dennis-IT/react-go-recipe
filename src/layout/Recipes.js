@@ -72,6 +72,13 @@ const useStyles = makeStyles(theme => ({
         },
         backgroundSize: 'cover',
         backgroundPosition: 'center',
+    },
+    contentRightRight: {
+        display: 'flex',
+        alignItems: 'center',
+        [theme.breakpoints.down('md')]: {
+            justifyContent: 'center'
+        }
     }
 }));
 
@@ -154,7 +161,7 @@ const Recipes = (props) => {
                                     <div className={classes.preface} />
                                 ) : (
                                         (recipeData.length !== 0) ? (
-                                            <Grid container spacing={3}>
+                                            <Grid container spacing={3} className={classes.contentRightRight}>
                                                 {recipeData.map(recipe => (
                                                     <Grid item>
                                                         <RecipeCard key={uuid()} recipe={recipe} />
