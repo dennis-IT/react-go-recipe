@@ -45,7 +45,7 @@ const BottomNav = (props) => {
             </Box>
             <Box my={0.25}>
                 <Typography className={classes.footerCredit}>
-                    Food background created by <span><Link href='https://www.freepik.com/vectors/food'>Freepik</Link></span>
+                    Background created by <span><Link href='https://www.freepik.com/vectors/food'>Freepik</Link></span>, <span><Link href='https://www.freepik.com/pikisuperstar'>Pikisuperstar</Link></span>
                 </Typography>
             </Box>
             <Box my={0.25}>

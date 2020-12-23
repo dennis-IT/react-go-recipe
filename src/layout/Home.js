@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'flex-start',
-        height: '100vh',
+        height: 'calc(100vh - 64px)',
         maxHeight: '100%',
         width: '600px',
         lineHeight: '1.3',
@@ -40,7 +40,7 @@ const useStyles = makeStyles((theme) => ({
     },
     heroH1: {
         fontSize: 'clamp(1.5rem, 3.5vw, 2.5rem)',
-        marginTop: '-4rem',
+        marginTop: '1rem',
         marginBottom: '1rem',
         boxShadow: '5px 5px #F5DF4D',
         letterSpacing: '1.5px',
@@ -148,7 +148,7 @@ const useStyles = makeStyles((theme) => ({
         width: '100%'
     },
     carouselRight: {
-        height: '500px',
+        //height: '500px',
     },
     carouselText: {
         fontSize: 'clamp(1.5rem, 3.5vw, 2.5rem)',

@@ -3,9 +3,15 @@ import { Box, CardHeader, Card, CardActionArea, CardActions, CardContent, CardMe
 import ScheduleIcon from '@material-ui/icons/Schedule';
 import PeopleOutlineIcon from '@material-ui/icons/PeopleOutline';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(theme => ({
     root: {
-        maxWidth: 345,
+        [theme.breakpoints.down('xl')]: {
+            maxWidth: '18vw'
+        },
+        [theme.breakpoints.up('xl')]: {
+            maxWidth: '14vw'
+        },
+        minWidth: '250px',
         backgroundColor: '#f1f2f3',
         borderRadius: 0
     },
@@ -18,7 +24,8 @@ const useStyles = makeStyles({
         '-webkit-line-clamp': 1,
         '-webkit-box-orient': 'vertical',
         overflow: 'hidden',
-        color: '#676563'
+        color: '#676563',
+        fontSize: '1.125rem'
     },
     contentP: {
         display: '-webkit-box',
@@ -30,14 +37,14 @@ const useStyles = makeStyles({
         color: 'rgba(0,0,0,0.54)',
         fontSize: '0.875rem'
     }
-});
+}));
 
 const RecipeCard = (props) => {
     const { recipe } = props;
     const classes = useStyles();
 
     return (
-        <Box py={2} display='flex' justifyContent='center' alignItems='center'>
+        <Box display='flex' justifyContent='center' alignItems='center'>
             <Card className={classes.root} elevation={0}>
                 <CardActionArea>
                     <CardHeader

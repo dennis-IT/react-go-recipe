@@ -28,7 +28,7 @@ const RecipeCardCarousel = (props) => {
     const classes = useStyles();
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
-    const [recipeData, setRecipeData] = useState(undefined);
+    const [recipeData, setRecipeData] = useState([]);
 
     useEffect(() => {
         // Axios.get(`https://api.spoonacular.com/recipes/random?apiKey=${API_KEY}&number=10`)
@@ -41,7 +41,7 @@ const RecipeCardCarousel = (props) => {
     }, []);
 
     return (
-        recipeData ? (
+        (recipeData.length !== 0) ? (
             <Carousel interval='4000' autoPlay={true} animation='fade' indicators={true} navButtonsAlwaysVisible={!isMobile}>
                 {
                     recipeData.map(recipe => (
@@ -52,7 +52,7 @@ const RecipeCardCarousel = (props) => {
         ) : (
                 <div className={classes.loading}>
                     <div><CircularProgress classes={{ colorPrimary: classes.progress }} /></div>
-                    <div><h3>Loading...</h3></div>
+                    <div><h3>Loading recipes...</h3></div>
                 </div>
             )
     );
