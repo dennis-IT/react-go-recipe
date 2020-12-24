@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { withRouter } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { List, ListItem, ListItemText, SwipeableDrawer, Box, IconButton, makeStyles } from '@material-ui/core';
 import ClearIcon from '@material-ui/icons/Clear';
 
@@ -27,7 +27,8 @@ const useStyles = makeStyles({
 });
 
 const SideDrawer = (props) => {
-    const { history } = props;
+    //const { history } = props;
+    const history = useHistory();
     const { data, anchor, status } = props;
     const classes = useStyles();
     const [state, setState] = useState({
@@ -97,4 +98,5 @@ const SideDrawer = (props) => {
     );
 };
 
-export default withRouter(SideDrawer);
+//export default withRouter(SideDrawer);
+export default SideDrawer;

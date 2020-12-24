@@ -101,7 +101,7 @@ const Recipes = (props) => {
                 setRecipeData(results);
                 setTotalResults(totalResults);
                 setOffset(0);   //Reset offset
-                setShowMore(true); //Reset showMore
+                (totalResults > LIMIT) ? setShowMore(true) : setShowMore(false); //Reset showMore
                 actions.setSubmitting(false);
             });
     };
