@@ -273,7 +273,6 @@ const Home = (props) => {
             </Container>
 
             <BottomNav />
-
         </Fragment>
     );
 };

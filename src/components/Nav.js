@@ -1,6 +1,6 @@
 import React from 'react';
 import uuid from 'react-uuid';
-import { withRouter, useHistory, Link } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 import { AppBar, Toolbar, Typography, IconButton, Button, makeStyles, useMediaQuery, useTheme, Box } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import Sidebar from './Sidebar';
@@ -47,8 +47,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Navbar = (props) => {
-    //const { history } = props;
-    const history = useHistory();
+    const { history } = props;
+    // const history = useHistory();
     const classes = useStyles();
     const [sidebarOpened, setSidebarOpened] = React.useState(false);
 

@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Axios from 'axios';
 import uuid from 'react-uuid';
-import { Container, makeStyles, Box, Grid, Typography, Button, LinearProgress, CircularProgress } from '@material-ui/core';
+import { Container, makeStyles, Box, Grid, Typography, Button, LinearProgress } from '@material-ui/core';
 import { Formik, Form, Field } from 'formik';
 import { TextField } from 'formik-material-ui';
 import Nav from '../components/Nav';
@@ -9,6 +9,7 @@ import BottomNav from '../components/BottomNav';
 import RecipeCard from '../components/RecipeCard';
 
 const API_KEY = process.env.REACT_APP_API_KEY;
+const LIMIT = 10;
 
 const useStyles = makeStyles(theme => ({
     rootcss: {
@@ -82,19 +83,39 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-
 const Recipes = (props) => {
     const classes = useStyles();
+    const [searchString, setSearchString] = useState('');
     const [recipeData, setRecipeData] = useState(undefined);
+    const [totalResults, setTotalResults] = useState(0);
+    const [offset, setOffset] = useState(0);
+    const [showMore, setShowMore] = useState(true);
 
     const fetchData = (values, actions) => {
         actions.setSubmitting(true);
-        Axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&query=${values.recipe}&number=10&addRecipeInformation=true`)
+        Axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&query=${values.recipe}&number=${LIMIT}&addRecipeInformation=true&offset=0`)
+            .then(response => {
+                const { data } = response;
+                const { results, totalResults } = data;
+                setSearchString(values.recipe);
+                setRecipeData(results);
+                setTotalResults(totalResults);
+                setOffset(0);   //Reset offset
+                setShowMore(true); //Reset showMore
+                actions.setSubmitting(false);
+            });
+    };
+
+    const loadMore = () => {
+        const newOffset = offset + LIMIT;
+        const newShowMore = newOffset < totalResults - LIMIT;
+        Axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&query=${searchString}&number=${LIMIT}&addRecipeInformation=true&offset=${newOffset}`)
             .then(response => {
                 const { data } = response;
                 const { results } = data;
-                setRecipeData(results);
-                actions.setSubmitting(false);
+                setRecipeData([...recipeData, ...results]);
+                setOffset(newOffset);
+                setShowMore(newShowMore);
             });
     };
 
@@ -161,13 +182,18 @@ const Recipes = (props) => {
                                     <div className={classes.preface} />
                                 ) : (
                                         (recipeData.length !== 0) ? (
-                                            <Grid container spacing={3} className={classes.contentRightRight}>
-                                                {recipeData.map(recipe => (
-                                                    <Grid item>
-                                                        <RecipeCard key={uuid()} recipe={recipe} />
-                                                    </Grid>
-                                                ))}
-                                            </Grid>
+                                            <Box>
+                                                <Grid container spacing={3} className={classes.contentRightRight}>
+                                                    {recipeData.map(recipe => (
+                                                        <Grid item>
+                                                            <RecipeCard key={uuid()} recipe={recipe} />
+                                                        </Grid>
+                                                    ))}
+                                                </Grid>
+                                                <Box display='flex' justifyContent='center' alignItems='center' mt={3}>
+                                                    {showMore && <Button variant='contained' color='primary' disableElevation onClick={loadMore}>Load More</Button>}
+                                                </Box>
+                                            </Box>
                                         ) : (
                                                 <h2>No results</h2>
                                             )
