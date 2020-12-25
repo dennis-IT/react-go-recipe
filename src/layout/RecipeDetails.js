@@ -102,7 +102,7 @@ const RecipeDetails = () => {
                                 </Box>
                             </Grid>
                             <Grid item xs={12} md={8}>
-                                <Accord />
+                                <Accord data={recDetails.results} />
                             </Grid>
                         </Grid>
                     ) : (
