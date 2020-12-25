@@ -20,7 +20,7 @@ const useStyles = makeStyles({
         color: '#565553'
     },
     image: {
-        maxWidth: '50%'
+        maxWidth: '40%'
     }
 });
 

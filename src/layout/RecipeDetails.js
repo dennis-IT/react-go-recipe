@@ -23,12 +23,13 @@ const useStyles = makeStyles((theme) => ({
     titleH: {
         color: '#565553',
         textTransform: 'capitalize',
-        margin: '0.75rem 0'
+        marginTop: '0.75rem',
+        marginBottom: '0.25rem'
     },
     subtitleH: {
         color: '#676563',
         textTransform: 'capitalize',
-        marginBottom: '0.75rem',
+        marginBottom: '0.25rem',
     },
     icons: {
         color: '#676563',
@@ -47,24 +48,28 @@ const RecipeDetails = () => {
     const [recDetails, setRecDetails] = useState({ loading: true, results: {} });
     const { id } = useParams();
 
-    // useEffect(() => {
-    //     Axios.get(`https://api.spoonacular.com/recipes/${id}/information?includeNutrition=true&apiKey=${API_KEY}`)
-    //         .then(response => {
-    //             const { data } = response;
-    //             setRecDetails(data);
-    //             console.log(recDetails);
-    //         });
-    // }, [id]);
-
     useEffect(() => {
-        setRecDetails(
-            {
-                loading: false,
-                results: info
-            }
-        );
-        //console.log(recDetails.results);
-    }, [recDetails.results]);
+        Axios.get(`https://api.spoonacular.com/recipes/${id}/information?includeNutrition=true&apiKey=${API_KEY}`)
+            .then(response => {
+                const { data } = response;
+                setRecDetails(
+                    {
+                        loading: false,
+                        results: data
+                    }
+                );
+            });
+    }, [id]);
+
+    // useEffect(() => {
+    //     setRecDetails(
+    //         {
+    //             loading: false,
+    //             results: info
+    //         }
+    //     );
+    //     //console.log(recDetails.results);
+    // }, [recDetails.results]);
 
     return (
         <Box display='flex' flexDirection='column' className={classes.rootcss} >

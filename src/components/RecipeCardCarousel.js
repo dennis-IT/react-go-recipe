@@ -8,6 +8,7 @@ import uuid from 'react-uuid';
 
 
 const API_KEY = process.env.REACT_APP_API_KEY;
+const LIMIT = 10;
 
 const useStyles = makeStyles(theme => ({
     loading: {
@@ -31,7 +32,7 @@ const RecipeCardCarousel = (props) => {
     const [recipeData, setRecipeData] = useState([]);
 
     useEffect(() => {
-        // Axios.get(`https://api.spoonacular.com/recipes/random?apiKey=${API_KEY}&number=10`)
+        // Axios.get(`https://api.spoonacular.com/recipes/random?apiKey=${API_KEY}&number=${LIMIT}`)
         //     .then(response => {
         //         const { data } = response;
         //         const { recipes } = data;

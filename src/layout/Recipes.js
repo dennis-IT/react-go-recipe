@@ -9,7 +9,7 @@ import BottomNav from '../components/BottomNav';
 import RecipeCard from '../components/RecipeCard';
 
 const API_KEY = process.env.REACT_APP_API_KEY;
-const LIMIT = 10;
+const LIMIT = 5;
 
 const useStyles = makeStyles(theme => ({
     rootcss: {

@@ -37,7 +37,7 @@ const BottomNav = (props) => {
                         <LinkedInIcon />
                     </IconButton>
                 </Link>
-                <Link href='https://www.facebook.com/huyquangta'>
+                <Link href='https://www.facebook.com'>
                     <IconButton>
                         <FacebookIcon />
                     </IconButton>

@@ -36,10 +36,10 @@ const Accord = (props) => {
                     aria-controls="panel1a-content"
                     id="panel1a-header"
                 >
-                    <Typography className={classes.heading}>Recipe Summary</Typography>
+                    <div className={classes.heading}>Recipe Summary</div>
                 </AccordionSummary>
                 <AccordionDetails>
-                    <Typography dangerouslySetInnerHTML={{ __html: summary }} className={classes.subheading} />
+                    <div dangerouslySetInnerHTML={{ __html: summary }} className={classes.subheading} />
                 </AccordionDetails>
             </Accordion>
             <Accordion defaultExpanded>
@@ -48,7 +48,7 @@ const Accord = (props) => {
                     aria-controls="panel2a-content"
                     id="panel2a-header"
                 >
-                    <Typography className={classes.heading}>Ingredient List</Typography>
+                    <div className={classes.heading}>Ingredient List</div>
                 </AccordionSummary>
                 <AccordionDetails>
                     <IngredientTable data={extendedIngredients} />
@@ -60,11 +60,11 @@ const Accord = (props) => {
                     aria-controls="panel3a-content"
                     id="panel3a-header"
                 >
-                    <Typography className={classes.heading}>Cooking Instructions</Typography>
+                    <div className={classes.heading}>Cooking Instructions</div>
                 </AccordionSummary>
                 <AccordionDetails>
                     <Box ml={2}>
-                        <Typography dangerouslySetInnerHTML={{ __html: instructions }} className={classes.subheading} />
+                        <div dangerouslySetInnerHTML={{ __html: instructions }} className={classes.subheading} />
                     </Box>
                 </AccordionDetails>
             </Accordion>

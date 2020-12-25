@@ -3,6 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core';
 import './App.css';
 import Layout from './hoc/Layout';
+import Preface from './layout/Preface';
 import Home from './layout/Home';
 import Recipes from './layout/Recipes';
 import RecipeDetails from './layout/RecipeDetails';
@@ -32,10 +33,11 @@ class App extends Component {
       <ThemeProvider theme={theme}>
         <Layout>
           <Switch>
+            <Route path='/home' exact component={Home} />
             <Route path='/recipe' exact component={Recipes} />
             <Route path='/recipe/:id' exact component={RecipeDetails} />
             <Route path='/login' exact component={Login} />
-            <Route path='/' exact component={Home} />
+            <Route path='/' exact component={Preface} />
           </Switch>
         </Layout>
       </ThemeProvider>
