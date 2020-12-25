@@ -1,4 +1,5 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 import { Box, CardHeader, Card, CardActionArea, CardActions, CardContent, CardMedia, Typography, makeStyles } from '@material-ui/core';
 import ScheduleIcon from '@material-ui/icons/Schedule';
 import PeopleOutlineIcon from '@material-ui/icons/PeopleOutline';
@@ -42,10 +43,11 @@ const useStyles = makeStyles(theme => ({
 const RecipeCard = (props) => {
     const { recipe } = props;
     const classes = useStyles();
+    const history = useHistory();
 
     return (
         <Box display='flex' justifyContent='center' alignItems='center'>
-            <Card className={classes.root} elevation={0}>
+            <Card className={classes.root} elevation={0} onClick={() => history.push(`/recipe/${recipe.id}`)}>
                 <CardActionArea>
                     <CardHeader
                         title={recipe.title}

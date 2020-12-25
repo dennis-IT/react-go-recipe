@@ -5,6 +5,7 @@ import './App.css';
 import Layout from './hoc/Layout';
 import Home from './layout/Home';
 import Recipes from './layout/Recipes';
+import RecipeDetails from './layout/RecipeDetails';
 import Login from './layout/Login';
 
 const theme = createMuiTheme({
@@ -32,6 +33,7 @@ class App extends Component {
         <Layout>
           <Switch>
             <Route path='/recipe' exact component={Recipes} />
+            <Route path='/recipe/:id' exact component={RecipeDetails} />
             <Route path='/login' exact component={Login} />
             <Route path='/' exact component={Home} />
           </Switch>
