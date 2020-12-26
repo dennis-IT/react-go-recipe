@@ -72,7 +72,12 @@ const RecipeDetails = () => {
                         <Grid container spacing={3}>
                             <Grid item xs={12} md={4}>
                                 <Box display='flex' justifyContent='center' alignItems='center' flexDirection='column'>
-                                    <img src={`${recDetails.results.image}`} alt={`${recDetails.results.title}`} className={classes.image} />
+                                    <img src={`${recDetails.results.image}`} alt={`${recDetails.results.title}`} className={classes.image} onError={(e) => {
+                                        if (e.target.src !== `${process.env.PUBLIC_URL}/media/imgDefault.jpg`) {
+                                            e.target.src = `${process.env.PUBLIC_URL}/media/imgDefault.jpg`;
+                                        }
+                                    }
+                                    } />
                                     <Typography variant='h5' className={classes.titleH}>
                                         {recDetails.results.title}
                                     </Typography>
