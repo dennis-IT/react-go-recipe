@@ -1,8 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter } from 'react-router-dom';
+import { HashRouter } from 'react-router-dom';
+// import { BrowserRouter } from 'react-router-dom';
 //import { createBrowserHistory } from 'history';
 import App from './App';
+import registerServiceWorker from './registerServiceWorker';
 
 import { createStore } from 'redux';
 import reducer from './store/reducer';
@@ -15,10 +17,11 @@ const store = createStore(reducer);
 ReactDOM.render(
   // <React.StrictMode>
   <Provider store={store}>
-    <BrowserRouter basename='/react-go-recipe'>
+    <HashRouter>
       <App />
-    </BrowserRouter>
+    </HashRouter>
   </Provider>
   // </React.StrictMode>,
   , document.getElementById('root')
 );
+registerServiceWorker();
