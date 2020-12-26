@@ -9,12 +9,13 @@ import reducer from './store/reducer';
 import { Provider } from 'react-redux';
 
 //const history = createBrowserHistory();
+//basename={process.env.PUBLIC_URL}
 const store = createStore(reducer);
 
 ReactDOM.render(
   // <React.StrictMode>
   <Provider store={store}>
-    <BrowserRouter basename={process.env.PUBLIC_URL}>
+    <BrowserRouter basename='/react-go-recipe'>
       <App />
     </BrowserRouter>
   </Provider>
