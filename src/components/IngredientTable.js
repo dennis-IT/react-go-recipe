@@ -33,7 +33,7 @@ const BasicTable = (props) => {
             <Table className={classes.table} size="small" aria-label="Ingredient List">
                 <TableHead>
                     <TableRow>
-                        <TableCell className={classes.header}>Image</TableCell>
+                        <TableCell className={classes.header}></TableCell>
                         <TableCell align="left" className={classes.header}>Category</TableCell>
                         <TableCell align="left" className={classes.header}>Name</TableCell>
                         <TableCell align="left" className={classes.header}>Amount</TableCell>
@@ -48,7 +48,7 @@ const BasicTable = (props) => {
                                 </Box>
                             </TableCell>
                             <TableCell align="left">{ingredient.aisle}</TableCell>
-                            <TableCell align="left">{ingredient.name}</TableCell>
+                            <TableCell align="left" style={{ textTransform: 'capitalize' }}>{ingredient.name}</TableCell>
                             <TableCell align="left">{ingredient.amount}&nbsp;{ingredient.unit}</TableCell>
                         </TableRow>
                     ))}

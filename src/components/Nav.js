@@ -66,7 +66,7 @@ const Navbar = (props) => {
     const menuItems = [
         {
             itemTitle: 'Home',
-            itemUrl: '/'
+            itemUrl: '/home'
         },
         {
             itemTitle: 'Recipe',

@@ -4,13 +4,20 @@ import { BrowserRouter } from 'react-router-dom';
 //import { createBrowserHistory } from 'history';
 import App from './App';
 
+import { createStore } from 'redux';
+import reducer from './store/reducer';
+import { Provider } from 'react-redux';
+
 //const history = createBrowserHistory();
+const store = createStore(reducer);
 
 ReactDOM.render(
   // <React.StrictMode>
-  <BrowserRouter basename={process.env.PUBLIC_URL}>
-    <App />
-  </BrowserRouter>
+  <Provider store={store}>
+    <BrowserRouter basename={process.env.PUBLIC_URL}>
+      <App />
+    </BrowserRouter>
+  </Provider>
   // </React.StrictMode>,
   , document.getElementById('root')
 );

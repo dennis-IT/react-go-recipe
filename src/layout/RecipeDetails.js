@@ -9,8 +9,6 @@ import ScheduleIcon from '@material-ui/icons/Schedule';
 import PeopleOutlineIcon from '@material-ui/icons/PeopleOutline';
 import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
 
-import info from '../data/information.json';
-
 const API_KEY = process.env.REACT_APP_API_KEY;
 
 const useStyles = makeStyles((theme) => ({
@@ -24,7 +22,8 @@ const useStyles = makeStyles((theme) => ({
         color: '#565553',
         textTransform: 'capitalize',
         marginTop: '0.75rem',
-        marginBottom: '0.25rem'
+        marginBottom: '0.25rem',
+        textAlign: 'center'
     },
     subtitleH: {
         color: '#676563',
@@ -61,16 +60,6 @@ const RecipeDetails = () => {
             });
     }, [id]);
 
-    // useEffect(() => {
-    //     setRecDetails(
-    //         {
-    //             loading: false,
-    //             results: info
-    //         }
-    //     );
-    //     //console.log(recDetails.results);
-    // }, [recDetails.results]);
-
     return (
         <Box display='flex' flexDirection='column' className={classes.rootcss} >
             <Box>
@@ -91,17 +80,17 @@ const RecipeDetails = () => {
                                         By {recDetails.results.sourceName}
                                     </Typography>
                                     <Box display='flex' justifyContent='center' alignItems='center' className={classes.icons}>
-                                        <Box display='flex' justifyContent='center' alignItems='center' mx={1}>
+                                        <Box display='flex' justifyContent='center' alignItems='center'>
                                             <ScheduleIcon />
                                             <span>&nbsp;{recDetails.results.readyInMinutes} minutes</span>
                                         </Box>
-                                        <Box display='flex' justifyContent='center' alignItems='center' mx={1}>
+                                        <Box display='flex' justifyContent='center' alignItems='center' mx={2}>
                                             <PeopleOutlineIcon />
                                             <span>&nbsp;{recDetails.results.servings}</span>
                                         </Box>
-                                        <Box display='flex' justifyContent='center' alignItems='center' mx={1}>
+                                        <Box display='flex' justifyContent='center' alignItems='center'>
                                             <InfoOutlinedIcon />
-                                            <span>&nbsp;{recDetails.results.nutrition.nutrients[0].amount}&nbsp;{recDetails.results.nutrition.nutrients[0].unit}</span>
+                                            <span>&nbsp;{recDetails.results.nutrition.nutrients[0].amount}&nbsp;Cal</span>
                                         </Box>
                                     </Box>
                                 </Box>

@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
 import Axios from 'axios';
 import { makeStyles, CircularProgress, useTheme, useMediaQuery } from '@material-ui/core';
 import Carousel from 'react-material-ui-carousel';
-import data from '../data/random.json';
+//import data from '../data/random.json';
 import RecipeCard from './RecipeCard';
 import uuid from 'react-uuid';
-
 
 const API_KEY = process.env.REACT_APP_API_KEY;
 const LIMIT = 10;
@@ -25,27 +25,27 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const RecipeCardCarousel = (props) => {
-    //const { history } = props;
     const classes = useStyles();
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
-    const [recipeData, setRecipeData] = useState([]);
 
     useEffect(() => {
-        // Axios.get(`https://api.spoonacular.com/recipes/random?apiKey=${API_KEY}&number=${LIMIT}`)
-        //     .then(response => {
-        //         const { data } = response;
-        //         const { recipes } = data;
-        //         setRecipeData(recipes);
-        //     });
-        setRecipeData(data);
-    }, []);
+        if (props.carouselData.length === 0) {
+            Axios.get(`https://api.spoonacular.com/recipes/random?apiKey=${API_KEY}&number=${LIMIT}`)
+                .then(response => {
+                    const { data } = response;
+                    const { recipes } = data;
+                    props.onCarouselSearch(recipes);
+                });
+        }
+        //props.onCarouselSearch(data);
+    });
 
     return (
-        (recipeData.length !== 0) ? (
+        (props.carouselData.length !== 0) ? (
             <Carousel interval='4000' autoPlay={true} animation='slide' indicators={true} navButtonsAlwaysVisible={!isMobile}>
                 {
-                    recipeData.map(recipe => (
+                    props.carouselData.map(recipe => (
                         <RecipeCard key={uuid()} recipe={recipe} />
                     ))
                 }
@@ -59,4 +59,16 @@ const RecipeCardCarousel = (props) => {
     );
 };
 
-export default RecipeCardCarousel;
+const mapStateToProps = state => {
+    return {
+        carouselData: state.carouselData
+    };
+};
+
+const mapDispatchToProps = dispatch => {
+    return {
+        onCarouselSearch: (data) => dispatch({ type: 'SEARCH_CAROUSEL', getCarouselData: data })
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(RecipeCardCarousel);
