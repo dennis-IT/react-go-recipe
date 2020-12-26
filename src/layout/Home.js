@@ -1,12 +1,21 @@
 import React, { useEffect, useRef, Fragment } from 'react';
-import { Box, makeStyles, FormControl, Input, FormHelperText, Grid, Container } from '@material-ui/core';
+import { useHistory } from 'react-router-dom';
+import { connect } from 'react-redux';
+import Axios from 'axios';
+import { Box, makeStyles, FormControl, Input, FormHelperText, Grid, Container, Button, IconButton } from '@material-ui/core';
+import SearchIcon from '@material-ui/icons/Search';
 import Aos from 'aos';
 import "aos/dist/aos.css";
 import { gsap } from "gsap";
 import clsx from 'clsx';
+import { Formik, Form, Field } from 'formik';
+import { TextField } from 'formik-material-ui';
 import Nav from '../components/Nav';
 import BottomNav from '../components/BottomNav';
 import RecipeCardCarousel from '../components/RecipeCardCarousel';
+
+const API_KEY = process.env.REACT_APP_API_KEY;
+const LIMIT = 5;
 
 const useStyles = makeStyles((theme) => ({
     heroContainer: {
@@ -93,10 +102,12 @@ const useStyles = makeStyles((theme) => ({
         background: `url(${process.env.PUBLIC_URL}/media/chef.jpg)`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
-        width: '100%'
+        width: '100%',
+        height: '415px'
+
     },
     carouselRight: {
-        //height: '500px',
+        //minHeight: '45vh'
     },
     carouselText: {
         fontSize: 'clamp(1.5rem, 3.5vw, 2.5rem)',
@@ -105,10 +116,14 @@ const useStyles = makeStyles((theme) => ({
         color: '#4D4B4A',
         textAlign: 'center',
         marginBottom: '2rem'
+    },
+    searchIcon: {
+        transform: 'translate(-35px, -10px)'
     }
 }));
 
 const Home = (props) => {
+    const history = useHistory();
     const classes = useStyles();
     let container = useRef(null);
     let heroH = useRef(null);
@@ -123,10 +138,26 @@ const Home = (props) => {
         tl.fromTo(heroInput, { y: '100%', opacity: 0 }, { y: '0%', opacity: 1, duration: 1 });
 
         Aos.init({
-            offset: 100,
+            offset: 150,
             duration: 1000
         });
     }, []);
+
+    const fetchData = (values, actions) => {
+        actions.setSubmitting(true);
+        Axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&query=${values.recipe}&number=${LIMIT}&addRecipeInformation=true&offset=0`)
+            .then(response => {
+                const { data } = response;
+                const { results, totalResults } = data;
+                (totalResults > LIMIT) ? props.onRecipeSearch(results, values.recipe, totalResults, 0, true) : props.onRecipeSearch(results, values.recipe, totalResults, 0, false); //Redux, Reset offset & showMore                               
+                actions.setSubmitting(false);
+                history.push('/recipe');
+            })
+            .catch(error => {
+                actions.setSubmitting(false);
+                history.push('/recipe');
+            });
+    };
 
     return (
         <Fragment>
@@ -142,19 +173,43 @@ const Home = (props) => {
                             Everyone can become a master chief<br />
                             Pick up your recipe today
                         </div>
-                        <FormControl className={classes.textField} ref={element => heroInput = element}>
-                            <Input
-                                placeholder="steak, pasta,..."
-                                id="recipe-searchbox"
-                                //value={values.weight}
-                                //onChange={handleChange('weight')}
-                                aria-describedby="recipe-helper-text"
-                                inputProps={{
-                                    'aria-label': 'recipe'
-                                }}
-                            />
-                            <FormHelperText id="recipe-helper-text">Tell us what you are looking for</FormHelperText>
-                        </FormControl>
+                        <Formik
+                            initialValues={{ recipe: '' }}
+                            validate={(values) => {
+                                const errors = {};
+                                if (!values.recipe) {
+                                    errors.recipe = 'Required';
+                                }
+                                return errors;
+                            }}
+                            onSubmit={fetchData}
+                        >
+                            {
+                                ({ submitForm, isSubmitting, touched, errors }) => (
+                                    <Form ref={element => heroInput = element}>
+                                        <Box display='flex'>
+                                            <Field
+                                                component={TextField}
+                                                color="primary"
+                                                name='recipe'
+                                                type='text'
+                                                helperText='Tell us what you are looking for'
+                                                placeholder='Steak, pizza,...'
+                                            />
+
+                                            <IconButton
+                                                color='default'
+                                                disabled={isSubmitting}
+                                                onClick={submitForm}
+                                                className={classes.searchIcon}
+                                            >
+                                                <SearchIcon />
+                                            </IconButton>
+                                        </Box>
+                                    </Form>
+                                )
+                            }
+                        </Formik>
                     </Box>
                 </Box>
             </Box>
@@ -177,8 +232,7 @@ const Home = (props) => {
                         Popular Recipes Today
                     </div>
                     <Grid container>
-                        <Grid item xs={12} md={5} className={classes.carouselLeft}>
-                        </Grid>
+                        <Grid item xs={12} md={5} className={classes.carouselLeft} />
                         <Grid item xs={12} md={7} className={classes.carouselRight}>
                             <RecipeCardCarousel />
                         </Grid>
@@ -191,4 +245,20 @@ const Home = (props) => {
     );
 };
 
-export default Home;
+const mapStateToProps = state => {
+    return {
+        searchString: state.searchString,
+        recipeData: state.recipeData,
+        totalResults: state.totalResults,
+        offset: state.offset,
+        showMore: state.showMore
+    };
+};
+
+const mapDispatchToProps = dispatch => {
+    return {
+        onRecipeSearch: (data, searchString, totalResults, offset, showMore) => dispatch({ type: 'SEARCH_RECIPE', getData: data, getSearchString: searchString, getTotalResults: totalResults, getOffset: offset, getShowMore: showMore })
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);

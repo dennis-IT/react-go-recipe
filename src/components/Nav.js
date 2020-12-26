@@ -1,6 +1,7 @@
 import React from 'react';
 import uuid from 'react-uuid';
-import { Link, useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+//import { useHistory } from 'react-router-dom';
 import { AppBar, Toolbar, Typography, IconButton, Button, makeStyles, useMediaQuery, useTheme, Box } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import Sidebar from './Sidebar';
@@ -48,16 +49,16 @@ const useStyles = makeStyles((theme) => ({
 
 const Navbar = (props) => {
     //const { history } = props;
-    const history = useHistory();
+    //const history = useHistory();
     const classes = useStyles();
     const [sidebarOpened, setSidebarOpened] = React.useState(false);
 
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down('xs'));
 
-    const handleButtonClick = pageUrl => {
-        history.push(pageUrl);
-    };
+    // const handleButtonClick = pageUrl => {
+    //     history.push(pageUrl);
+    // };
 
     const handleChange = (newValue) => {
         setSidebarOpened(newValue);
@@ -108,12 +109,15 @@ const Navbar = (props) => {
                                 {menuItems.map((menuItem) => {
                                     return (
                                         <Box key={uuid()} mr={1}>
-                                            <Button
-                                                color="primary"
-                                                className={classes.buttonStyle}
-                                                disableElevation
-                                                onClick={() => handleButtonClick(menuItem.itemUrl)}>{menuItem.itemTitle}
-                                            </Button>
+                                            <Link to={{ pathname: menuItem.itemUrl }}>
+                                                <Button
+                                                    color="primary"
+                                                    className={classes.buttonStyle}
+                                                    disableElevation
+                                                >
+                                                    {menuItem.itemTitle}
+                                                </Button>
+                                            </Link>
                                         </Box>
                                     );
                                 })}

@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import Axios from 'axios';
-import { makeStyles, CircularProgress, useTheme, useMediaQuery } from '@material-ui/core';
+import { makeStyles, CircularProgress, useTheme, useMediaQuery, Box } from '@material-ui/core';
 import Carousel from 'react-material-ui-carousel';
 //import data from '../data/random.json';
 import RecipeCard from './RecipeCard';
@@ -36,6 +36,9 @@ const RecipeCardCarousel = (props) => {
                     const { data } = response;
                     const { recipes } = data;
                     props.onCarouselSearch(recipes);
+                })
+                .catch(error => {
+                    console.log(error);
                 });
         }
         //props.onCarouselSearch(data);
@@ -43,18 +46,20 @@ const RecipeCardCarousel = (props) => {
 
     return (
         (props.carouselData.length !== 0) ? (
-            <Carousel interval='4000' autoPlay={true} animation='slide' indicators={true} navButtonsAlwaysVisible={!isMobile}>
-                {
-                    props.carouselData.map(recipe => (
-                        <RecipeCard key={uuid()} recipe={recipe} />
-                    ))
-                }
-            </Carousel>
+            <Box m={2}>
+                <Carousel interval='4000' autoPlay={true} animation='slide' indicators={true} navButtonsAlwaysVisible={!isMobile}>
+                    {
+                        props.carouselData.map(recipe => (
+                            <RecipeCard key={uuid()} recipe={recipe} />
+                        ))
+                    }
+                </Carousel>
+            </Box>
         ) : (
-                <div className={classes.loading}>
+                <Box className={classes.loading} m={2}>
                     <div><CircularProgress classes={{ colorPrimary: classes.progress }} /></div>
-                    <div><h3>Loading recipes...</h3></div>
-                </div>
+                    <div><h3>Loading popular recipes...</h3></div>
+                </Box>
             )
     );
 };

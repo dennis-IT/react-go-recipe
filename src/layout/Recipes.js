@@ -230,6 +230,9 @@ const Recipes = (props) => {
                 const { results, totalResults } = data;
                 (totalResults > LIMIT) ? props.onRecipeSearch(results, values.recipe, totalResults, 0, true) : props.onRecipeSearch(results, values.recipe, totalResults, 0, false); //Redux, Reset offset & showMore                
                 actions.setSubmitting(false);
+            })
+            .catch(error => {
+                console.log(error);
             });
     };
 
@@ -241,6 +244,9 @@ const Recipes = (props) => {
                 const { data } = response;
                 const { results } = data;
                 props.onRecipeUpdate(results, newOffset, newShowMore);
+            })
+            .catch(error => {
+                console.log(error);
             });
     };
 
