@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import Axios from 'axios';
 import uuid from 'react-uuid';
-import { Container, makeStyles, Box, Grid, Typography, Button, LinearProgress } from '@material-ui/core';
+import { Container, makeStyles, Box, Grid, Typography, Button, LinearProgress, Snackbar } from '@material-ui/core';
+import MuiAlert from '@material-ui/lab/Alert';
 import { Formik, Form, Field } from 'formik';
 import { TextField } from 'formik-material-ui';
 import Nav from '../components/Nav';
@@ -13,7 +14,17 @@ import * as actions from '../store/actions/index';
 const API_KEY = process.env.REACT_APP_API_KEY;
 const LIMIT = 5;
 
+const Alert = (props) => {
+    return <MuiAlert elevation={6} variant="filled" {...props} />;
+};
+
 const useStyles = makeStyles(theme => ({
+    root: {
+        width: '100%',
+        '& > * + *': {
+            marginTop: theme.spacing(2),
+        },
+    },
     rootcss: {
         height: '100vh'
     },
@@ -87,6 +98,15 @@ const useStyles = makeStyles(theme => ({
 
 const Recipes = (props) => {
     const classes = useStyles();
+    const [error, setError] = useState(false);
+    const [errorMessage, setErrorMessage] = useState('');
+
+    const handleClose = (event, reason) => {
+        if (reason === 'clickaway') {
+            return;
+        }
+        setError(false);
+    };
 
     const fetchData = (values, actions) => {
         actions.setSubmitting(true);
@@ -95,10 +115,14 @@ const Recipes = (props) => {
                 const { data } = response;
                 const { results, totalResults } = data;
                 (totalResults > LIMIT) ? props.onRecipeSearch(values.recipe, results, totalResults, 0, true) : props.onRecipeSearch(values.recipe, results, totalResults, 0, false); //Redux, Reset offset & showMore                
+                setError(false);
+                setErrorMessage('');
                 actions.setSubmitting(false);
             })
             .catch(error => {
-                console.log(error);
+                setError(true);
+                setErrorMessage(error.response.data.message);
+                actions.setSubmitting(false);
             });
     };
 
@@ -110,9 +134,12 @@ const Recipes = (props) => {
                 const { data } = response;
                 const { results } = data;
                 props.onRecipeUpdate(results, newOffset, newShowMore);
+                setError(false);
+                setErrorMessage('');
             })
             .catch(error => {
-                console.log(error);
+                setError(true);
+                setErrorMessage(error.response.data.message);
             });
     };
 
@@ -200,6 +227,13 @@ const Recipes = (props) => {
                     </Grid>
                 </Container>
             </Box>
+
+            <Snackbar open={error} autoHideDuration={6000} onClose={handleClose}>
+                <Alert onClose={handleClose} severity="error">
+                    {errorMessage}
+                </Alert>
+            </Snackbar>
+
             <Box flexShrink={0}>
                 <BottomNav />
             </Box>

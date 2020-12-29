@@ -16,8 +16,10 @@ import BottomNav from '../components/BottomNav';
 import RecipeCardCarousel from '../components/RecipeCardCarousel';
 import * as actions from '../store/actions/index';
 
-const API_KEY = process.env.REACT_APP_API_KEY;
+//const API_KEY = process.env.REACT_APP_API_KEY;
 const LIMIT = 5;
+
+const API_KEY = 'asasa';
 
 const Alert = (props) => {
     return <MuiAlert elevation={6} variant="filled" {...props} />;
@@ -172,12 +174,15 @@ const Home = (props) => {
                 const { data } = response;
                 const { results, totalResults } = data;
                 (totalResults > LIMIT) ? props.onRecipeSearch(values.recipe, results, totalResults, 0, true) : props.onRecipeSearch(values.recipe, results, totalResults, 0, false); //Redux, Reset offset & showMore                               
+                setCarouselError(false);
+                setCarouselErrorMessage('');
                 actions.setSubmitting(false);
                 history.push('/recipe');
             })
             .catch(error => {
+                setCarouselError(true);
+                setCarouselErrorMessage(error.response.data.message);
                 actions.setSubmitting(false);
-                history.push('/recipe');
             });
     };
 
