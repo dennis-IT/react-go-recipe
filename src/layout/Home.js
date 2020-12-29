@@ -1,8 +1,9 @@
-import React, { useEffect, useRef, Fragment } from 'react';
+import React, { useEffect, useRef, Fragment, useState, useCallback } from 'react';
 import { useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Axios from 'axios';
-import { Box, makeStyles, FormControl, Input, FormHelperText, Grid, Container, Button, IconButton } from '@material-ui/core';
+import { Box, makeStyles, Grid, Container, IconButton, Snackbar } from '@material-ui/core';
+import MuiAlert from '@material-ui/lab/Alert';
 import SearchIcon from '@material-ui/icons/Search';
 import Aos from 'aos';
 import "aos/dist/aos.css";
@@ -13,11 +14,22 @@ import { TextField } from 'formik-material-ui';
 import Nav from '../components/Nav';
 import BottomNav from '../components/BottomNav';
 import RecipeCardCarousel from '../components/RecipeCardCarousel';
+import * as actions from '../store/actions/index';
 
 const API_KEY = process.env.REACT_APP_API_KEY;
 const LIMIT = 5;
 
+const Alert = (props) => {
+    return <MuiAlert elevation={6} variant="filled" {...props} />;
+};
+
 const useStyles = makeStyles((theme) => ({
+    root: {
+        width: '100%',
+        '& > * + *': {
+            marginTop: theme.spacing(2),
+        },
+    },
     heroContainer: {
         background: `url(${process.env.PUBLIC_URL}/media/hero.jpg)`,
         height: '100vh',
@@ -130,6 +142,16 @@ const Home = (props) => {
     let heroP = useRef(null);
     let heroInput = useRef(null);
 
+    const [carouselError, setCarouselError] = useState(false);
+    const [carouselErrorMessage, setCarouselErrorMessage] = useState('');
+
+    const handleClose = (event, reason) => {
+        if (reason === 'clickaway') {
+            return;
+        }
+        setCarouselError(false);
+    };
+
     useEffect(() => {
         gsap.fromTo(container, { opacity: 0 }, { opacity: 1, duration: 1 });
         const tl = gsap.timeline({ defaults: { ease: 'power1.out' } });
@@ -149,7 +171,7 @@ const Home = (props) => {
             .then(response => {
                 const { data } = response;
                 const { results, totalResults } = data;
-                (totalResults > LIMIT) ? props.onRecipeSearch(results, values.recipe, totalResults, 0, true) : props.onRecipeSearch(results, values.recipe, totalResults, 0, false); //Redux, Reset offset & showMore                               
+                (totalResults > LIMIT) ? props.onRecipeSearch(values.recipe, results, totalResults, 0, true) : props.onRecipeSearch(values.recipe, results, totalResults, 0, false); //Redux, Reset offset & showMore                               
                 actions.setSubmitting(false);
                 history.push('/recipe');
             })
@@ -158,6 +180,22 @@ const Home = (props) => {
                 history.push('/recipe');
             });
     };
+
+    //!NOTE: https://stackoverflow.com/questions/65307399/react-hooks-update-parent-component-without-triggering-infinite-loop
+    //TODO: useCallback hook
+    const checkCarouselError = useCallback(
+        (status) => {
+            setCarouselError(status);
+        },
+        [],
+    );
+
+    const checkCarouselErrorMessage = useCallback(
+        (message) => {
+            setCarouselErrorMessage(message);
+        },
+        [],
+    );
 
     return (
         <Fragment>
@@ -234,11 +272,17 @@ const Home = (props) => {
                     <Grid container>
                         <Grid item xs={12} md={5} className={classes.carouselLeft} />
                         <Grid item xs={12} md={7} className={classes.carouselRight}>
-                            <RecipeCardCarousel />
+                            <RecipeCardCarousel onError={checkCarouselError} onErrorMessage={checkCarouselErrorMessage} />
                         </Grid>
                     </Grid>
                 </Box>
             </Container>
+
+            <Snackbar open={carouselError} autoHideDuration={6000} onClose={handleClose}>
+                <Alert onClose={handleClose} severity="error">
+                    {carouselErrorMessage}
+                </Alert>
+            </Snackbar>
 
             <BottomNav />
         </Fragment>
@@ -257,7 +301,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        onRecipeSearch: (data, searchString, totalResults, offset, showMore) => dispatch({ type: 'SEARCH_RECIPE', getData: data, getSearchString: searchString, getTotalResults: totalResults, getOffset: offset, getShowMore: showMore })
+        onRecipeSearch: (searchString, recipeData, totalResults, offset, showMore) => dispatch(actions.searchRecipe(searchString, recipeData, totalResults, offset, showMore))
     };
 };
 

@@ -6,6 +6,7 @@ import Carousel from 'react-material-ui-carousel';
 //import data from '../data/random.json';
 import RecipeCard from './RecipeCard';
 import uuid from 'react-uuid';
+import * as actions from '../store/actions/index';
 
 const API_KEY = process.env.REACT_APP_API_KEY;
 const LIMIT = 10;
@@ -30,15 +31,22 @@ const RecipeCardCarousel = (props) => {
     const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
     useEffect(() => {
+        //Below is used for triggering alert snackbar https://material-ui.com/components/snackbars/
+        const isError = (errorStatus, errorMessage) => {
+            props.onError(errorStatus);
+            props.onErrorMessage(errorMessage);
+        };
+
         if (props.carouselData.length === 0) {
             Axios.get(`https://api.spoonacular.com/recipes/random?apiKey=${API_KEY}&number=${LIMIT}`)
                 .then(response => {
                     const { data } = response;
                     const { recipes } = data;
                     props.onCarouselSearch(recipes);
+                    isError(false, '');
                 })
                 .catch(error => {
-                    console.log(error);
+                    isError(true, error.response.data.message);
                 });
         }
         //props.onCarouselSearch(data);
@@ -66,13 +74,13 @@ const RecipeCardCarousel = (props) => {
 
 const mapStateToProps = state => {
     return {
-        carouselData: state.carouselData
+        carouselData: state.carouselBuilder.carouselData //TODO: this is to map with state in combined reducer in index.js
     };
 };
 
 const mapDispatchToProps = dispatch => {
     return {
-        onCarouselSearch: (data) => dispatch({ type: 'SEARCH_CAROUSEL', getCarouselData: data })
+        onCarouselSearch: (data) => dispatch(actions.searchCarousel(data))
     };
 };
 

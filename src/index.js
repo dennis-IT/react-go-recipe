@@ -6,22 +6,34 @@ import { HashRouter } from 'react-router-dom';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 
-import { createStore } from 'redux';
-import reducer from './store/reducer';
 import { Provider } from 'react-redux';
+import { createStore, applyMiddleware, compose, combineReducers } from 'redux';
+import thunk from 'redux-thunk';
+//import reducer from './store/reducer/reducer';
+
+import carouselBuilderReducer from './store/reducer/carouselBuilderReducer';
+import recipeBuilderReducer from './store/reducer/recipeBuilderReducer';
 
 //const history = createBrowserHistory();
 //basename={process.env.PUBLIC_URL}
-const store = createStore(reducer);
+
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
+const rootReducer = combineReducers({
+  carouselBuilder: carouselBuilderReducer,
+  recipeBuilder: recipeBuilderReducer
+});
+
+const store = createStore(rootReducer, composeEnhancers(
+  applyMiddleware(thunk)
+));
 
 ReactDOM.render(
-  // <React.StrictMode>
   <Provider store={store}>
     <HashRouter>
       <App />
     </HashRouter>
   </Provider>
-  // </React.StrictMode>,
   , document.getElementById('root')
 );
 registerServiceWorker();

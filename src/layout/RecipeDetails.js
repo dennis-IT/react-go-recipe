@@ -57,6 +57,9 @@ const RecipeDetails = () => {
                         results: data
                     }
                 );
+            })
+            .catch(error => {
+                console.log(error);
             });
     }, [id]);
 

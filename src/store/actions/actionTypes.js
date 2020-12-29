@@ -1,0 +1,3 @@
+export const SEARCH_CAROUSEL = 'SEARCH_CAROUSEL';
+export const SEARCH_RECIPE = 'SEARCH_RECIPE';
+export const UPDATE_RECIPE = 'UPDATE_RECIPE';

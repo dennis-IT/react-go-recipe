@@ -109,7 +109,7 @@ const Navbar = (props) => {
                                 {menuItems.map((menuItem) => {
                                     return (
                                         <Box key={uuid()} mr={1}>
-                                            <Link to={{ pathname: menuItem.itemUrl }}>
+                                            <Link to={{ pathname: menuItem.itemUrl }} className={classes.link}>
                                                 <Button
                                                     color="primary"
                                                     className={classes.buttonStyle}

@@ -16,7 +16,7 @@ const useStyles = makeStyles(theme => ({
     },
     footerCredit: {
         color: '#676563',
-        fontSize: '1.1rem'
+        fontSize: '1rem'
     }
 }
 ));
