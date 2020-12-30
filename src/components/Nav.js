@@ -1,6 +1,7 @@
 import React from 'react';
 import uuid from 'react-uuid';
-import { Link } from 'react-router-dom';
+import clsx from 'clsx';
+import { Link, useLocation } from 'react-router-dom';
 //import { useHistory } from 'react-router-dom';
 import { AppBar, Toolbar, Typography, IconButton, Button, makeStyles, useMediaQuery, useTheme, Box } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
@@ -20,6 +21,7 @@ const useStyles = makeStyles((theme) => ({
             'cursive'
         ].join(','),
         fontWeight: 'bold',
+        fontSize: '1.75rem',
         flexGrow: 1
     },
     link: {
@@ -37,19 +39,23 @@ const useStyles = makeStyles((theme) => ({
             'cursive'
         ].join(','),
         color: '#676563',
-        fontSize: '2rem',
+        fontSize: '1.5rem',
         width: '8rem',
         textTransform: 'capitalize',
         '&:hover': {
             backgroundColor: '#F5DF4D'
         },
         borderRadius: 0
+    },
+    highlightedButton: {
+        backgroundColor: '#F5DF4D'
     }
 }));
 
 const Navbar = (props) => {
     //const { history } = props;
     //const history = useHistory();
+    const location = useLocation();
     const classes = useStyles();
     const [sidebarOpened, setSidebarOpened] = React.useState(false);
 
@@ -112,7 +118,7 @@ const Navbar = (props) => {
                                             <Link to={{ pathname: menuItem.itemUrl }} className={classes.link}>
                                                 <Button
                                                     color="primary"
-                                                    className={classes.buttonStyle}
+                                                    className={clsx(classes.buttonStyle, menuItem.itemUrl === location.pathname && classes.highlightedButton)}
                                                     disableElevation
                                                 >
                                                     {menuItem.itemTitle}

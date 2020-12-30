@@ -211,7 +211,7 @@ const Home = (props) => {
                             Cook together.
                         </div>
                         <div className={classes.heroP} ref={element => heroP = element}>
-                            Everyone can become a master chief<br />
+                            Everyone can be a master chief<br />
                             Pick up your recipe today
                         </div>
                         <Formik

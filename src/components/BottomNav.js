@@ -16,7 +16,7 @@ const useStyles = makeStyles(theme => ({
     },
     footerCredit: {
         color: '#676563',
-        fontSize: '1rem'
+        fontSize: '0.935rem'
     }
 }
 ));
@@ -45,7 +45,7 @@ const BottomNav = (props) => {
             </Box>
             <Box my={0.25}>
                 <Typography className={classes.footerCredit}>
-                    Background created by <span><Link href='https://www.freepik.com/vectors/food'>Freepik</Link></span>, <span><Link href='https://www.freepik.com/pikisuperstar'>Pikisuperstar</Link></span>
+                    Images created by <span><Link href='https://www.freepik.com/vectors/food'>Freepik</Link></span>, <span><Link href='https://www.freepik.com/pikisuperstar'>Pikisuperstar</Link></span>, <span><Link href='https://www.freepik.com/macrovector'>Macrovector</Link></span>
                 </Typography>
             </Box>
             <Box my={0.25}>
