@@ -9,7 +9,7 @@ import ScheduleIcon from '@material-ui/icons/Schedule';
 import PeopleOutlineIcon from '@material-ui/icons/PeopleOutline';
 import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
 
-const API_KEY = process.env.REACT_APP_API_KEY;
+const API_KEY = process.env.REACT_APP_SPOONACULAR_API_KEY;
 
 const useStyles = makeStyles((theme) => ({
     rootcss: {
@@ -75,12 +75,16 @@ const RecipeDetails = () => {
                         <Grid container spacing={3}>
                             <Grid item xs={12} md={4}>
                                 <Box display='flex' justifyContent='center' alignItems='center' flexDirection='column'>
-                                    <img src={`${recDetails.results.image}`} alt={`${recDetails.results.title}`} className={classes.image} onError={(e) => {
-                                        if (e.target.src !== `${process.env.PUBLIC_URL}/media/imgDefault.jpg`) {
-                                            e.target.src = `${process.env.PUBLIC_URL}/media/imgDefault.jpg`;
+                                    <img
+                                        src={`${recDetails.results.image}`}
+                                        alt={`${recDetails.results.title}`}
+                                        className={classes.image}
+                                        onError={(e) => {
+                                            if (e.target.src !== `${process.env.PUBLIC_URL}/media/imgDefault.jpg`) {
+                                                e.target.src = `${process.env.PUBLIC_URL}/media/imgDefault.jpg`;
+                                            }
                                         }
-                                    }
-                                    } />
+                                        } />
                                     <Typography variant='h5' className={classes.titleH}>
                                         {recDetails.results.title}
                                     </Typography>

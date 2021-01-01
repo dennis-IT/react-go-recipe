@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import uuid from 'react-uuid';
 import clsx from 'clsx';
 import { Link, useLocation } from 'react-router-dom';
@@ -21,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
             'cursive'
         ].join(','),
         fontWeight: 'bold',
-        fontSize: '1.75rem',
+        fontSize: '1.5rem',
         flexGrow: 1
     },
     link: {
@@ -40,7 +41,7 @@ const useStyles = makeStyles((theme) => ({
         ].join(','),
         color: '#676563',
         fontSize: '1.5rem',
-        width: '8rem',
+        width: '6rem',
         textTransform: 'capitalize',
         '&:hover': {
             backgroundColor: '#F5DF4D'
@@ -73,16 +74,29 @@ const Navbar = (props) => {
     const menuItems = [
         {
             itemTitle: 'Home',
-            itemUrl: '/home'
+            itemUrl: '/home',
+            visible: true
         },
         {
             itemTitle: 'Recipe',
-            itemUrl: '/recipe'
+            itemUrl: '/recipe',
+            visible: true
+        },
+        {
+            itemTitle: 'Mybook',
+            itemUrl: '/mybook',
+            visible: props.isAuthenticated
         },
         {
             itemTitle: 'Login',
-            itemUrl: '/login'
-        }
+            itemUrl: '/login',
+            visible: !props.isAuthenticated
+        },
+        {
+            itemTitle: 'Logout',
+            itemUrl: '/logout',
+            visible: props.isAuthenticated
+        },
     ];
 
     return (
@@ -114,7 +128,7 @@ const Navbar = (props) => {
                             <div className={classes.headerOptions}>
                                 {menuItems.map((menuItem) => {
                                     return (
-                                        <Box key={uuid()} mr={1}>
+                                        menuItem.visible && <Box key={uuid()} mr={1.5}>
                                             <Link to={{ pathname: menuItem.itemUrl }} className={classes.link}>
                                                 <Button
                                                     color="primary"
@@ -135,6 +149,12 @@ const Navbar = (props) => {
     );
 };
 
+const mapStateToProps = state => {
+    return {
+        isAuthenticated: state.auth.token !== null
+    };
+};
+
 //export default withRouter(Navbar);
-export default Navbar;
+export default connect(mapStateToProps)(Navbar);
 

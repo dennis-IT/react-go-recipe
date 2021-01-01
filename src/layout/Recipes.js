@@ -11,7 +11,7 @@ import BottomNav from '../components/BottomNav';
 import RecipeCard from '../components/RecipeCard';
 import * as actions from '../store/actions/index';
 
-const API_KEY = process.env.REACT_APP_API_KEY;
+const API_KEY = process.env.REACT_APP_SPOONACULAR_API_KEY;
 const LIMIT = 5;
 
 const Alert = (props) => {
@@ -100,6 +100,7 @@ const Recipes = (props) => {
     const classes = useStyles();
     const [error, setError] = useState(false);
     const [errorMessage, setErrorMessage] = useState('');
+    const [onLoading, setOnLoading] = useState(false);
 
     const handleClose = (event, reason) => {
         if (reason === 'clickaway') {
@@ -127,6 +128,7 @@ const Recipes = (props) => {
     };
 
     const loadMore = () => {
+        setOnLoading(true);
         const newOffset = props.offset + LIMIT;
         const newShowMore = newOffset < props.totalResults - LIMIT;
         Axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&query=${props.searchString}&number=${LIMIT}&addRecipeInformation=true&offset=${newOffset}`)
@@ -134,10 +136,12 @@ const Recipes = (props) => {
                 const { data } = response;
                 const { results } = data;
                 props.onRecipeUpdate(results, newOffset, newShowMore);
+                setOnLoading(false);
                 setError(false);
                 setErrorMessage('');
             })
             .catch(error => {
+                setOnLoading(false);
                 setError(true);
                 setErrorMessage(error.response.data.message);
             });
@@ -214,6 +218,11 @@ const Recipes = (props) => {
                                                         </Grid>
                                                     ))}
                                                 </Grid>
+
+                                                <Box my={4}>
+                                                    {onLoading && <LinearProgress />}
+                                                </Box>
+
                                                 <Box display='flex' justifyContent='center' alignItems='center' mt={3}>
                                                     {props.showMore && <Button variant='contained' color='primary' disableElevation onClick={loadMore}>Load More</Button>}
                                                 </Box>

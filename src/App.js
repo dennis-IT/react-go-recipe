@@ -7,7 +7,9 @@ import Preface from './layout/Preface';
 import Home from './layout/Home';
 import Recipes from './layout/Recipes';
 import RecipeDetails from './layout/RecipeDetails';
+import Mybook from './layout/Mybook';
 import Login from './layout/Login';
+import Logout from './layout/Logout';
 
 const theme = createMuiTheme({
   typography: {
@@ -37,6 +39,8 @@ class App extends Component {
             <Route path='/recipe' exact component={Recipes} />
             <Route path='/recipe/:id' exact component={RecipeDetails} />
             <Route path='/login' exact component={Login} />
+            <Route path='/logout' exact component={Logout} />
+            <Route path='/mybook' exact component={Mybook} />
             <Route path='/' exact component={Preface} />
           </Switch>
         </Layout>

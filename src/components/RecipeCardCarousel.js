@@ -3,15 +3,12 @@ import { connect } from 'react-redux';
 import Axios from 'axios';
 import { makeStyles, CircularProgress, useTheme, useMediaQuery, Box } from '@material-ui/core';
 import Carousel from 'react-material-ui-carousel';
-//import data from '../data/random.json';
 import RecipeCard from './RecipeCard';
 import uuid from 'react-uuid';
 import * as actions from '../store/actions/index';
 
-//const API_KEY = process.env.REACT_APP_API_KEY;
+const API_KEY = process.env.REACT_APP_SPOONACULAR_API_KEY;
 const LIMIT = 10;
-
-const API_KEY = 'asws';
 
 const useStyles = makeStyles(theme => ({
     loading: {
@@ -51,7 +48,6 @@ const RecipeCardCarousel = (props) => {
                     isError(true, error.response.data.message);
                 });
         }
-        //props.onCarouselSearch(data);
     });
 
     return (

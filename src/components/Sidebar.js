@@ -68,6 +68,7 @@ const SideDrawer = (props) => {
         >
             <List style={{ padding: 0 }}>
                 {data.map(item => (
+                    item.visible &&
                     <ListItem button key={item.itemTitle} onClick={() => handleButtonClick(item.itemUrl)} >
                         <ListItemText primary={item.itemTitle} classes={{ primary: classes.listItemText }} />
                     </ListItem>

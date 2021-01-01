@@ -1,5 +1,5 @@
 import React from 'react';
-import { useHistory } from 'react-router-dom';
+// import { useHistory } from 'react-router-dom';
 import { Box, CardHeader, Card, CardActionArea, CardActions, CardContent, CardMedia, Typography, makeStyles } from '@material-ui/core';
 import ScheduleIcon from '@material-ui/icons/Schedule';
 import PeopleOutlineIcon from '@material-ui/icons/PeopleOutline';
@@ -43,11 +43,18 @@ const useStyles = makeStyles(theme => ({
 const RecipeCard = (props) => {
     const { recipe } = props;
     const classes = useStyles();
-    const history = useHistory();
+    //const history = useHistory();
+
+    const handleClick = () => {
+        const win = window.open(`#/recipe/${recipe.id}`, '_blank');
+        if (win != null) {
+            win.focus();
+        }
+    };
 
     return (
         <Box display='flex' justifyContent='center' alignItems='center'>
-            <Card className={classes.root} elevation={0} onClick={() => history.push(`/recipe/${recipe.id}`)}>
+            <Card className={classes.root} elevation={0} onClick={handleClick}>
                 <CardActionArea>
                     <CardHeader
                         title={recipe.title}

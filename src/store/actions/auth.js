@@ -1,5 +1,6 @@
 import Axios from 'axios';
 import * as actionTypes from './actionTypes';
+import firebase from "../../firebase";
 
 const API_KEY = process.env.REACT_APP_FIREBASE_API_KEY;
 
@@ -9,10 +10,11 @@ export const authStart = () => {
     };
 };
 
-export const authSuccess = (authData) => {
+export const authSuccess = (token, userId) => {
     return {
         type: actionTypes.AUTH_SUCCESS,
-        authData: authData
+        idToken: token,
+        userId: userId
     };
 };
 
@@ -23,11 +25,40 @@ export const authFail = (error) => {
     };
 };
 
-export const auth = (email, password, isSignup) => {
+export const logout = () => {
+    return {
+        type: actionTypes.AUTH_LOGOUT
+    };
+};
+
+export const checkAuthTimeout = (expirationTime) => {
+    return dispatch => {
+        setTimeout(() => {
+            dispatch(logout());
+        }, expirationTime * 1000);
+    };
+};
+
+export const addUserToDB = (isSignup, firstName, lastName, email, userId) => {
+    return dispatch => {
+        if (isSignup) {
+            const dbRef = firebase.database().ref(`users/${userId}`);
+            const user = {
+                'firstName': `${firstName}`,
+                'lastName': `${lastName}`,
+                'email': `${email}`,
+                'userId': `${userId}`
+            };
+            dbRef.set(user);
+        }
+    };
+};
+
+export const auth = (email, password, isSignup, firstName, lastName) => {
+    //Authenticate user | Asynchronous code
     return dispatch => {
         dispatch(authStart());
 
-        //Authenticate user | Asynchronous code
         const authData = {
             email: email,
             password: password,
@@ -43,12 +74,12 @@ export const auth = (email, password, isSignup) => {
 
         Axios.post(url, authData)
             .then(response => {
-                console.log(response);
-                dispatch(authSuccess(response.data));
+                dispatch(authSuccess(response.data.idToken, response.data.localId));
+                dispatch(addUserToDB(isSignup, firstName, lastName, email, response.data.localId));
+                dispatch(checkAuthTimeout(response.data.expiresIn));
             })
             .catch(error => {
-                console.log(error);
-                dispatch(authFail(error));
+                dispatch(authFail(error.response.data.error));
             });
     };
 };

@@ -16,7 +16,7 @@ import BottomNav from '../components/BottomNav';
 import RecipeCardCarousel from '../components/RecipeCardCarousel';
 import * as actions from '../store/actions/index';
 
-const API_KEY = process.env.REACT_APP_API_KEY;
+const API_KEY = process.env.REACT_APP_SPOONACULAR_API_KEY;
 const LIMIT = 5;
 
 const Alert = (props) => {
@@ -35,8 +35,7 @@ const useStyles = makeStyles((theme) => ({
         height: '100vh',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
-        color: '#4D4B4A',
-        opacity: 0
+        color: '#4D4B4A'
     },
     heroContent: {
         height: '100vh',
@@ -137,7 +136,7 @@ const useStyles = makeStyles((theme) => ({
 const Home = (props) => {
     const history = useHistory();
     const classes = useStyles();
-    let container = useRef(null);
+    // let container = useRef(null);
     let heroH = useRef(null);
     let heroP = useRef(null);
     let heroInput = useRef(null);
@@ -153,7 +152,7 @@ const Home = (props) => {
     };
 
     useEffect(() => {
-        gsap.fromTo(container, { opacity: 0 }, { opacity: 1, duration: 1 });
+        //gsap.fromTo(container, { opacity: 0 }, { opacity: 1, duration: 1 });
         const tl = gsap.timeline({ defaults: { ease: 'power1.out' } });
         tl.fromTo(heroH, { x: '-100%' }, { x: '0%', duration: 1 });
         tl.fromTo(heroP, { x: '100%' }, { x: '0%', duration: 1 }, '-=1');
@@ -202,7 +201,7 @@ const Home = (props) => {
 
     return (
         <Fragment>
-            <Box ref={element => container = element} className={classes.heroContainer}>
+            <Box className={classes.heroContainer}>
                 <Nav />
                 <Box className={classes.heroContent}>
                     <Box className={classes.heroItems}>

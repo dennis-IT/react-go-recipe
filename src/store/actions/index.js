@@ -8,5 +8,6 @@ export {
 } from './recipeBuilder.js';
 
 export {
-    auth
+    auth,
+    logout
 } from './auth';
