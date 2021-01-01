@@ -40,9 +40,10 @@ class App extends Component {
     //!TODO: setup routes for users that are not logged in
     let routes = (
       <Switch>
-        <Route path='/home' exact component={Home} />
+        <Route path='/home' component={Home} />
         <Route path='/recipe' exact component={Recipes} />
-        <Route path='/login' exact component={Login} />
+        <Route path='/recipe/:id' exact component={RecipeDetails} />
+        <Route path='/login' component={Login} />
         <Route path='/' exact component={Preface} />
         <Redirect to='/home' />
       </Switch>
@@ -52,11 +53,11 @@ class App extends Component {
     if (this.props.isAuthenticated) {
       routes = (
         <Switch>
-          <Route path='/home' exact component={Home} />
+          <Route path='/home' component={Home} />
           <Route path='/recipe' exact component={Recipes} />
           <Route path='/recipe/:id' exact component={RecipeDetails} />
           <Route path='/login' exact component={Login} />
-          <Route path='/logout' exact component={Logout} />
+          <Route path='/logout' component={Logout} />
           <Route path='/mybook' exact component={Mybook} />
           <Route path='/' exact component={Preface} />
           <Redirect to='/home' />

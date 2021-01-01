@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
             'cursive'
         ].join(','),
         fontWeight: 'bold',
-        fontSize: '1.5rem',
+        fontSize: '1.75rem',
         flexGrow: 1
     },
     link: {
@@ -83,7 +83,7 @@ const Navbar = (props) => {
             visible: true
         },
         {
-            itemTitle: 'Mybook',
+            itemTitle: 'Manage',
             itemUrl: '/mybook',
             visible: props.isAuthenticated
         },

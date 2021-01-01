@@ -231,7 +231,7 @@ const Login = (props) => {
                     </Container>
                 </Box>
             ) : (
-                    <Redirect to='/home' />
+                    <Redirect to='/mybook' />
                 )}
 
             {props.error !== null && (
