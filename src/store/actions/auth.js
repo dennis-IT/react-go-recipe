@@ -1,8 +1,9 @@
 import Axios from 'axios';
 import * as actionTypes from './actionTypes';
-import firebase from "../../firebase";
+// import firebase from "../../firebase";
 
 const API_KEY = process.env.REACT_APP_FIREBASE_API_KEY;
+const DB_URL = process.env.REACT_APP_FIREBASE_DATABASEURL;
 
 export const authStart = () => {
     return {
@@ -44,17 +45,49 @@ export const checkAuthTimeout = (expirationTime) => {
     };
 };
 
-export const addUserToDB = (isSignup, firstName, lastName, email, userId) => {
+export const getUserSuccess = (userInfo) => {
+    return {
+        type: actionTypes.GET_USERSUCCESS,
+        userInfo: userInfo
+    };
+};
+
+export const getUserFail = (error) => {
+    return {
+        type: actionTypes.GET_USERFAIL,
+        error: error
+    };
+};
+
+export const getUser = () => {
+    const token = localStorage.getItem('token');
+    const userId = localStorage.getItem('userId');
+
+    return dispatch => {
+        Axios.get(`${DB_URL}/users/${userId}.json?auth=${token}`)
+            .then(response => {
+                const { data } = response;
+                dispatch(getUserSuccess(data));
+            })
+            .catch(error => {
+                dispatch(getUserFail(error.response.data.error));
+            });
+    };
+};
+
+export const addUserToDB = (isSignup, firstName, lastName, email, userId, token) => {
     return dispatch => {
         if (isSignup) {
-            const dbRef = firebase.database().ref(`users/${userId}`);
             const user = {
                 'firstName': `${firstName}`,
                 'lastName': `${lastName}`,
                 'email': `${email}`,
                 'userId': `${userId}`
             };
-            dbRef.set(user);
+            // const dbRef = firebase.database().ref(`users/${userId}?auth=${token}`);
+            // dbRef.set(user);
+
+            Axios.patch(`${DB_URL}/users/${userId}.json?auth=${token}`, user);
         }
     };
 };
@@ -85,7 +118,7 @@ export const auth = (email, password, isSignup, firstName, lastName) => {
                 localStorage.setItem('expirationDate', expirationDate);
                 localStorage.setItem('userId', response.data.localId);
                 dispatch(authSuccess(response.data.idToken, response.data.localId));
-                dispatch(addUserToDB(isSignup, firstName, lastName, email, response.data.localId));
+                dispatch(addUserToDB(isSignup, firstName, lastName, email, response.data.localId, response.data.idToken));
                 dispatch(checkAuthTimeout(response.data.expiresIn));
             })
             .catch(error => {

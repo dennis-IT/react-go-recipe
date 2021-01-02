@@ -12,3 +12,7 @@ export {
     logout,
     authCheckState
 } from './auth';
+
+export {
+    getUser
+} from './userinfo';

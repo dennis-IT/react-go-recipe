@@ -79,7 +79,7 @@ const Login = (props) => {
             <Box className={classes.topBanner} />
 
             {!props.isAuthenticated ? (
-                <Box flexGrow={1}>
+                <Box flexGrow={1} mb={3}>
                     <Container maxWidth="md">
                         <Box display='flex' justifyContent='center' alignItems='center' flexDirection='column'>
                             <Box mb={2.5}>
@@ -117,9 +117,14 @@ const Login = (props) => {
 
                                         if (!values.password) {
                                             errors.password = 'Required';
-                                        } else if (!/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,12}$/.test(values.password)) {
-                                            errors.password = 'Password must contain 6 to 12 characters with letters and numbers only';
+                                        } else {
+                                            if (isSignup) {
+                                                if (!/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,12}$/.test(values.password)) {
+                                                    errors.password = 'Password must contain 6 to 12 characters with letters and numbers only';
+                                                }
+                                            }
                                         }
+
                                         return errors;
                                     }}
                                     onSubmit={submitData}
