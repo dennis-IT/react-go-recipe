@@ -59,10 +59,7 @@ export const getUserFail = (error) => {
     };
 };
 
-export const getUser = () => {
-    const token = localStorage.getItem('token');
-    const userId = localStorage.getItem('userId');
-
+export const getUser = (token, userId) => {
     return dispatch => {
         Axios.get(`${DB_URL}/users/${userId}.json?auth=${token}`)
             .then(response => {
@@ -87,7 +84,10 @@ export const addUserToDB = (isSignup, firstName, lastName, email, userId, token)
             // const dbRef = firebase.database().ref(`users/${userId}?auth=${token}`);
             // dbRef.set(user);
 
-            Axios.patch(`${DB_URL}/users/${userId}.json?auth=${token}`, user);
+            Axios.patch(`${DB_URL}/users/${userId}.json?auth=${token}`, user)
+                .then(response => {
+                    dispatch(getUser(token, userId));
+                });
         }
     };
 };

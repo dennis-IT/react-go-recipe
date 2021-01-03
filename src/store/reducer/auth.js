@@ -33,13 +33,13 @@ const authLogout = (state, action) => {
     return updateObject(state, {
         token: null,
         userId: null,
+        userInfo: null
     });
 };
 
 const getUserSuccess = (state, action) => {
     return updateObject(state, {
-        userInfo: action.userInfo,
-        error: null
+        userInfo: action.userInfo
     });
 };
 

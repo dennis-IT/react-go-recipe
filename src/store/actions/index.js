@@ -10,9 +10,6 @@ export {
 export {
     auth,
     logout,
-    authCheckState
-} from './auth';
-
-export {
+    authCheckState,
     getUser
-} from './userinfo';
+} from './auth';

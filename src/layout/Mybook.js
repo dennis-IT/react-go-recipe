@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { makeStyles, Box, Container, Tab, Tabs, Typography, Grid } from '@material-ui/core';
@@ -90,12 +90,14 @@ const useStyles = makeStyles(theme => ({
 
 const Mybook = (props) => {
     const classes = useStyles();
-    const [value, setValue] = React.useState(0);
-    const { onFetchUserinfo, userInfo } = props;
+    const [value, setValue] = useState(0);
+    const { userInfo, onFetchUserInfo } = props;
+    const userId = localStorage.getItem('userId');
+    const token = localStorage.getItem('token');
 
     useEffect(() => {
-        onFetchUserinfo();
-    }, [onFetchUserinfo]);
+        onFetchUserInfo(token, userId);
+    }, [onFetchUserInfo, token, userId]);
 
     const handleChange = (event, newValue) => {
         setValue(newValue);
@@ -141,7 +143,7 @@ const Mybook = (props) => {
                                             <div className={classes.infoText}>First name: {userInfo.firstName}</div>
                                             <div className={classes.infoText}>Last name: {userInfo.lastName}</div>
                                             <p className={classes.infoText}>Email: {userInfo.email}</p>
-                                            <div className={classes.infoText} style={{}}>UserID: {userInfo.userId}</div>
+                                            <div className={classes.infoText}>UserID: {userInfo.userId}</div>
                                         </Box>
                                     )}
                                 </Grid>
@@ -164,16 +166,15 @@ const Mybook = (props) => {
     );
 };
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
     return {
-        userInfo: state.auth.userInfo,
-        error: state.auth.error,
+        userInfo: state.auth.userInfo
     };
 };
 
 const mapDispatchToProps = dispatch => {
     return {
-        onFetchUserinfo: () => dispatch(actions.getUser())
+        onFetchUserInfo: (token, userId) => dispatch(actions.getUser(token, userId))
     };
 };
 
