@@ -72,6 +72,39 @@ export const getUser = (token, userId) => {
     };
 };
 
+export const getFavoriteSuccess = (userFavorite) => {
+    return {
+        type: actionTypes.GET_FAVORITESUCCESS,
+        userFavorite: userFavorite
+    };
+};
+
+export const getFavoriteFail = (error) => {
+    return {
+        type: actionTypes.GET_FAVORITEFAIL,
+        error: error
+    };
+};
+
+export const getFavorite = (token, userId) => {
+    return dispatch => {
+        Axios.get(`${DB_URL}/favorites/${userId}.json?auth=${token}`)
+            .then(response => {
+                const { data } = response;
+                const fetchedFavorites = [];
+                for (let key in data) {
+                    fetchedFavorites.push({
+                        ...data[key]
+                    });
+                }
+                dispatch(getFavoriteSuccess(fetchedFavorites));
+            })
+            .catch(error => {
+                dispatch(getFavoriteFail(error.response.data.error));
+            });
+    };
+};
+
 export const addUserToDB = (isSignup, firstName, lastName, email, userId, token) => {
     return dispatch => {
         if (isSignup) {
@@ -87,6 +120,7 @@ export const addUserToDB = (isSignup, firstName, lastName, email, userId, token)
             Axios.patch(`${DB_URL}/users/${userId}.json?auth=${token}`, user)
                 .then(response => {
                     dispatch(getUser(token, userId));
+                    dispatch(getFavorite(token, userId));
                 });
         }
     };
@@ -146,6 +180,5 @@ export const authCheckState = () => {
                 dispatch(checkAuthTimeout((expirationDate.getTime() - new Date().getTime()) / 1000));
             }
         }
-
     };
 };

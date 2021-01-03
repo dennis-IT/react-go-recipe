@@ -1,15 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import Axios from 'axios';
-import { Container, Box, Grid, makeStyles, Typography, CircularProgress } from '@material-ui/core';
+import { Container, Box, Grid, makeStyles, Typography, CircularProgress, IconButton, Snackbar } from '@material-ui/core';
+import MuiAlert from '@material-ui/lab/Alert';
 import Nav from '../components/Nav';
 import BottomNav from '../components/BottomNav';
 import Accord from '../components/Accord';
 import ScheduleIcon from '@material-ui/icons/Schedule';
 import PeopleOutlineIcon from '@material-ui/icons/PeopleOutline';
 import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
+import FavoriteIcon from '@material-ui/icons/Favorite';
+import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 
 const API_KEY = process.env.REACT_APP_SPOONACULAR_API_KEY;
+const DB_URL = process.env.REACT_APP_FIREBASE_DATABASEURL;
+
+const Alert = (props) => {
+    return <MuiAlert elevation={6} variant="filled" {...props} />;
+};
 
 const useStyles = makeStyles((theme) => ({
     rootcss: {
@@ -46,6 +54,16 @@ const RecipeDetails = () => {
     const classes = useStyles();
     const [recDetails, setRecDetails] = useState({ loading: true, results: {} });
     const { id } = useParams();
+    const [favor, setFavor] = useState(false);
+    const [error, setError] = useState(false);
+    const [errorMessage, setErrorMessage] = useState('');
+
+    const handleClose = (event, reason) => {
+        if (reason === 'clickaway') {
+            return;
+        }
+        setError(false);
+    };
 
     useEffect(() => {
         Axios.get(`https://api.spoonacular.com/recipes/${id}/information?includeNutrition=true&apiKey=${API_KEY}`)
@@ -57,11 +75,32 @@ const RecipeDetails = () => {
                         results: data
                     }
                 );
+                setError(false);
+                setErrorMessage('');
             })
             .catch(error => {
-                console.log(error);
+                setError(true);
+                setErrorMessage(error.response.data.message);
             });
     }, [id]);
+
+    const handleFavorite = () => {
+        const token = localStorage.getItem('token');
+        const userId = localStorage.getItem('userId');
+        const url = `${DB_URL}/favorites/${userId}/${recDetails.results.id}.json?auth=${token}`;
+
+        Axios({
+            method: !favor ? 'PATCH' : 'DELETE',
+            url: url,
+            data: recDetails.results
+        })
+            .then(response => {
+                setFavor(!favor);
+            })
+            .catch(error => {
+                //Pending snackbar
+            });
+    };
 
     return (
         <Box display='flex' flexDirection='column' className={classes.rootcss} >
@@ -105,6 +144,16 @@ const RecipeDetails = () => {
                                             <span>&nbsp;{recDetails.results.nutrition.nutrients[0].amount}&nbsp;Cal</span>
                                         </Box>
                                     </Box>
+                                    <Box display='flex' justifyContent='center' alignItems='center' className={classes.icons}>
+                                        <Box>
+                                            <IconButton color='secondary' onClick={handleFavorite}>
+                                                {favor ? <FavoriteIcon /> : <FavoriteBorderIcon />}
+                                            </IconButton>
+                                        </Box>
+                                        <Box style={{ fontStyle: 'italic' }}>
+                                            {favor ? `Click to remove favorite` : `Click to add favorite`}
+                                        </Box>
+                                    </Box>
                                 </Box>
                             </Grid>
                             <Grid item xs={12} md={8}>
@@ -119,6 +168,12 @@ const RecipeDetails = () => {
                         )}
                 </Container>
             </Box>
+
+            <Snackbar open={error} autoHideDuration={6000} onClose={handleClose}>
+                <Alert onClose={handleClose} severity="error">
+                    {errorMessage}
+                </Alert>
+            </Snackbar>
 
             <Box flexShrink={0}>
                 <BottomNav />

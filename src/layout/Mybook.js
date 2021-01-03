@@ -5,6 +5,7 @@ import { makeStyles, Box, Container, Tab, Tabs, Typography, Grid } from '@materi
 import Nav from '../components/Nav';
 import BottomNav from '../components/BottomNav';
 import * as actions from '../store/actions/index';
+import RecipeCard from '../components/RecipeCard';
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -85,19 +86,28 @@ const useStyles = makeStyles(theme => ({
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center'
+    },
+    contentRightRight: {
+        display: 'flex',
+        alignItems: 'center',
+        [theme.breakpoints.down('md')]: {
+            justifyContent: 'center'
+        }
     }
 }));
 
 const Mybook = (props) => {
     const classes = useStyles();
     const [value, setValue] = useState(0);
-    const { userInfo, onFetchUserInfo } = props;
+    const { userInfo, userFavorite, onFetchUserInfo, onFetchUserFavorite } = props;
     const userId = localStorage.getItem('userId');
     const token = localStorage.getItem('token');
 
+
     useEffect(() => {
         onFetchUserInfo(token, userId);
-    }, [onFetchUserInfo, token, userId]);
+        onFetchUserFavorite(token, userId);
+    }, [onFetchUserInfo, token, userId, onFetchUserFavorite]);
 
     const handleChange = (event, newValue) => {
         setValue(newValue);
@@ -129,7 +139,7 @@ const Mybook = (props) => {
                             classes={{ root: classes.tabsRoot }}
                         >
                             <Tab label="My Info" {...a11yProps(0)} classes={{ root: classes.tabRoot, selected: classes.tabSelected }} />
-                            <Tab label="Recipes" {...a11yProps(1)} classes={{ root: classes.tabRoot, selected: classes.tabSelected }} />
+                            <Tab label="Favorite" {...a11yProps(1)} classes={{ root: classes.tabRoot, selected: classes.tabSelected }} />
                             <Tab label="Cookbook" {...a11yProps(2)} classes={{ root: classes.tabRoot, selected: classes.tabSelected }} />
                         </Tabs>
                         <TabPanel value={value} index={0} className={classes.tabPanel}>
@@ -150,7 +160,15 @@ const Mybook = (props) => {
                             </Grid>
                         </TabPanel>
                         <TabPanel value={value} index={1}>
-                            Loved Recipes
+                            {userFavorite !== null && (
+                                <Grid container spacing={2} className={classes.contentRightRight}>
+                                    {userFavorite.map(recipe => (
+                                        <Grid item key={recipe.id}>
+                                            <RecipeCard key={recipe.id} recipe={recipe} />
+                                        </Grid>
+                                    ))}
+                                </Grid>
+                            )}
                         </TabPanel>
                         <TabPanel value={value} index={2}>
                             Cookbook
@@ -168,13 +186,15 @@ const Mybook = (props) => {
 
 const mapStateToProps = state => {
     return {
-        userInfo: state.auth.userInfo
+        userInfo: state.auth.userInfo,
+        userFavorite: state.auth.userFavorite
     };
 };
 
 const mapDispatchToProps = dispatch => {
     return {
-        onFetchUserInfo: (token, userId) => dispatch(actions.getUser(token, userId))
+        onFetchUserInfo: (token, userId) => dispatch(actions.getUser(token, userId)),
+        onFetchUserFavorite: (token, userId) => dispatch(actions.getFavorite(token, userId))
     };
 };
 

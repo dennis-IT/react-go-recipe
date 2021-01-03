@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import Axios from 'axios';
-import uuid from 'react-uuid';
 import { Container, makeStyles, Box, Grid, Typography, Button, LinearProgress, Snackbar } from '@material-ui/core';
 import MuiAlert from '@material-ui/lab/Alert';
 import { Formik, Form, Field } from 'formik';
@@ -211,10 +210,10 @@ const Recipes = (props) => {
                                 ) : (
                                         (props.recipeData.length !== 0) ? (
                                             <Box>
-                                                <Grid container spacing={3} className={classes.contentRightRight}>
+                                                <Grid container spacing={2} className={classes.contentRightRight}>
                                                     {props.recipeData.map(recipe => (
-                                                        <Grid item key={uuid()}>
-                                                            <RecipeCard key={uuid()} recipe={recipe} />
+                                                        <Grid item key={recipe.id}>
+                                                            <RecipeCard key={recipe.id} recipe={recipe} />
                                                         </Grid>
                                                     ))}
                                                 </Grid>

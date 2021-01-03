@@ -11,5 +11,6 @@ export {
     auth,
     logout,
     authCheckState,
-    getUser
+    getUser,
+    getFavorite
 } from './auth';

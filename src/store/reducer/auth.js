@@ -6,7 +6,8 @@ const initialState = {
     userId: null,
     error: null,
     loading: false,
-    userInfo: null
+    userInfo: null,
+    userFavorite: null
 };
 
 const authStart = (state, action) => {
@@ -33,7 +34,8 @@ const authLogout = (state, action) => {
     return updateObject(state, {
         token: null,
         userId: null,
-        userInfo: null
+        userInfo: null,
+        userFavorite: null
     });
 };
 
@@ -49,6 +51,18 @@ const getUserFail = (state, action) => {
     });
 };
 
+const getFavoriteSuccess = (state, action) => {
+    return updateObject(state, {
+        userFavorite: action.userFavorite
+    });
+};
+
+const getFavoriteFail = (state, action) => {
+    return updateObject(state, {
+        error: action.error
+    });
+};
+
 const reducer = (state = initialState, action) => {
     switch (action.type) {
         case actionTypes.AUTH_START: return authStart(state, action);
@@ -57,6 +71,8 @@ const reducer = (state = initialState, action) => {
         case actionTypes.AUTH_LOGOUT: return authLogout(state, action);
         case actionTypes.GET_USERSUCCESS: return getUserSuccess(state, action);
         case actionTypes.GET_USERFAIL: return getUserFail(state, action);
+        case actionTypes.GET_FAVORITESUCCESS: return getFavoriteSuccess(state, action);
+        case actionTypes.GET_FAVORITEFAIL: return getFavoriteFail(state, action);
         default: return state;
     }
 };
