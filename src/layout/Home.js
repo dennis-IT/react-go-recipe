@@ -302,7 +302,7 @@ const Home = (props) => {
                             </Box>
                             <Box display='flex' justifyContent='center' alignItems='center' flexDirection='column'>
                                 <div className={classes.featureHeader}>2. Add To Your Favorite</div>
-                                <div className={classes.featureContent}>Love a recipe? Register your account, and simply save it as a favorite in one place.</div>
+                                <div className={classes.featureContent}>Love a recipe? Register your account, and simply save the recipe in your favorite.</div>
                             </Box>
                         </Grid>
                         <Grid item xs={12} md={3}>
@@ -320,7 +320,7 @@ const Home = (props) => {
                             </Box>
                             <Box display='flex' justifyContent='center' alignItems='center' flexDirection='column'>
                                 <div className={classes.featureHeader}>4. Enjoy Your Meal</div>
-                                <div className={classes.featureContent}>It's time to invite friends or your beloved ones for lunch or dinner. Bon appetit!</div>
+                                <div className={classes.featureContent}>This is time to invite your friends and beloved ones for lunch or dinner. Bon appetit!</div>
                             </Box>
                         </Grid>
                     </Grid>

@@ -27,7 +27,10 @@ const theme = createMuiTheme({
       '"Apple Color Emoji"',
       '"Segoe UI Emoji"',
       '"Segoe UI Symbol"',
-    ].join(','),
+    ].join(',')
+  },
+  palette: {
+    //type: 'dark'
   }
 });
 
@@ -67,9 +70,11 @@ class App extends Component {
 
     return (
       <ThemeProvider theme={theme}>
+        {/* <Paper style={{ height: '100vh' }}> */}
         <Layout>
           {routes}
         </Layout>
+        {/* </Paper> */}
       </ThemeProvider>
     );
   }

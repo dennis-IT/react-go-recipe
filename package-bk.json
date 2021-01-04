@@ -2,6 +2,7 @@
   "name": "react-go-recipe",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://dennis-it.github.io/react-go-recipe",
   "dependencies": {
     "@material-ui/core": "^4.11.2",
     "@material-ui/icons": "^4.11.2",
@@ -35,7 +36,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-    "deploy": "firebase build"
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
