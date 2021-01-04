@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import uuid from 'react-uuid';
+// import uuid from 'react-uuid';
 import clsx from 'clsx';
 import { Link, useLocation } from 'react-router-dom';
 //import { useHistory } from 'react-router-dom';
@@ -128,7 +128,7 @@ const Navbar = (props) => {
                             <div className={classes.headerOptions}>
                                 {menuItems.map((menuItem) => {
                                     return (
-                                        menuItem.visible && <Box key={uuid()} mr={1.5}>
+                                        menuItem.visible && <Box key={menuItem.itemTitle} mr={1.5}>
                                             <Link to={{ pathname: menuItem.itemUrl }} className={classes.link}>
                                                 <Button
                                                     color="primary"

@@ -4,7 +4,7 @@ import Axios from 'axios';
 import { makeStyles, CircularProgress, useTheme, useMediaQuery, Box } from '@material-ui/core';
 import Carousel from 'react-material-ui-carousel';
 import RecipeCard from './RecipeCard';
-import uuid from 'react-uuid';
+// import uuid from 'react-uuid';
 import * as actions from '../store/actions/index';
 
 const API_KEY = process.env.REACT_APP_SPOONACULAR_API_KEY;
@@ -56,7 +56,7 @@ const RecipeCardCarousel = (props) => {
                 <Carousel interval='4000' autoPlay={true} animation='slide' indicators={true} navButtonsAlwaysVisible={!isMobile}>
                     {
                         props.carouselData.map(recipe => (
-                            <RecipeCard key={uuid()} recipe={recipe} />
+                            <RecipeCard key={recipe.id} recipe={recipe} />
                         ))
                     }
                 </Carousel>

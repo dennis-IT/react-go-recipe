@@ -62,7 +62,7 @@ const useStyles = makeStyles((theme) => ({
     },
     heroH1: {
         fontSize: 'clamp(1.5rem, 3.5vw, 2.5rem)',
-        marginTop: '1rem',
+        //marginTop: '1rem',
         marginBottom: '1rem',
         boxShadow: '5px 5px #F5DF4D',
         letterSpacing: '1.5px',
@@ -106,8 +106,8 @@ const useStyles = makeStyles((theme) => ({
         }
     },
     recipeCardCarousel: {
-        marginTop: '3rem',
-        marginBottom: '3rem'
+        marginTop: '4rem',
+        marginBottom: '4rem'
     },
     carouselLeft: {
         background: `url(${process.env.PUBLIC_URL}/media/chef.jpg)`,
@@ -122,6 +122,7 @@ const useStyles = makeStyles((theme) => ({
     },
     carouselText: {
         fontSize: 'clamp(1.5rem, 3.5vw, 2.5rem)',
+        fontWeight: 'bold',
         letterSpacing: '1.5px',
         textTransform: 'uppercase',
         color: '#4D4B4A',
@@ -130,6 +131,20 @@ const useStyles = makeStyles((theme) => ({
     },
     searchIcon: {
         transform: 'translate(-35px, -10px)'
+    },
+    img: {
+        width: '50px'
+    },
+    featureHeader: {
+        fontSize: '1.25rem',
+        color: '#4D4B4A',
+        fontWeight: 'bold'
+    },
+    featureContent: {
+        fontSize: '1.1rem',
+        color: '#4D4B4A',
+        textAlign: 'center',
+        padding: '1rem'
     }
 }));
 
@@ -265,6 +280,52 @@ const Home = (props) => {
                     <Box textAlign='center' display='flex' justifyContent='center' alignItems='center' className={clsx(classes.postHeroItem, classes.postHeroItemRight)}><i className="far fa-question-circle"></i>&nbsp;&nbsp;Know amount of calories per serving</Box>
                 </Grid>
             </Grid>
+
+            <Container maxWidth="lg" data-aos="fade-up">
+                <Box className={classes.recipeCardCarousel}>
+                    <div className={classes.carouselText}>
+                        Our features
+                    </div>
+                    <Grid container spacing={2}>
+                        <Grid item xs={12} md={3}>
+                            <Box className={classes.featureIcon} display='flex' justifyContent='center' alignItems='center' mb={2}>
+                                <img src={process.env.PUBLIC_URL + `/media/step1.png`} alt={`Search our recipe collection`} className={classes.img}></img>
+                            </Box>
+                            <Box display='flex' justifyContent='center' alignItems='center' flexDirection='column'>
+                                <div className={classes.featureHeader} >1. Search Our Recipes</div>
+                                <div className={classes.featureContent} >We offer 5,000+ recipes. Let us know what you want to cook, and we are gladly sharing our help.</div>
+                            </Box>
+                        </Grid>
+                        <Grid item xs={12} md={3}>
+                            <Box className={classes.featureIcon} display='flex' justifyContent='center' alignItems='center' mb={2}>
+                                <img src={process.env.PUBLIC_URL + `/media/step2.png`} alt={`Add recipe into your favorite`} className={classes.img}></img>
+                            </Box>
+                            <Box display='flex' justifyContent='center' alignItems='center' flexDirection='column'>
+                                <div className={classes.featureHeader}>2. Add To Your Favorite</div>
+                                <div className={classes.featureContent}>Love a recipe? Register your account, and simply save it as a favorite in one place.</div>
+                            </Box>
+                        </Grid>
+                        <Grid item xs={12} md={3}>
+                            <Box className={classes.featureIcon} display='flex' justifyContent='center' alignItems='center' mb={2}>
+                                <img src={process.env.PUBLIC_URL + `/media/step3.png`} alt={`Start cooking by following our instructions`} className={classes.img}></img>
+                            </Box>
+                            <Box display='flex' justifyContent='center' alignItems='center' flexDirection='column'>
+                                <div className={classes.featureHeader}>3. Follow Our Directions</div>
+                                <div className={classes.featureContent}>By our step-by-step cooking instructions, it is easy to make your favorite recipe.</div>
+                            </Box>
+                        </Grid>
+                        <Grid item xs={12} md={3}>
+                            <Box className={classes.featureIcon} display='flex' justifyContent='center' alignItems='center' mb={2}>
+                                <img src={process.env.PUBLIC_URL + `/media/step4.png`} alt={`Bon Appétit`} className={classes.img}></img>
+                            </Box>
+                            <Box display='flex' justifyContent='center' alignItems='center' flexDirection='column'>
+                                <div className={classes.featureHeader}>4. Enjoy Your Meal</div>
+                                <div className={classes.featureContent}>It's time to invite friends or your beloved ones for lunch or dinner. Bon appetit!</div>
+                            </Box>
+                        </Grid>
+                    </Grid>
+                </Box>
+            </Container>
 
             <Container maxWidth="lg" data-aos="fade-up">
                 <Box className={classes.recipeCardCarousel}>

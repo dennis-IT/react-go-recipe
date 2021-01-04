@@ -103,7 +103,6 @@ const Mybook = (props) => {
     const userId = localStorage.getItem('userId');
     const token = localStorage.getItem('token');
 
-
     useEffect(() => {
         onFetchUserInfo(token, userId);
         onFetchUserFavorite(token, userId);

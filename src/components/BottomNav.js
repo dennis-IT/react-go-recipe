@@ -50,6 +50,11 @@ const BottomNav = (props) => {
             </Box>
             <Box my={0.25}>
                 <Typography className={classes.footerCredit}>
+                    Icons made by <span><Link href='http://www.freepik.com/'>Freepik</Link></span> from <span><Link href='https://www.flaticon.com/'>Flaticon</Link></span>
+                </Typography>
+            </Box>
+            <Box my={0.25}>
+                <Typography className={classes.footerCredit}>
                     Data source created by <span><Link href='https://spoonacular.com/food-api'>Spoonacular API</Link></span>
                 </Typography>
             </Box>

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
+import { connect } from 'react-redux';
 import Axios from 'axios';
 import { Container, Box, Grid, makeStyles, Typography, CircularProgress, IconButton, Snackbar } from '@material-ui/core';
 import MuiAlert from '@material-ui/lab/Alert';
@@ -11,6 +12,7 @@ import PeopleOutlineIcon from '@material-ui/icons/PeopleOutline';
 import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
+// import * as actions from '../store/actions/index';
 
 const API_KEY = process.env.REACT_APP_SPOONACULAR_API_KEY;
 const DB_URL = process.env.REACT_APP_FIREBASE_DATABASEURL;
@@ -50,13 +52,15 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-const RecipeDetails = () => {
+const RecipeDetails = (props) => {
     const classes = useStyles();
+    const history = useHistory();
     const [recDetails, setRecDetails] = useState({ loading: true, results: {} });
     const { id } = useParams();
     const [favor, setFavor] = useState(false);
     const [error, setError] = useState(false);
     const [errorMessage, setErrorMessage] = useState('');
+    const { token, userFavorite } = props;
 
     const handleClose = (event, reason) => {
         if (reason === 'clickaway') {
@@ -66,40 +70,93 @@ const RecipeDetails = () => {
     };
 
     useEffect(() => {
-        Axios.get(`https://api.spoonacular.com/recipes/${id}/information?includeNutrition=true&apiKey=${API_KEY}`)
-            .then(response => {
-                const { data } = response;
+        // onFetchUserFavorite(token, userId);
+        if (token && userFavorite) {
+            let found = null;
+            userFavorite.forEach(recipe => {
+                if (recipe.id === +id) {
+                    return found = recipe;
+                }
+            });
+
+            if (found) {
                 setRecDetails(
                     {
                         loading: false,
-                        results: data
+                        results: found
                     }
                 );
                 setError(false);
                 setErrorMessage('');
-            })
-            .catch(error => {
-                setError(true);
-                setErrorMessage(error.response.data.message);
-            });
-    }, [id]);
+                setFavor(true);
+            } else {
+                Axios.get(`https://api.spoonacular.com/recipes/${id}/information?includeNutrition=true&apiKey=${API_KEY}`)
+                    .then(response => {
+                        const { data } = response;
+                        setRecDetails(
+                            {
+                                loading: false,
+                                results: data
+                            }
+                        );
+                        setError(false);
+                        setErrorMessage('');
+                    })
+                    .catch(error => {
+                        setError(true);
+                        setErrorMessage(error.response.data.message);
+                    });
+            }
+        } else {
+            Axios.get(`https://api.spoonacular.com/recipes/${id}/information?includeNutrition=true&apiKey=${API_KEY}`)
+                .then(response => {
+                    const { data } = response;
+                    setRecDetails(
+                        {
+                            loading: false,
+                            results: data
+                        }
+                    );
+                    setError(false);
+                    setErrorMessage('');
+                })
+                .catch(error => {
+                    setError(true);
+                    setErrorMessage(error.response.data.message);
+                });
+        }
+    }, [id, token, userFavorite]);
 
     const handleFavorite = () => {
         const token = localStorage.getItem('token');
         const userId = localStorage.getItem('userId');
         const url = `${DB_URL}/favorites/${userId}/${recDetails.results.id}.json?auth=${token}`;
 
-        Axios({
-            method: !favor ? 'PATCH' : 'DELETE',
-            url: url,
-            data: recDetails.results
-        })
-            .then(response => {
-                setFavor(!favor);
+        if (token) {
+            Axios({
+                method: !favor ? 'PATCH' : 'DELETE',
+                url: url,
+                data: recDetails.results
             })
-            .catch(error => {
-                //Pending snackbar
-            });
+                .then(response => {
+                    setFavor(!favor);
+                })
+                .catch(error => {
+                    setError(true);
+                    setErrorMessage(error.response.data.message);
+                });
+        } else {
+            setError(true);
+            let count = 5;
+            setErrorMessage(`Sign in is required. You will be directed to login page in ${count}s`);
+            setInterval(() => {
+                count--;
+                setErrorMessage(`Sign in is required. You will be directed to login page in ${count}s`);
+                if (count === 0) {
+                    history.push('/login');
+                }
+            }, 1000);
+        }
     };
 
     return (
@@ -182,4 +239,18 @@ const RecipeDetails = () => {
     );
 };
 
-export default RecipeDetails;
+const mapStateToProps = state => {
+    return {
+        userFavorite: state.auth.userFavorite,
+        token: state.auth.token,
+        userId: state.auth.userId
+    };
+};
+
+// const mapDispatchToProps = dispatch => {
+//     return {
+//         onFetchUserFavorite: (token, userId) => dispatch(actions.getFavorite(token, userId))
+//     };
+// };
+
+export default connect(mapStateToProps)(RecipeDetails);
