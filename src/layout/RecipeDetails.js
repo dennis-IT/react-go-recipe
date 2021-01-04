@@ -60,7 +60,7 @@ const RecipeDetails = (props) => {
     const [favor, setFavor] = useState(false);
     const [error, setError] = useState(false);
     const [errorMessage, setErrorMessage] = useState('');
-    const { token, userFavorite } = props;
+    const { token, userFavorite, userId } = props;
 
     const handleClose = (event, reason) => {
         if (reason === 'clickaway') {
@@ -70,8 +70,8 @@ const RecipeDetails = (props) => {
     };
 
     useEffect(() => {
-        // onFetchUserFavorite(token, userId);
-        if (token && userFavorite) {
+        //onFetchUserFavorite(token, userId);
+        if (token && userId && userFavorite) {
             let found = null;
             userFavorite.forEach(recipe => {
                 if (recipe.id === +id) {
@@ -125,7 +125,7 @@ const RecipeDetails = (props) => {
                     setErrorMessage(error.response.data.message);
                 });
         }
-    }, [id, token, userFavorite]);
+    }, [id, token, userId, userFavorite]);
 
     const handleFavorite = () => {
         const token = localStorage.getItem('token');
