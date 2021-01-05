@@ -1,65 +1,67 @@
 import React, { useEffect, useRef, Fragment } from 'react';
+import { connect } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { Box, Button, makeStyles } from '@material-ui/core';
 import { gsap } from 'gsap';
+import FloatingButton from '../components/FloatingButton';
 
-const useStyles = makeStyles((theme) => ({
-    intro: {
-        background: `url(${process.env.PUBLIC_URL}/media/slider.jpg)`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat',
-        position: 'fixed',
-        top: 0,
-        left: 0,
-        width: '100%',
-        height: '100%',
-        flexDirection: 'column'
-    },
-    introText: {
-        color: 'darkred',
-        fontWeight: 'bold',
-        [theme.breakpoints.down('sm')]: {
-            fontSize: '2rem'
+const Preface = (props) => {
+    const useStyles = makeStyles((theme) => ({
+        intro: {
+            background: props.isDarkMode ? `url(${process.env.PUBLIC_URL}/media/sliderD.jpg)` : `url(${process.env.PUBLIC_URL}/media/slider.jpg)`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat',
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            flexDirection: 'column'
         },
-        [theme.breakpoints.up('sm')]: {
-            fontSize: '2.5rem',
-        }
-    },
-    buttonStyle: {
-        borderRadius: 0,
-        backgroundColor: '#ee9b2f',
-        color: 'ivory',
-        '&:hover': {
-            backgroundColor: '#e0e0e0',
-            color: 'black'
-        }
-    },
-    hide: {
-        background: 'opaque',
-        overflow: 'hidden',
-        '& > span': {
-            transform: 'translateY(100%)',
-            display: 'inline-block'
+        introText: {
+            color: props.isDarkMode ? 'ivory' : 'darkred',
+            fontWeight: 'bold',
+            [theme.breakpoints.down('sm')]: {
+                fontSize: '2rem'
+            },
+            [theme.breakpoints.up('sm')]: {
+                fontSize: '2.5rem',
+            }
         },
-        textAlign: 'center',
-        marginBottom: '0.5rem'
-    },
-    fontem: {
-        fontFamily: [
-            '"Kaushan Script"',
-            'cursive'
-        ].join(','),
-        [theme.breakpoints.down('sm')]: {
-            fontSize: '2rem'
+        buttonStyle: {
+            borderRadius: 0,
+            backgroundColor: '#ee9b2f',
+            color: 'ivory',
+            '&:hover': {
+                backgroundColor: '#e0e0e0',
+                color: 'black'
+            },
         },
-        [theme.breakpoints.up('sm')]: {
-            fontSize: '3.5rem',
+        hide: {
+            background: 'opaque',
+            overflow: 'hidden',
+            '& > span': {
+                transform: 'translateY(100%)',
+                display: 'inline-block'
+            },
+            textAlign: 'center',
+            marginBottom: '0.5rem'
+        },
+        fontem: {
+            fontFamily: [
+                '"Kaushan Script"',
+                'cursive'
+            ].join(','),
+            [theme.breakpoints.down('sm')]: {
+                fontSize: '2rem'
+            },
+            [theme.breakpoints.up('sm')]: {
+                fontSize: '3.5rem',
+            }
         }
-    }
-}));
+    }));
 
-const Preface = () => {
     const history = useHistory();
     const classes = useStyles();
     let intro = useRef(null);
@@ -111,8 +113,16 @@ const Preface = () => {
                     </div>
                 </div>
             </Box>
+
+            <FloatingButton />
         </Fragment>
     );
 };
 
-export default Preface;
+const mapStateToProps = state => {
+    return {
+        isDarkMode: state.darkModeEnable.isDarkMode
+    };
+};
+
+export default connect(mapStateToProps)(Preface);

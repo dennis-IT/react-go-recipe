@@ -8,52 +8,54 @@ import { AppBar, Toolbar, Typography, IconButton, Button, makeStyles, useMediaQu
 import MenuIcon from '@material-ui/icons/Menu';
 import Sidebar from './Sidebar';
 
-const useStyles = makeStyles((theme) => ({
-    root: {
-        flexGrow: 1
-    },
-    menuButton: {
-        //marginRight: theme.spacing(2),
-        color: '#676563'
-    },
-    title: {
-        fontFamily: [
-            '"Kaushan Script"',
-            'cursive'
-        ].join(','),
-        fontWeight: 'bold',
-        fontSize: '1.75rem',
-        flexGrow: 1
-    },
-    link: {
-        textDecoration: 'none',
-        color: '#676563'
-    },
-    headerOptions: {
-        display: 'flex',
-        flex: 1,
-        justifyContent: 'flex-end'
-    },
-    buttonStyle: {
-        fontFamily: [
-            '"Bangers"',
-            'cursive'
-        ].join(','),
-        color: '#676563',
-        fontSize: '1.5rem',
-        width: '6rem',
-        textTransform: 'capitalize',
-        '&:hover': {
-            backgroundColor: '#F5DF4D'
-        },
-        borderRadius: 0
-    },
-    highlightedButton: {
-        backgroundColor: '#F5DF4D'
-    }
-}));
-
 const Navbar = (props) => {
+    const useStyles = makeStyles((theme) => ({
+        root: {
+            flexGrow: 1
+        },
+        menuButton: {
+            //marginRight: theme.spacing(2),
+            color: props.isDarkMode ? 'ivory' : '#676563'
+        },
+        title: {
+            fontFamily: [
+                '"Kaushan Script"',
+                'cursive'
+            ].join(','),
+            fontWeight: 'bold',
+            fontSize: '1.75rem',
+            flexGrow: 1
+        },
+        link: {
+            textDecoration: 'none',
+            color: props.isDarkMode ? 'ivory' : '#676563'
+        },
+        headerOptions: {
+            display: 'flex',
+            flex: 1,
+            justifyContent: 'flex-end'
+        },
+        buttonStyle: {
+            fontFamily: [
+                '"Bangers"',
+                'cursive'
+            ].join(','),
+            color: props.isDarkMode ? 'ivory' : '#676563',
+            fontSize: '1.5rem',
+            width: '6rem',
+            textTransform: 'capitalize',
+            '&:hover': {
+                backgroundColor: '#F5DF4D',
+                color: '#676563'
+            },
+            borderRadius: 0
+        },
+        highlightedButton: {
+            backgroundColor: '#F5DF4D',
+            color: '#676563'
+        }
+    }));
+
     //const { history } = props;
     //const history = useHistory();
     const location = useLocation();
@@ -151,7 +153,8 @@ const Navbar = (props) => {
 
 const mapStateToProps = state => {
     return {
-        isAuthenticated: state.auth.token !== null
+        isAuthenticated: state.auth.token !== null,
+        isDarkMode: state.darkModeEnable.isDarkMode
     };
 };
 

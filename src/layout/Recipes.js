@@ -8,6 +8,7 @@ import { TextField } from 'formik-material-ui';
 import Nav from '../components/Nav';
 import BottomNav from '../components/BottomNav';
 import RecipeCard from '../components/RecipeCard';
+import FloatingButton from '../components/FloatingButton';
 import * as actions from '../store/actions/index';
 
 const API_KEY = process.env.REACT_APP_SPOONACULAR_API_KEY;
@@ -17,85 +18,86 @@ const Alert = (props) => {
     return <MuiAlert elevation={6} variant="filled" {...props} />;
 };
 
-const useStyles = makeStyles(theme => ({
-    root: {
-        width: '100%',
-        '& > * + *': {
-            marginTop: theme.spacing(2),
-        },
-    },
-    rootcss: {
-        height: '100vh'
-    },
-    topBanner: {
-        marginTop: '2rem',
-        marginBottom: '2rem',
-        height: '20vh',
-        background: `url(${process.env.PUBLIC_URL}/media/bannerTop.jpg)`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-    },
-    topBannerText: {
-        fontFamily: [
-            '"Kaushan Script"',
-            'cursive'
-        ].join(','),
-        fontSize: 'clamp(1.5rem, 3.5vw, 2.75rem)',
-        fontWeight: 'bold',
-        letterSpacing: '1.5px',
-        color: '#4D4B4A',
-        textAlign: 'center'
-    },
-    contentLeft: {
-        [theme.breakpoints.down('sm')]: {
-            paddingRight: 0,
-            paddingBottom: '1rem'
-        },
-        [theme.breakpoints.up('sm')]: {
-            paddingRight: '1rem'
-        }
-    },
-    contentRight: {
-        // [theme.breakpoints.down('sm')]: {
-        //     paddingLeft: 0,
-        //     paddingTop: '0.5rem'
-        // },
-        // [theme.breakpoints.up('sm')]: {
-        //     paddingLeft: '0.5rem'
-        // }
-    },
-    loading: {
-        height: '30vh',
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'center',
-        alignItems: 'center',
-        color: '#4D4B4A'
-    },
-    progress: {
-        color: '#86b2f3'
-    },
-    preface: {
-        background: `url(${process.env.PUBLIC_URL}/media/recipeSearch.jpg)`,
-        [theme.breakpoints.down('md')]: {
-            height: '60vh',
-        },
-        [theme.breakpoints.up('md')]: {
-            height: '30vh'
-        },
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-    },
-    contentRightRight: {
-        display: 'flex',
-        alignItems: 'center',
-        [theme.breakpoints.down('md')]: {
-            justifyContent: 'center'
-        }
-    }
-}));
-
 const Recipes = (props) => {
+    const useStyles = makeStyles(theme => ({
+        root: {
+            width: '100%',
+            '& > * + *': {
+                marginTop: theme.spacing(2),
+            },
+        },
+        rootcss: {
+            minHeight: '100vh'
+        },
+        topBanner: {
+            marginTop: '2rem',
+            marginBottom: '2rem',
+            height: '20vh',
+            background: props.isDarkMode ? `url(${process.env.PUBLIC_URL}/media/bannerTopD.png)` : `url(${process.env.PUBLIC_URL}/media/bannerTop.jpg)`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+        },
+        topBannerText: {
+            fontFamily: [
+                '"Kaushan Script"',
+                'cursive'
+            ].join(','),
+            fontSize: 'clamp(1.5rem, 3.5vw, 2.75rem)',
+            fontWeight: 'bold',
+            letterSpacing: '1.5px',
+            color: props.isDarkMode ? 'ivory' : '#4D4B4A',
+            textAlign: 'center'
+        },
+        contentLeft: {
+            [theme.breakpoints.down('sm')]: {
+                paddingRight: 0,
+                paddingBottom: '1rem'
+            },
+            [theme.breakpoints.up('sm')]: {
+                paddingRight: '1rem'
+            }
+        },
+        contentRight: {
+            // [theme.breakpoints.down('sm')]: {
+            //     paddingLeft: 0,
+            //     paddingTop: '0.5rem'
+            // },
+            // [theme.breakpoints.up('sm')]: {
+            //     paddingLeft: '0.5rem'
+            // }
+        },
+        loading: {
+            height: '30vh',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            alignItems: 'center',
+            color: '#4D4B4A'
+        },
+        progress: {
+            color: '#86b2f3'
+        },
+        preface: {
+            background: `url(${process.env.PUBLIC_URL}/media/recipeSearchD.svg)`,
+            [theme.breakpoints.down('md')]: {
+                height: '60vh',
+            },
+            [theme.breakpoints.up('md')]: {
+                height: '30vh'
+            },
+            backgroundSize: 'contain',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat'
+        },
+        contentRightRight: {
+            display: 'flex',
+            alignItems: 'center',
+            [theme.breakpoints.down('md')]: {
+                justifyContent: 'center'
+            }
+        }
+    }));
+
     const classes = useStyles();
     const [error, setError] = useState(false);
     const [errorMessage, setErrorMessage] = useState('');
@@ -236,6 +238,8 @@ const Recipes = (props) => {
                 </Container>
             </Box>
 
+            <FloatingButton />
+
             <Snackbar open={error} autoHideDuration={6000} onClose={handleClose}>
                 <Alert onClose={handleClose} severity="error">
                     {errorMessage}
@@ -255,7 +259,8 @@ const mapStateToProps = state => {
         recipeData: state.recipeBuilder.recipeData,
         totalResults: state.recipeBuilder.totalResults,
         offset: state.recipeBuilder.offset,
-        showMore: state.recipeBuilder.showMore
+        showMore: state.recipeBuilder.showMore,
+        isDarkMode: state.darkModeEnable.isDarkMode
     };
 };
 

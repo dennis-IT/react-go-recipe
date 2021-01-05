@@ -14,6 +14,7 @@ import thunk from 'redux-thunk';
 import carouselBuilderReducer from './store/reducer/carouselBuilderReducer';
 import recipeBuilderReducer from './store/reducer/recipeBuilderReducer';
 import authReducer from './store/reducer/auth';
+import darkModeReducer from './store/reducer/darkModeReducer';
 
 //const history = createBrowserHistory();
 //basename={process.env.PUBLIC_URL}
@@ -23,7 +24,8 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const rootReducer = combineReducers({
   carouselBuilder: carouselBuilderReducer,
   recipeBuilder: recipeBuilderReducer,
-  auth: authReducer
+  auth: authReducer,
+  darkModeEnable: darkModeReducer
 });
 
 const store = createStore(rootReducer, composeEnhancers(

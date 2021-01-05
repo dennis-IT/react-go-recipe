@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { Box } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import Accordion from '@material-ui/core/Accordion';
@@ -8,22 +9,22 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 import IngredientTable from './IngredientTable';
 
-const useStyles = makeStyles((theme) => ({
-    root: {
-        width: '100%',
-    },
-    heading: {
-        fontSize: '1.2rem',
-        fontWeight: 'bold',
-        color: '#565553'
-    },
-    subheading: {
-        fontSize: '1rem',
-        color: '#676563'
-    }
-}));
-
 const Accord = (props) => {
+    const useStyles = makeStyles((theme) => ({
+        root: {
+            width: '100%',
+        },
+        heading: {
+            fontSize: '1.2rem',
+            fontWeight: 'bold',
+            color: props.isDarkMode ? 'ivory' : '#565553'
+        },
+        subheading: {
+            fontSize: '1rem',
+            color: props.isDarkMode ? 'ivory' : '#676563'
+        }
+    }));
+
     const classes = useStyles();
     const { summary, extendedIngredients, instructions } = props.data;
 
@@ -71,5 +72,11 @@ const Accord = (props) => {
     );
 };
 
-export default Accord;
+const mapStateToProps = state => {
+    return {
+        isDarkMode: state.darkModeEnable.isDarkMode
+    };
+};
+
+export default connect(mapStateToProps)(Accord);
 

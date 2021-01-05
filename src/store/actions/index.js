@@ -14,3 +14,8 @@ export {
     getUser,
     getFavorite
 } from './auth';
+
+export {
+    setDarkMode,
+    verifyDarkMode
+} from './darkMode';

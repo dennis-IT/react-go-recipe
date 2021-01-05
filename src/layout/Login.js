@@ -7,6 +7,7 @@ import { Formik, Form, Field } from 'formik';
 import { TextField } from 'formik-material-ui';
 import Nav from '../components/Nav';
 import BottomNav from '../components/BottomNav';
+import FloatingButton from '../components/FloatingButton';
 import * as actions from '../store/actions/index';
 
 const Alert = (props) => {
@@ -21,13 +22,13 @@ const useStyles = makeStyles(theme => ({
         },
     },
     rootcss: {
-        height: '100vh'
+        minHeight: '100vh'
     },
     topBanner: {
         marginTop: '1rem',
         marginBottom: '1rem',
         height: '20vh',
-        background: `url(${process.env.PUBLIC_URL}/media/loginBanner.jpg)`,
+        background: `url(${process.env.PUBLIC_URL}/media/loginBannerD.png)`,
         backgroundSize: 'contain',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat'
@@ -249,6 +250,7 @@ const Login = (props) => {
                 </Box>
             )}
 
+            <FloatingButton />
 
             <Box flexShrink={0}>
                 <BottomNav />

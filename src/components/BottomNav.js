@@ -1,27 +1,28 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { makeStyles, IconButton, Link, Box, Typography } from '@material-ui/core';
 import GitHubIcon from '@material-ui/icons/GitHub';
 import LinkedInIcon from '@material-ui/icons/LinkedIn';
 import FacebookIcon from '@material-ui/icons/Facebook';
 
-const useStyles = makeStyles(theme => ({
-    footer: {
-        backgroundColor: '#fce5be',
-        [theme.breakpoints.down('xs')]: {
-            padding: '0 1rem'
-        },
-        [theme.breakpoints.up('sm')]: {
-            padding: '0 1.5rem'
-        }
-    },
-    footerCredit: {
-        color: '#676563',
-        fontSize: '0.935rem'
-    }
-}
-));
-
 const BottomNav = (props) => {
+    const useStyles = makeStyles(theme => ({
+        footer: {
+            backgroundColor: props.isDarkMode ? '#808080' : '#fce5be',
+            [theme.breakpoints.down('xs')]: {
+                padding: '0 1rem'
+            },
+            [theme.breakpoints.up('sm')]: {
+                padding: '0 1.5rem'
+            }
+        },
+        footerCredit: {
+            color: props.isDarkMode ? '#d3d7d3' : '#676563',
+            fontSize: '0.935rem'
+        }
+    }
+    ));
+
     const classes = useStyles();
 
     return (
@@ -50,7 +51,7 @@ const BottomNav = (props) => {
             </Box>
             <Box my={0.25}>
                 <Typography className={classes.footerCredit}>
-                    Icons made by <span><Link href='http://www.freepik.com/'>Freepik</Link></span> from <span><Link href='https://www.flaticon.com/'>Flaticon</Link></span>
+                    Icons made by <span><Link href='http://www.freepik.com/'>Freepik</Link></span> from <span><Link href='https://www.flaticon.com/'>Flaticon</Link></span>, <span><Link href='https://undraw.co/'>unDraw</Link></span>
                 </Typography>
             </Box>
             <Box my={0.25}>
@@ -67,4 +68,10 @@ const BottomNav = (props) => {
     );
 };
 
-export default BottomNav;
+const mapStateToProps = state => {
+    return {
+        isDarkMode: state.darkModeEnable.isDarkMode
+    };
+};
+
+export default connect(mapStateToProps)(BottomNav);

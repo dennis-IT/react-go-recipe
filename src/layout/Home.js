@@ -14,6 +14,7 @@ import { TextField } from 'formik-material-ui';
 import Nav from '../components/Nav';
 import BottomNav from '../components/BottomNav';
 import RecipeCardCarousel from '../components/RecipeCardCarousel';
+import FloatingButton from '../components/FloatingButton';
 import * as actions from '../store/actions/index';
 
 const API_KEY = process.env.REACT_APP_SPOONACULAR_API_KEY;
@@ -23,132 +24,131 @@ const Alert = (props) => {
     return <MuiAlert elevation={6} variant="filled" {...props} />;
 };
 
-const useStyles = makeStyles((theme) => ({
-    root: {
-        width: '100%',
-        '& > * + *': {
-            marginTop: theme.spacing(2),
-        },
-    },
-    heroContainer: {
-        background: `url(${process.env.PUBLIC_URL}/media/hero.jpg)`,
-        height: '100vh',
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        color: '#4D4B4A'
-    },
-    heroContent: {
-        height: '100vh',
-        maxHeight: '100%',
-        //width: '100vw',
-        padding: '0 calc((100vw - 1300px)/2)',
-    },
-    heroItems: {
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'center',
-        alignItems: 'flex-start',
-        height: 'calc(100vh - 64px)',
-        maxHeight: '100%',
-        width: '600px',
-        lineHeight: '1.3',
-        fontWeight: 'bold',
-        padding: '0 1.5rem',
-        [theme.breakpoints.down('xs')]: {
-            width: '100%',
-            background: 'rgba(255,255,255,0.2)',
-            backdropFilter: 'blur(5px)'
-        },
-    },
-    heroH1: {
-        fontSize: 'clamp(1.5rem, 3.5vw, 2.5rem)',
-        //marginTop: '1rem',
-        marginBottom: '1rem',
-        boxShadow: '5px 5px #F5DF4D',
-        letterSpacing: '1.5px',
-        textTransform: 'uppercase',
-        paddingRight: '1.5rem'
-    },
-    heroP: {
-        fontSize: 'clamp(1.2rem, 2vw, 2rem)',
-        marginBottom: '1rem',
-    },
-    textField: {
-        width: '10rem',
-    },
-    postHeroContent: {
-        backgroundColor: '#fce5be'
-    },
-    postHeroItem: {
-        fontSize: 'clamp(1.2rem, 1vw, 1.5rem)',
-        color: '#4D4B4A',
-        backgroundClip: 'content-box',
-        backgroundColor: '#f1f2f3',
-        height: '4rem',
-        padding: '0.3rem'
-    },
-    postHeroItemLeft: {
-        [theme.breakpoints.down('sm')]: {
-            paddingBottom: 0,
-            paddingRight: '0.3rem'
-        },
-        [theme.breakpoints.up('sm')]: {
-            paddingRight: 0
-        }
-    },
-    postHeroItemRight: {
-        [theme.breakpoints.down('sm')]: {
-            paddingTop: 0,
-            paddingLeft: '0.3rem'
-        },
-        [theme.breakpoints.up('sm')]: {
-            paddingLeft: 0
-        }
-    },
-    recipeCardCarousel: {
-        marginTop: '4rem',
-        marginBottom: '4rem'
-    },
-    carouselLeft: {
-        background: `url(${process.env.PUBLIC_URL}/media/chef.jpg)`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        width: '100%',
-        height: '415px'
-
-    },
-    carouselRight: {
-        //minHeight: '45vh'
-    },
-    carouselText: {
-        fontSize: 'clamp(1.5rem, 3.5vw, 2.5rem)',
-        fontWeight: 'bold',
-        letterSpacing: '1.5px',
-        textTransform: 'uppercase',
-        color: '#4D4B4A',
-        textAlign: 'center',
-        marginBottom: '2rem'
-    },
-    searchIcon: {
-        transform: 'translate(-35px, -10px)'
-    },
-    img: {
-        width: '50px'
-    },
-    featureHeader: {
-        fontSize: '1.25rem',
-        color: '#4D4B4A',
-        fontWeight: 'bold'
-    },
-    featureContent: {
-        fontSize: '1.1rem',
-        color: '#4D4B4A',
-        textAlign: 'center',
-        padding: '1rem'
-    }
-}));
-
 const Home = (props) => {
+    const useStyles = makeStyles((theme) => ({
+        root: {
+            width: '100%',
+            '& > * + *': {
+                marginTop: theme.spacing(2),
+            },
+        },
+        heroContainer: {
+            background: props.isDarkMode ? `url(${process.env.PUBLIC_URL}/media/heroD.jpg)` : `url(${process.env.PUBLIC_URL}/media/hero.jpg)`,
+            height: '100vh',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            color: props.isDarkMode ? 'ivory' : '#4D4B4A'
+        },
+        heroContent: {
+            height: '100vh',
+            maxHeight: '100%',
+            //width: '100vw',
+            padding: '0 calc((100vw - 1300px)/2)',
+        },
+        heroItems: {
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            alignItems: 'flex-start',
+            height: 'calc(100vh - 64px)',
+            maxHeight: '100%',
+            width: '600px',
+            lineHeight: '1.3',
+            fontWeight: 'bold',
+            padding: '0 1.5rem',
+            [theme.breakpoints.down('xs')]: {
+                width: '100%',
+                background: 'rgba(255,255,255,0.2)',
+                backdropFilter: 'blur(5px)'
+            },
+        },
+        heroH1: {
+            fontSize: 'clamp(1.5rem, 3.5vw, 2.5rem)',
+            //marginTop: '1rem',
+            marginBottom: '1rem',
+            boxShadow: '5px 5px #F5DF4D',
+            letterSpacing: '1.5px',
+            textTransform: 'uppercase',
+            paddingRight: '1.5rem'
+        },
+        heroP: {
+            fontSize: 'clamp(1.2rem, 2vw, 2rem)',
+            marginBottom: '1rem',
+        },
+        textField: {
+            width: '10rem',
+        },
+        postHeroContent: {
+            backgroundColor: '#fce5be'
+        },
+        postHeroItem: {
+            fontSize: 'clamp(1.2rem, 1vw, 1.5rem)',
+            color: props.isDarkMode ? 'ivory' : '#4D4B4A',
+            backgroundClip: 'content-box',
+            backgroundColor: props.isDarkMode ? 'grey' : '#f1f2f3',
+            height: '4rem',
+            padding: '0.3rem'
+        },
+        postHeroItemLeft: {
+            [theme.breakpoints.down('sm')]: {
+                paddingBottom: 0,
+                paddingRight: '0.3rem'
+            },
+            [theme.breakpoints.up('sm')]: {
+                paddingRight: 0
+            }
+        },
+        postHeroItemRight: {
+            [theme.breakpoints.down('sm')]: {
+                paddingTop: 0,
+                paddingLeft: '0.3rem'
+            },
+            [theme.breakpoints.up('sm')]: {
+                paddingLeft: 0
+            }
+        },
+        recipeCardCarousel: {
+            marginTop: '4rem',
+            marginBottom: '4rem'
+        },
+        carouselLeft: {
+            background: props.isDarkMode ? `url(${process.env.PUBLIC_URL}/media/chefD.png)` : `url(${process.env.PUBLIC_URL}/media/chef.jpg)`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            width: '100%',
+            height: '435px'
+        },
+        carouselRight: {
+            //minHeight: '45vh'
+        },
+        carouselText: {
+            fontSize: 'clamp(1.5rem, 3.5vw, 2.5rem)',
+            fontWeight: 'bold',
+            letterSpacing: '1.5px',
+            textTransform: 'uppercase',
+            color: props.isDarkMode ? '#fbe0b3' : '#4D4B4A',
+            textAlign: 'center',
+            marginBottom: '2rem'
+        },
+        searchIcon: {
+            transform: 'translate(-35px, -10px)'
+        },
+        img: {
+            width: '50px'
+        },
+        featureHeader: {
+            fontSize: '1.25rem',
+            color: props.isDarkMode ? '#fbe0b3' : '#4D4B4A',
+            fontWeight: 'bold'
+        },
+        featureContent: {
+            fontSize: '1.1rem',
+            color: props.isDarkMode ? 'ivory' : '#4D4B4A',
+            textAlign: 'center',
+            padding: '1rem'
+        }
+    }));
+
     const history = useHistory();
     const classes = useStyles();
     // let container = useRef(null);
@@ -174,7 +174,7 @@ const Home = (props) => {
         tl.fromTo(heroInput, { y: '100%', opacity: 0 }, { y: '0%', opacity: 1, duration: 1 });
 
         Aos.init({
-            offset: 150,
+            offset: 100,
             duration: 1000
         });
     }, []);
@@ -332,14 +332,17 @@ const Home = (props) => {
                     <div className={classes.carouselText}>
                         Popular Recipes Today
                     </div>
-                    <Grid container>
-                        <Grid item xs={12} md={5} className={classes.carouselLeft} />
+                    <Grid container spacing={2}>
+                        <Grid item xs={12} md={5} className={classes.carouselLeft} >
+                        </Grid>
                         <Grid item xs={12} md={7} className={classes.carouselRight}>
                             <RecipeCardCarousel onError={checkCarouselError} onErrorMessage={checkCarouselErrorMessage} />
                         </Grid>
                     </Grid>
                 </Box>
             </Container>
+
+            <FloatingButton />
 
             <Snackbar open={carouselError} autoHideDuration={6000} onClose={handleClose}>
                 <Alert onClose={handleClose} severity="error">
@@ -358,7 +361,8 @@ const mapStateToProps = state => {
         recipeData: state.recipeData,
         totalResults: state.totalResults,
         offset: state.offset,
-        showMore: state.showMore
+        showMore: state.showMore,
+        isDarkMode: state.darkModeEnable.isDarkMode
     };
 };
 

@@ -6,6 +6,7 @@ import Nav from '../components/Nav';
 import BottomNav from '../components/BottomNav';
 import * as actions from '../store/actions/index';
 import RecipeCard from '../components/RecipeCard';
+import FloatingButton from '../components/FloatingButton';
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -40,63 +41,63 @@ function a11yProps(index) {
     };
 }
 
-const useStyles = makeStyles(theme => ({
-    rootcss: {
-        height: '100vh'
-    },
-    heroText: {
-        color: '#4D4B4A'
-    },
-    img: {
-        maxWidth: '100%',
-        maxHeight: '250px',
-        // minHeight: '100px'
-    },
-    root: {
-        flexGrow: 1,
-        backgroundColor: theme.palette.background.paper,
-        display: 'flex',
-        height: '100%',
-    },
-    tabs: {
-        borderRight: `1px solid ${theme.palette.divider}`,
-    },
-    tabRoot: {
-        fontSize: '1.2rem',
-        height: '4rem'
-    },
-    tabSelected: {
-        color: '#4D4B4A',
-        fontWeight: 'bold'
-    },
-    tabsRoot: {
-        overflow: 'visible'
-    },
-    tabPanel: {
-        flexGrow: 1
-    },
-    infoText: {
-        color: '#4D4B4A',
-        margin: '0.75rem 0',
-        fontSize: '1.1rem',
-        overflowWrap: 'break-word',
-        wordBreak: 'break-word'
-    },
-    infoImage: {
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center'
-    },
-    contentRightRight: {
-        display: 'flex',
-        alignItems: 'center',
-        [theme.breakpoints.down('md')]: {
-            justifyContent: 'center'
-        }
-    }
-}));
-
 const Mybook = (props) => {
+    const useStyles = makeStyles(theme => ({
+        rootcss: {
+            minHeight: '100vh'
+        },
+        heroText: {
+            color: props.isDarkMode ? 'ivory' : '#4D4B4A'
+        },
+        img: {
+            maxWidth: '100%',
+            maxHeight: '250px',
+            // minHeight: '100px'
+        },
+        root: {
+            flexGrow: 1,
+            backgroundColor: theme.palette.background.paper,
+            display: 'flex',
+            height: '100%',
+        },
+        tabs: {
+            borderRight: `1px solid ${theme.palette.divider}`,
+        },
+        tabRoot: {
+            fontSize: '1.2rem',
+            height: '4rem'
+        },
+        tabSelected: {
+            color: props.isDarkMode ? 'ivory' : '#4D4B4A',
+            fontWeight: 'bold'
+        },
+        tabsRoot: {
+            overflow: 'visible'
+        },
+        tabPanel: {
+            flexGrow: 1
+        },
+        infoText: {
+            color: props.isDarkMode ? 'ivory' : '#4D4B4A',
+            margin: '0.75rem 0',
+            fontSize: '1.1rem',
+            overflowWrap: 'break-word',
+            wordBreak: 'break-word'
+        },
+        infoImage: {
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center'
+        },
+        contentRightRight: {
+            display: 'flex',
+            alignItems: 'center',
+            [theme.breakpoints.down('md')]: {
+                justifyContent: 'center'
+            }
+        }
+    }));
+
     const classes = useStyles();
     const [value, setValue] = useState(0);
     const { userInfo, userFavorite, onFetchUserInfo, onFetchUserFavorite } = props;
@@ -144,7 +145,7 @@ const Mybook = (props) => {
                         <TabPanel value={value} index={0} className={classes.tabPanel}>
                             <Grid container>
                                 <Grid item xs={12} md={3} className={classes.infoImage}>
-                                    <img src={process.env.PUBLIC_URL + `/media/loginBanner.jpg`} alt={`Welcome banner`} className={classes.img}></img>
+                                    <img src={process.env.PUBLIC_URL + `/media/loginBannerD.png`} alt={`Welcome banner`} className={classes.img}></img>
                                 </Grid>
                                 <Grid item xs={12} md={9}>
                                     {userInfo !== null && (
@@ -170,11 +171,13 @@ const Mybook = (props) => {
                             )}
                         </TabPanel>
                         <TabPanel value={value} index={2}>
-                            Cookbook
+                            <em>(This section is being updated...)</em>
                         </TabPanel>
                     </div>
                 </Container>
             </Box>
+
+            <FloatingButton />
 
             <Box flexShrink={0}>
                 <BottomNav />
@@ -186,7 +189,8 @@ const Mybook = (props) => {
 const mapStateToProps = state => {
     return {
         userInfo: state.auth.userInfo,
-        userFavorite: state.auth.userFavorite
+        userFavorite: state.auth.userFavorite,
+        isDarkMode: state.darkModeEnable.isDarkMode
     };
 };
 

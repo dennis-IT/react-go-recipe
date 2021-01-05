@@ -6,13 +6,14 @@ import { Container, Box, Grid, makeStyles, Typography, CircularProgress, IconBut
 import MuiAlert from '@material-ui/lab/Alert';
 import Nav from '../components/Nav';
 import BottomNav from '../components/BottomNav';
+import FloatingButton from '../components/FloatingButton';
 import Accord from '../components/Accord';
 import ScheduleIcon from '@material-ui/icons/Schedule';
 import PeopleOutlineIcon from '@material-ui/icons/PeopleOutline';
 import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
-// import * as actions from '../store/actions/index';
+import * as actions from '../store/actions/index';
 
 const API_KEY = process.env.REACT_APP_SPOONACULAR_API_KEY;
 const DB_URL = process.env.REACT_APP_FIREBASE_DATABASEURL;
@@ -21,38 +22,38 @@ const Alert = (props) => {
     return <MuiAlert elevation={6} variant="filled" {...props} />;
 };
 
-const useStyles = makeStyles((theme) => ({
-    rootcss: {
-        height: '100vh'
-    },
-    image: {
-        maxWidth: '100%'
-    },
-    titleH: {
-        color: '#565553',
-        textTransform: 'capitalize',
-        marginTop: '0.75rem',
-        marginBottom: '0.25rem',
-        textAlign: 'center'
-    },
-    subtitleH: {
-        color: '#676563',
-        textTransform: 'capitalize',
-        marginBottom: '0.25rem',
-    },
-    icons: {
-        color: '#676563',
-        textTransform: 'capitalize',
-    },
-    loading: {
-        color: '#4D4B4A'
-    },
-    progress: {
-        color: '#86b2f3'
-    }
-}));
-
 const RecipeDetails = (props) => {
+    const useStyles = makeStyles((theme) => ({
+        rootcss: {
+            minHeight: '100vh'
+        },
+        image: {
+            maxWidth: '100%'
+        },
+        titleH: {
+            color: props.isDarkMode ? 'ivory' : '#565553',
+            textTransform: 'capitalize',
+            marginTop: '0.75rem',
+            marginBottom: '0.25rem',
+            textAlign: 'center'
+        },
+        subtitleH: {
+            color: props.isDarkMode ? 'ivory' : '#676563',
+            textTransform: 'capitalize',
+            marginBottom: '0.25rem',
+        },
+        icons: {
+            color: props.isDarkMode ? 'ivory' : '#676563',
+            textTransform: 'capitalize',
+        },
+        loading: {
+            color: '#4D4B4A'
+        },
+        progress: {
+            color: '#86b2f3'
+        }
+    }));
+
     const classes = useStyles();
     const history = useHistory();
     const [recDetails, setRecDetails] = useState({ loading: true, results: {} });
@@ -60,7 +61,7 @@ const RecipeDetails = (props) => {
     const [favor, setFavor] = useState(false);
     const [error, setError] = useState(false);
     const [errorMessage, setErrorMessage] = useState('');
-    const { token, userFavorite, userId } = props;
+    const { token, userFavorite, userId, onFetchUserFavorite } = props;
 
     const handleClose = (event, reason) => {
         if (reason === 'clickaway') {
@@ -70,7 +71,6 @@ const RecipeDetails = (props) => {
     };
 
     useEffect(() => {
-        //onFetchUserFavorite(token, userId);
         if (token && userId && userFavorite) {
             let found = null;
             userFavorite.forEach(recipe => {
@@ -108,6 +108,10 @@ const RecipeDetails = (props) => {
                     });
             }
         } else {
+            if (token && userId) {
+                onFetchUserFavorite(token, userId);
+            }
+
             Axios.get(`https://api.spoonacular.com/recipes/${id}/information?includeNutrition=true&apiKey=${API_KEY}`)
                 .then(response => {
                     const { data } = response;
@@ -119,13 +123,24 @@ const RecipeDetails = (props) => {
                     );
                     setError(false);
                     setErrorMessage('');
+
+                    if (userFavorite) {
+                        let found = null;
+                        userFavorite.forEach(recipe => {
+                            if (recipe.id === +id) {
+                                return found = recipe;
+                            }
+                        });
+
+                        found ? setFavor(true) : setFavor(false);
+                    }
                 })
                 .catch(error => {
                     setError(true);
                     setErrorMessage(error.response.data.message);
                 });
         }
-    }, [id, token, userId, userFavorite]);
+    }, [id, token, userId, onFetchUserFavorite, userFavorite]);
 
     const handleFavorite = () => {
         const token = localStorage.getItem('token');
@@ -226,6 +241,8 @@ const RecipeDetails = (props) => {
                 </Container>
             </Box>
 
+            <FloatingButton />
+
             <Snackbar open={error} autoHideDuration={6000} onClose={handleClose}>
                 <Alert onClose={handleClose} severity="error">
                     {errorMessage}
@@ -243,14 +260,15 @@ const mapStateToProps = state => {
     return {
         userFavorite: state.auth.userFavorite,
         token: state.auth.token,
-        userId: state.auth.userId
+        userId: state.auth.userId,
+        isDarkMode: state.darkModeEnable.isDarkMode
     };
 };
 
-// const mapDispatchToProps = dispatch => {
-//     return {
-//         onFetchUserFavorite: (token, userId) => dispatch(actions.getFavorite(token, userId))
-//     };
-// };
+const mapDispatchToProps = dispatch => {
+    return {
+        onFetchUserFavorite: (token, userId) => dispatch(actions.getFavorite(token, userId))
+    };
+};
 
-export default connect(mapStateToProps)(RecipeDetails);
+export default connect(mapStateToProps, mapDispatchToProps)(RecipeDetails);

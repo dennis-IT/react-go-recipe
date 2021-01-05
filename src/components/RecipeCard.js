@@ -1,46 +1,47 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { Box, CardHeader, Card, CardActionArea, CardActions, CardContent, CardMedia, Typography, makeStyles } from '@material-ui/core';
 import ScheduleIcon from '@material-ui/icons/Schedule';
 import PeopleOutlineIcon from '@material-ui/icons/PeopleOutline';
 
-const useStyles = makeStyles(theme => ({
-    root: {
-        [theme.breakpoints.down('xl')]: {
-            maxWidth: '18vw'
-        },
-        [theme.breakpoints.up('xl')]: {
-            maxWidth: '14vw'
-        },
-        minWidth: '200px',
-        backgroundColor: '#f1f2f3',
-        borderRadius: 0
-    },
-    media: {
-        height: 0,
-        paddingTop: '56.25%', // 16:9
-    },
-    title: {
-        display: '-webkit-box',
-        '-webkit-line-clamp': 1,
-        '-webkit-box-orient': 'vertical',
-        overflow: 'hidden',
-        color: '#676563',
-        fontSize: '1.125rem'
-    },
-    contentP: {
-        display: '-webkit-box',
-        '-webkit-line-clamp': 3,
-        '-webkit-box-orient': 'vertical',
-        overflow: 'hidden'
-    },
-    cardAction: {
-        color: 'rgba(0,0,0,0.54)',
-        fontSize: '0.875rem'
-    }
-}));
-
 const RecipeCard = (props) => {
+    const useStyles = makeStyles(theme => ({
+        root: {
+            [theme.breakpoints.down('xl')]: {
+                maxWidth: '18vw'
+            },
+            [theme.breakpoints.up('xl')]: {
+                maxWidth: '14vw'
+            },
+            minWidth: '200px',
+            backgroundColor: props.isDarkMode ? 'grey' : '#f1f2f3',
+            borderRadius: 0
+        },
+        media: {
+            height: 0,
+            paddingTop: '56.25%', // 16:9
+        },
+        title: {
+            display: '-webkit-box',
+            '-webkit-line-clamp': 1,
+            '-webkit-box-orient': 'vertical',
+            overflow: 'hidden',
+            color: props.isDarkMode ? 'ivory' : '#676563',
+            fontSize: '1.125rem'
+        },
+        contentP: {
+            display: '-webkit-box',
+            '-webkit-line-clamp': 3,
+            '-webkit-box-orient': 'vertical',
+            overflow: 'hidden'
+        },
+        cardAction: {
+            color: props.isDarkMode ? '#d3d7d3' : 'rgba(0,0,0,0.54)',
+            fontSize: '0.875rem'
+        }
+    }));
+
     const { recipe } = props;
     const classes = useStyles();
     const history = useHistory();
@@ -86,4 +87,10 @@ const RecipeCard = (props) => {
     );
 };
 
-export default RecipeCard;
+const mapStateToProps = state => {
+    return {
+        isDarkMode: state.darkModeEnable.isDarkMode
+    };
+};
+
+export default connect(mapStateToProps)(RecipeCard);
