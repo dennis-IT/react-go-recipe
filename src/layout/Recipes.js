@@ -229,7 +229,7 @@ const Recipes = (props) => {
                                                 </Box>
                                             </Box>
                                         ) : (
-                                                <h2 style={{ color: '#4D4B4A' }}>Sorry...No results</h2>
+                                                <h2 style={{ color: props.isDarkMode ? 'ivory' : '#4D4B4A' }}>Sorry...No results</h2>
                                             )
                                     )
                             }
