@@ -58,7 +58,8 @@ const Mybook = (props) => {
             flexGrow: 1,
             backgroundColor: theme.palette.background.paper,
             display: 'flex',
-            height: '100%',
+            maxHeight: '100%',
+            overflow: 'auto',
         },
         tabs: {
             borderRight: `1px solid ${theme.palette.divider}`,
@@ -95,6 +96,9 @@ const Mybook = (props) => {
             [theme.breakpoints.down('md')]: {
                 justifyContent: 'center'
             }
+        },
+        mainContainer: {
+            overflow: 'hidden'
         }
     }));
 
@@ -120,7 +124,7 @@ const Mybook = (props) => {
             </Box>
 
             <Box flexGrow={1} my={3}>
-                <Container maxWidth="lg">
+                <Container maxWidth="lg" className={classes.mainContainer}>
                     <Box mb={3} style={{ textAlign: 'center' }}>
                         <Typography variant='h4' className={classes.heroText}>
                             Welcome to GoRecipe
@@ -161,7 +165,7 @@ const Mybook = (props) => {
                         </TabPanel>
                         <TabPanel value={value} index={1}>
                             {userFavorite !== null && (
-                                <Grid container spacing={2} className={classes.contentRightRight}>
+                                <Grid container spacing={3} className={classes.contentRightRight}>
                                     {userFavorite.map(recipe => (
                                         <Grid item key={recipe.id}>
                                             <RecipeCard key={recipe.id} recipe={recipe} />

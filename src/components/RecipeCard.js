@@ -14,7 +14,7 @@ const RecipeCard = (props) => {
             [theme.breakpoints.up('xl')]: {
                 maxWidth: '14vw'
             },
-            minWidth: '200px',
+            minWidth: '250px',
             backgroundColor: props.isDarkMode ? 'grey' : '#f1f2f3',
             borderRadius: 0
         },

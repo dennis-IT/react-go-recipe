@@ -212,7 +212,7 @@ const Recipes = (props) => {
                                 ) : (
                                         (props.recipeData.length !== 0) ? (
                                             <Box>
-                                                <Grid container spacing={2} className={classes.contentRightRight}>
+                                                <Grid container spacing={3} className={classes.contentRightRight}>
                                                     {props.recipeData.map(recipe => (
                                                         <Grid item key={recipe.id}>
                                                             <RecipeCard key={recipe.id} recipe={recipe} />

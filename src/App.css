@@ -9,10 +9,6 @@
   box-sizing: border-box;
 }
 
-html {
-  overflow-y: scroll;
-}
-
 body {
   font-family: 'Roboto Condensed', sans-serif;
   margin: 0;
@@ -34,6 +30,7 @@ a {
   color: #f57c00;
 }
 
+/* Disable yellowish highlighted box on webkit browser */
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
@@ -46,4 +43,18 @@ input:-webkit-autofill:active  {
     -webkit-text-fill-color: 'ivory';
     -webkit-box-shadow: 0 0 0px 1000px #000 inset;
     transition: background-color 5000s ease-in-out 0s;
+}
+
+/* Disable scroll bar while still allowing scroll */
+html {
+  overflow-x: scroll;
+  overflow-y: scroll;
+
+  scrollbar-width: none; /* For Firefox */
+    -ms-overflow-style: none; /* For Internet Explorer and Edge */
+}
+
+html::-webkit-scrollbar {
+  width: 0 !important;  /* Remove scrollbar space */
+  
 }
