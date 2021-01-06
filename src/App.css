@@ -33,3 +33,12 @@ h1 {
 a {
   color: #f57c00;
 }
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active  {
+    -webkit-box-shadow: 0 0 0 60px #6e6e6e inset !important;
+    background-color: #6e6e6e !important;
+    background-clip: content-box !important;
+}
