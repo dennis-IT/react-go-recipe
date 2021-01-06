@@ -47,7 +47,7 @@ const RecipeDetails = (props) => {
             textTransform: 'capitalize',
         },
         loading: {
-            color: '#4D4B4A'
+            color: props.isDarkMode ? 'ivory' : '#4D4B4A'
         },
         progress: {
             color: '#86b2f3'

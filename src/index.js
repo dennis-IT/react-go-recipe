@@ -4,7 +4,7 @@ import { HashRouter } from 'react-router-dom';
 // import { BrowserRouter } from 'react-router-dom';
 //import { createBrowserHistory } from 'history';
 import App from './App';
-import registerServiceWorker from './registerServiceWorker';
+import * as serviceWorker from './registerServiceWorker';
 
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware, compose, combineReducers } from 'redux';
@@ -40,4 +40,4 @@ ReactDOM.render(
   </Provider>
   , document.getElementById('root')
 );
-registerServiceWorker();
+serviceWorker.unregister();
