@@ -78,7 +78,7 @@ const Recipes = (props) => {
             color: '#86b2f3'
         },
         preface: {
-            background: `url(${process.env.PUBLIC_URL}/media/recipeSearchD.svg)`,
+            background: props.isDarkMode ? `url(${process.env.PUBLIC_URL}/media/recipeSearchD.svg)` : `url(${process.env.PUBLIC_URL}/media/recipeSearch.svg)`,
             [theme.breakpoints.down('md')]: {
                 height: '60vh',
             },
